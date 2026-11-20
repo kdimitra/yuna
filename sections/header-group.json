@@ -1,5 +1,11 @@
 /*
- * YUNA redesign: header/footer group
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
  */
 {
   "type": "header",
@@ -7,12 +13,6 @@
   "sections": {
     "announcement": {
       "type": "yn-announcement",
-      "settings": {
-        "bg": "#161B30",
-        "fg": "#FFFFFF",
-        "hl": "#FFFFFF",
-        "interval": 4
-      },
       "blocks": {
         "b1": {
           "type": "message",
@@ -43,29 +43,16 @@
         "b1",
         "b2",
         "b3"
-      ]
+      ],
+      "settings": {
+        "bg": "#161b30",
+        "fg": "#ffffff",
+        "hl": "#ffffff",
+        "interval": 4
+      }
     },
     "header": {
       "type": "yn-header",
-      "settings": {
-        "logo_fallback": "yn-logo-yuna.png",
-        "logo_width": 108,
-        "logo_width_mobile": 84,
-        "menu": "main-menu",
-        "layout": "menu-left",
-        "show_search": false,
-        "show_account": false,
-        "bg": "#FFFDFB",
-        "sticky": true,
-        "floating": true,
-        "mobile_menu": "",
-        "show_promo": true,
-        "promo_title": "Daily Beauty Sleep™",
-        "promo_text": "Save 25% on 3 bottles, with free delivery",
-        "promo_rating": "4.9",
-        "promo_button": "Shop now",
-        "promo_fallback": "yn-menu-jar.webp"
-      },
       "blocks": {
         "b1": {
           "type": "trust",
@@ -93,7 +80,28 @@
         "b1",
         "b2",
         "b3"
-      ]
+      ],
+      "settings": {
+        "logo_fallback": "yn-logo-yuna.png",
+        "logo_width": 108,
+        "logo_width_mobile": 84,
+        "menu": "main-menu-1",
+        "layout": "menu-left",
+        "show_search": false,
+        "show_account": false,
+        "bg": "#fffdfb",
+        "sticky": true,
+        "floating": true,
+        "mobile_menu": "",
+        "show_promo": true,
+        "promo_product": "",
+        "promo_title": "Daily Beauty Sleep™",
+        "promo_text": "Save 25% on 3 bottles, with free delivery",
+        "promo_rating": "4.9",
+        "promo_button": "Shop now",
+        "promo_link": "",
+        "promo_fallback": "yn-menu-jar.webp"
+      }
     }
   },
   "order": [
