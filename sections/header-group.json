@@ -92,7 +92,7 @@
         "bg": "#fffdfb",
         "sticky": true,
         "floating": true,
-        "mobile_menu": "",
+        "mobile_menu": "main-menu-1",
         "show_promo": true,
         "promo_product": "",
         "promo_title": "Daily Beauty Sleep™",
