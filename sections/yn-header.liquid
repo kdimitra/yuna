@@ -14,7 +14,7 @@
   {%- endif -%}
 {%- endcapture -%}
 
-<header class="yn yn-hdr{% if section.settings.floating %} yn-hdr--float{% endif %}{% if section.settings.sticky %} yn-hdr--sticky{% endif %} yn-hdr--{{ section.settings.layout }}" data-yn-header style="--hdr-bg:{{ section.settings.bg }};--logo-w:{{ section.settings.logo_width }}px;--logo-w-m:{{ section.settings.logo_width_mobile }}px">
+<header class="yn yn-hdr{% if section.settings.floating %} yn-hdr--float{% endif %}{% if section.settings.sticky %} yn-hdr--sticky{% endif %} yn-hdr--{{ section.settings.layout }}" data-yn-header style="--hdr-bg:{{ section.settings.bg }};--hdr-line:{% if section.settings.show_line %}{{ section.settings.line_color }}{% else %}transparent{% endif %};--logo-w:{{ section.settings.logo_width }}px;--logo-w-m:{{ section.settings.logo_width_mobile }}px">
   <div class="yn-hdr__bar">
     <button type="button" class="yn-iconbtn yn-hdr__burger" aria-label="Open menu" aria-controls="YnMobileNav" aria-expanded="false" data-yn-nav-open>{% render 'yn-icon', name: 'menu' %}</button>
 
@@ -134,7 +134,9 @@
     { "type": "checkbox", "id": "show_search", "label": "Show search icon", "default": false },
     { "type": "checkbox", "id": "show_account", "label": "Show account icon", "default": false },
     { "type": "header", "content": "Style" },
-    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFDFB" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF", "info": "White matches the page background. With the floating style it turns slightly see-through after scrolling." },
+    { "type": "checkbox", "id": "show_line", "label": "Show bottom line", "default": true },
+    { "type": "color", "id": "line_color", "label": "Bottom line colour", "default": "#EFEAE3" },
     { "type": "checkbox", "id": "sticky", "label": "Sticky header", "default": true },
     { "type": "checkbox", "id": "floating", "label": "Floating pill style after scrolling", "default": true },
     { "type": "header", "content": "Mobile menu" },

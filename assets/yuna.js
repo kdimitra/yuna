@@ -99,7 +99,7 @@
         else if (!e.shiftKey && doc.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
       }
     });
-    mqMobile.addEventListener && mqMobile.addEventListener('change', function (m) { if (!m.matches && nav.classList.contains('is-open')) close(); });
+    var mqNav = window.matchMedia('(max-width: 1100px)'); mqNav.addEventListener && mqNav.addEventListener('change', function (m) { if (!m.matches && nav.classList.contains('is-open')) close(); });
   }
 
   /* ---------- hero slider ---------- */

@@ -89,7 +89,7 @@
         "layout": "menu-left",
         "show_search": false,
         "show_account": false,
-        "bg": "#fffdfb",
+        "bg": "#FFFFFF",
         "sticky": true,
         "floating": true,
         "mobile_menu": "main-menu-1",
@@ -100,7 +100,9 @@
         "promo_rating": "4.9",
         "promo_button": "Shop now",
         "promo_link": "",
-        "promo_fallback": "yn-menu-jar.webp"
+        "promo_fallback": "yn-menu-jar.webp",
+        "show_line": true,
+        "line_color": "#EFEAE3"
       }
     }
   },
