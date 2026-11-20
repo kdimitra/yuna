@@ -1,0 +1,61 @@
+/*
+ * ------------------------------------------------------------
+ * YUNA redesign template. Edit content in the theme editor.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "policies": {
+      "type": "yn-policies",
+      "settings": {
+        "heading": "Policies",
+        "bg": "white",
+        "pt": "full",
+        "pb": "full"
+      },
+      "blocks": {
+        "b1": {
+          "type": "policy",
+          "settings": {
+            "title": "Shipping & Refunds",
+            "anchor": "shipping",
+            "source": "shipping",
+            "source_2": "refund",
+            "content": "<p>Delivery is free on every order within Singapore. Orders are packed and dispatched on working days, and you will receive an email with tracking details once your order is on its way.</p> <p>Every first order is covered by our 90 Nights Risk-Free promise. If Daily Beauty Sleep™ isn’t right for you, contact us at <a href=\"mailto:hello@yunasleep.com\">hello@yunasleep.com</a> within 90 days of delivery and we will help you with a refund.</p>",
+            "always_show_text": false
+          }
+        },
+        "b2": {
+          "type": "policy",
+          "settings": {
+            "title": "Privacy Policy",
+            "anchor": "privacy",
+            "source": "privacy",
+            "source_2": "none",
+            "content": "<p>We collect only the details we need to process your order and to reply to your enquiries, such as your name, email, phone number and delivery address. We never sell your personal data.</p> <p>If you subscribe to our emails, you can unsubscribe at any time using the link in each email. To ask about or update the data we hold about you, email <a href=\"mailto:hello@yunasleep.com\">hello@yunasleep.com</a>.</p>",
+            "always_show_text": false
+          }
+        },
+        "b3": {
+          "type": "policy",
+          "settings": {
+            "title": "Terms of Service",
+            "anchor": "terms",
+            "source": "terms",
+            "source_2": "none",
+            "content": "<p>By using this website and placing an order, you agree to these terms. Prices are shown in Singapore dollars and include GST where applicable. Offers and bundle prices may change without notice and cannot be combined unless stated.</p> <p>Daily Beauty Sleep™ is a dietary supplement and is not intended to diagnose, treat, cure or prevent any disease. If you are pregnant, nursing, taking medication or have a medical condition, please speak to your doctor before use.</p>",
+            "always_show_text": false
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    }
+  },
+  "order": [
+    "policies"
+  ]
+}

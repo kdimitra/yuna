@@ -1,1 +1,103 @@
-{"name":"t:sections.header.name","type":"header","sections":{"announcement_bar_CHjFht":{"type":"announcement-bar","blocks":{"announcement_NA6jJk":{"type":"announcement","settings":{"text":"Year End Sale · 25% OFF sets · Free delivery","text_alignment":"center","icon_type":"google","icon":"","filled_icon":false,"icon_svg":"","desktop_layout":"horizontal","mobile_layout":"horizontal","hidden_products":"","enable_specific_display":false,"displayed_products":""}}},"block_order":["announcement_NA6jJk"],"name":"t:sections.announcement-bar.name","settings":{"columns_desktop":1,"columns_mobile":1,"desktop_spacing":28,"mobile_spacing":16,"show_separator":false,"background_color":"#f8f5f2","gradient_background":"","text_color":"#203040","mobile_text_size":13,"desktop_text_size":14,"mobile_icon_size":20,"desktop_icon_size":26,"icon_color":"#ffffff","enable_infinite_scroll":false,"scroll_speed":60,"infinite_scroll_spacing_desktop":40,"infinite_scroll_spacing_mobile":24,"slider_mobile":true,"slider_desktop":false,"type":"loop","autoplay":false,"autoplay_speed":3,"hidden_products":"","enable_specific_display":false,"displayed_products":"","padding_top":16,"padding_bottom":16}},"header":{"type":"header","settings":{"sticky_header_type":"always","show_line_separator":false,"bg_color":"#ffffff","background_opacity":60,"backdrop_blur":19,"icon_color":"#203040","logo_link":"\/","logo_position":"middle-left","menu":"main-menu","menu_type_desktop":"mega","highlight_active_link":false,"highlighted_link_color":"#203040","highlighted_link_bg_color":"#ffffff","menu_link_color":"#203040","mega_menu_bg_color":"#ffffff","mega_menu_text_color":"#203040","products_mega_menu_links":"","products_mega_menu_display_collection_products":false,"products_mega_menu_display_collection_images":false,"products_mega_menu_display_collection_images_on_mobile":false,"mobile_menu_title":"MENU","secondary_menu":"","menu_bg_color":"#ffffff","menu_text_color":"#203040","menu_full_width":false,"mobile_logo_position":"center","icon_size":30,"cart_icon":"shopping_bag","cart_icon_filled":false,"cart_icon_svg":"","menu_icon":"menu","menu_icon_filled":false,"menu_icon_svg":"","account_icon":"person","account_icon_filled":false,"account_icon_svg":"","hide_account_desktop":true,"cart_bubble_size":16,"cart_bubble_font_size":14,"cart_bubble_bottom":4,"cart_bubble_left":22,"cart_bubble_bg_color":"#203040","cart_bubble_text_color":"#ffffff","margin_bottom":0,"padding_top":16,"padding_bottom":8}}},"order":["announcement_bar_CHjFht","header"]}
+/*
+ * YUNA redesign: header/footer group
+ */
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement": {
+      "type": "yn-announcement",
+      "settings": {
+        "bg": "#161B30",
+        "fg": "#FFFFFF",
+        "hl": "#FFFFFF",
+        "interval": 4
+      },
+      "blocks": {
+        "b1": {
+          "type": "message",
+          "settings": {
+            "text": "Year End Sale · 25% OFF sets · Free delivery",
+            "link": "",
+            "highlight": true
+          }
+        },
+        "b2": {
+          "type": "message",
+          "settings": {
+            "text": "90 Nights Risk-Free · Melatonin-free",
+            "link": "",
+            "highlight": false
+          }
+        },
+        "b3": {
+          "type": "message",
+          "settings": {
+            "text": "Singapore Formulated · Award-winning Formulation",
+            "link": "",
+            "highlight": false
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "header": {
+      "type": "yn-header",
+      "settings": {
+        "logo_fallback": "yn-logo-yuna.png",
+        "logo_width": 108,
+        "logo_width_mobile": 84,
+        "menu": "main-menu",
+        "layout": "menu-left",
+        "show_search": false,
+        "show_account": false,
+        "bg": "#FFFDFB",
+        "sticky": true,
+        "floating": true,
+        "mobile_menu": "",
+        "show_promo": true,
+        "promo_title": "Daily Beauty Sleep™",
+        "promo_text": "Save 25% on 3 bottles, with free delivery",
+        "promo_rating": "4.9",
+        "promo_button": "Shop now",
+        "promo_fallback": "yn-menu-jar.webp"
+      },
+      "blocks": {
+        "b1": {
+          "type": "trust",
+          "settings": {
+            "icon": "shield",
+            "text": "90-night\nguarantee"
+          }
+        },
+        "b2": {
+          "type": "trust",
+          "settings": {
+            "icon": "flask",
+            "text": "Third-party\nlab tested"
+          }
+        },
+        "b3": {
+          "type": "trust",
+          "settings": {
+            "icon": "truck",
+            "text": "Free delivery\nislandwide"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    }
+  },
+  "order": [
+    "announcement",
+    "header"
+  ]
+}

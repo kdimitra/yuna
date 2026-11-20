@@ -1,0 +1,40 @@
+{%- assign nl_id = 'YnNews-' | append: section.id -%}
+<section class="yn yn-news yn-news--{{ section.settings.style }}" id="yn-news-{{ section.id }}">
+  <div class="yn-wrap">
+    <div class="yn-news__box">
+      <div class="yn-news__copy">
+        {%- render 'yn-heading', heading: section.settings.heading, accent: section.settings.accent, size: 'm' -%}
+        {%- if section.settings.text != blank -%}<p>{{ section.settings.text }}</p>{%- endif -%}
+      </div>
+      {%- form 'customer', id: nl_id, class: 'yn-news__form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        {%- if form.posted_successfully? -%}
+          <p class="yn-form-ok" role="status" tabindex="-1" autofocus>{{ section.settings.success }}</p>
+        {%- else -%}
+          <label class="visually-hidden" for="YnNewsEmail-{{ section.id }}">{{ 'newsletter.label' | t }}</label>
+          <input id="YnNewsEmail-{{ section.id }}" class="yn-input" type="email" name="contact[email]" required autocomplete="email" placeholder="{{ section.settings.placeholder }}" value="{{ form.email }}"{% if form.errors %} aria-invalid="true" aria-describedby="YnNewsErr-{{ section.id }}"{% endif %}>
+          <button class="yn-btn yn-btn--light" type="submit">{{ section.settings.button }}</button>
+          {%- if form.errors -%}
+            <p class="yn-form-err" id="YnNewsErr-{{ section.id }}" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "YUNA newsletter band",
+  "settings": [
+    { "type": "select", "id": "style", "label": "Style", "options": [{ "value": "navy", "label": "Navy" }, { "value": "light", "label": "Light" }], "default": "navy" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Join the YUNA ritual." },
+    { "type": "text", "id": "accent", "label": "Heading accent" },
+    { "type": "text", "id": "text", "label": "Text", "default": "Sleep tips, early access to new rituals and member-only offers." },
+    { "type": "text", "id": "placeholder", "label": "Email placeholder", "default": "Your email address" },
+    { "type": "text", "id": "button", "label": "Button label", "default": "Sign up" },
+    { "type": "text", "id": "success", "label": "Success message", "default": "You’re on the list. Sweet dreams!" }
+  ],
+  "presets": [{ "name": "YUNA newsletter band" }]
+}
+{% endschema %}

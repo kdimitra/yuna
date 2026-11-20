@@ -1,0 +1,138 @@
+{%- liquid
+  assign slides = section.blocks | where: 'type', 'slide'
+  assign feats = section.blocks | where: 'type', 'feature'
+  assign rp = section.settings.rating_product
+  assign rating_value = section.settings.rating_value
+  if section.settings.use_product_rating and rp.metafields.reviews.rating.value != blank
+    assign rating_value = rp.metafields.reviews.rating.value.rating | round: 1
+  endif
+-%}
+<section class="yn yn-hero" data-yn-hero data-interval="{{ section.settings.interval }}"
+  style="--hero-h:{{ section.settings.height_d }}px;--hero-h-m:{{ section.settings.height_m }}px;--hero-fg:{{ section.settings.fg_d }};--hero-fg-m:{{ section.settings.fg_m }};--hero-ov-d:{{ section.settings.overlay_d | divided_by: 100.0 }};--hero-ov-m:{{ section.settings.overlay_m | divided_by: 100.0 }};--hero-ov-c:{{ section.settings.overlay_color }};--hero-copy-w:{{ section.settings.copy_width }}px">
+  <div class="yn-hero__media" aria-hidden="{% if slides.size > 1 %}false{% else %}true{% endif %}">
+    {%- for block in slides -%}
+      <picture class="yn-hero__slide{% if forloop.first %} is-on{% endif %}" {{ block.shopify_attributes }} style="--fp-m:{{ block.settings.focal_m }};--fp-d:{{ block.settings.focal_d }}">
+        {%- if block.settings.image_m != blank -%}
+          <source media="(max-width: 900px)" srcset="{{ block.settings.image_m | image_url: width: 800 }} 800w, {{ block.settings.image_m | image_url: width: 1200 }} 1200w, {{ block.settings.image_m | image_url: width: 1600 }} 1600w" sizes="100vw">
+        {%- elsif block.settings.fallback_m != blank -%}
+          <source media="(max-width: 900px)" srcset="{{ block.settings.fallback_m | asset_url }}">
+        {%- endif -%}
+        {%- if forloop.first -%}
+          {% render 'yn-img', image: block.settings.image_d, fallback: block.settings.fallback_d, alt: block.settings.alt, class: 'yn-hero__img', priority: true, sizes: '100vw' %}
+        {%- else -%}
+          {% render 'yn-img', image: block.settings.image_d, fallback: block.settings.fallback_d, alt: block.settings.alt, class: 'yn-hero__img', loading: 'lazy', sizes: '100vw' %}
+        {%- endif -%}
+      </picture>
+    {%- endfor -%}
+  </div>
+  {%- if slides.size > 1 and section.settings.show_dots -%}
+    <div class="yn-hero__dots" role="tablist" aria-label="Hero slides">
+      {%- for block in slides -%}<button type="button" role="tab" class="{% if forloop.first %}is-on{% endif %}" aria-label="{{ block.settings.alt | default: 'Slide' | escape }} ({{ forloop.index }})" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-yn-dot="{{ forloop.index0 }}"></button>{%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  <div class="yn-hero__in yn-wrap">
+    <div class="yn-hero__copy yn-rv">
+      {%- if section.settings.show_award -%}
+        <div class="yn-award yn-award--hero yn-hide-m">
+          <img src="{{ 'yn-laurel-l.png' | asset_url }}" alt="" width="18" height="44">
+          <span>{{ section.settings.award_l1 }}<br>{{ section.settings.award_l2 }}</span>
+          <img src="{{ 'yn-laurel-r.png' | asset_url }}" alt="" width="18" height="44">
+        </div>
+      {%- endif -%}
+      {%- if section.settings.show_rating -%}
+        <div class="yn-hero__rate">
+          {%- render 'yn-stars', rating: 5 -%}
+          {%- if rating_value != blank -%}<b>{{ rating_value }}</b>{%- endif -%}
+          {%- if section.settings.rating_text != blank -%}<i aria-hidden="true"></i><span>{{ section.settings.rating_text }}</span>{%- endif -%}
+        </div>
+      {%- endif -%}
+      <h1 class="yn-hero__title">
+        {%- if section.settings.title != blank -%}<span class="yn-hero__l1">{{ section.settings.title }}</span>{%- endif -%}
+        {%- if section.settings.title_accent != blank %} <em>{{ section.settings.title_accent }}</em>{%- endif -%}
+      </h1>
+      {%- if section.settings.lead != blank -%}<p class="yn-hero__lead">{{ section.settings.lead }}</p>{%- endif -%}
+      {%- render 'yn-button', label: section.settings.button_label, link: section.settings.button_link, class: 'yn-hero__btn' -%}
+      {%- if section.settings.note != blank -%}<p class="yn-hero__note">{{ section.settings.note }}</p>{%- endif -%}
+      {%- if feats.size > 0 -%}
+        <div class="yn-hero__feats{% if section.settings.feats_mobile_only %} yn-hero__feats--m{% endif %}">
+          {%- for block in feats -%}
+            <div class="yn-hero__feat" {{ block.shopify_attributes }}>
+              <span class="yn-hero__ic">{% render 'yn-icon', name: block.settings.icon %}</span>
+              <p><b>{{ block.settings.title }}</b>{{ block.settings.text }}</p>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "YUNA hero",
+  "class": "yn-hero-section",
+  "settings": [
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "height_d", "label": "Height, desktop", "min": 420, "max": 960, "step": 10, "unit": "px", "default": 700 },
+    { "type": "range", "id": "height_m", "label": "Height, mobile", "min": 420, "max": 900, "step": 10, "unit": "px", "default": 680 },
+    { "type": "range", "id": "copy_width", "label": "Text column width, desktop", "min": 420, "max": 820, "step": 10, "unit": "px", "default": 700 },
+    { "type": "range", "id": "interval", "label": "Seconds per slide", "min": 2, "max": 12, "step": 1, "unit": "s", "default": 4 },
+    { "type": "checkbox", "id": "show_dots", "label": "Show slide dots", "default": true },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "fg_d", "label": "Text, desktop", "default": "#161B30" },
+    { "type": "color", "id": "fg_m", "label": "Text, mobile", "default": "#FFFFFF" },
+    { "type": "color", "id": "overlay_color", "label": "Overlay colour", "default": "#161B30" },
+    { "type": "range", "id": "overlay_d", "label": "Overlay strength, desktop", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 0 },
+    { "type": "range", "id": "overlay_m", "label": "Overlay strength, mobile", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 45 },
+    { "type": "header", "content": "Award badge" },
+    { "type": "checkbox", "id": "show_award", "label": "Show award badge (desktop)", "default": true },
+    { "type": "text", "id": "award_l1", "label": "Line 1", "default": "Award-winning" },
+    { "type": "text", "id": "award_l2", "label": "Line 2", "default": "Formulation" },
+    { "type": "header", "content": "Rating pill" },
+    { "type": "checkbox", "id": "show_rating", "label": "Show rating pill", "default": true },
+    { "type": "text", "id": "rating_value", "label": "Rating", "default": "4.9" },
+    { "type": "text", "id": "rating_text", "label": "Rating text", "default": "10,000+ Nightly Rituals" },
+    { "type": "checkbox", "id": "use_product_rating", "label": "Use the live review rating of a product", "default": false },
+    { "type": "product", "id": "rating_product", "label": "Product for live rating", "info": "Needs a reviews app (e.g. Judge.me) that fills the product rating." },
+    { "type": "header", "content": "Text" },
+    { "type": "text", "id": "title", "label": "Heading, line 1", "default": "Reclaim your beauty sleep." },
+    { "type": "text", "id": "title_accent", "label": "Heading, line 2", "default": "Wake up glowing." },
+    { "type": "inline_richtext", "id": "lead", "label": "Description", "default": "Sleep 6 hours, wake up like 8. A melatonin-free sleep supplement with Imperial Lingzhi™ for deeper rest and a morning glow." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop Daily Beauty Sleep™" },
+    { "type": "url", "id": "button_link", "label": "Button link", "info": "Leave empty to link to your product." },
+    { "type": "text", "id": "note", "label": "Note under button", "default": "From S$3.10 a night · 2 capsules before bed" },
+    { "type": "checkbox", "id": "feats_mobile_only", "label": "Show feature items on mobile only", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "limit": 4,
+      "settings": [
+        { "type": "image_picker", "id": "image_d", "label": "Desktop image", "info": "Wide image, about 2880 × 1234 px. Keep the left side calm for the text." },
+        { "type": "text", "id": "fallback_d", "label": "Default desktop image file (theme asset)" },
+        { "type": "image_picker", "id": "image_m", "label": "Mobile image", "info": "Portrait image, about 1520 × 2688 px." },
+        { "type": "text", "id": "fallback_m", "label": "Default mobile image file (theme asset)" },
+        { "type": "text", "id": "alt", "label": "Image description (alt text)" },
+        { "type": "text", "id": "focal_d", "label": "Desktop focal point", "default": "center center", "info": "CSS position, e.g. 70% center" },
+        { "type": "text", "id": "focal_m", "label": "Mobile focal point", "default": "center center" }
+      ]
+    },
+    {
+      "type": "feature",
+      "name": "Feature item",
+      "limit": 4,
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "options": [
+          { "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Delivery" }, { "value": "flask", "label": "Lab" },
+          { "value": "leaf", "label": "Leaf" }, { "value": "moon", "label": "Moon" }, { "value": "heart", "label": "Heart" }, { "value": "sparkle", "label": "Sparkle" }
+        ], "default": "shield" },
+        { "type": "text", "id": "title", "label": "Title", "default": "90-night guarantee" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Sleep better or your money back" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "YUNA hero", "blocks": [{ "type": "slide" }, { "type": "feature" }] }]
+}
+{% endschema %}

@@ -1,0 +1,10 @@
+{%- comment -%}
+  Heading with optional accent line. Params: heading, accent, tag (default h2), class, size (s|m|l|xl)
+{%- endcomment -%}
+{%- assign _tag = tag | default: 'h2' -%}
+{%- if heading != blank or accent != blank -%}
+  <{{ _tag }} class="yn-h yn-h--{{ size | default: 'l' }} {{ class }}">
+    {%- if heading != blank -%}<span class="yn-h__main">{{ heading }}</span>{%- endif -%}
+    {%- if accent != blank %} <em class="yn-h__accent">{{ accent }}</em>{%- endif -%}
+  </{{ _tag }}>
+{%- endif -%}

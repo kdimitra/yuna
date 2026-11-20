@@ -1,0 +1,65 @@
+{%- liquid
+  assign title = section.settings.heading
+  if title == blank and section.settings.use_page_title and page.title != blank
+    assign title = page.title
+  endif
+  assign has_img = false
+  if section.settings.image != blank or section.settings.fallback != blank
+    assign has_img = true
+  endif
+-%}
+<section class="yn yn-ph{% if has_img and section.settings.style == 'photo' %} yn-ph--photo{% else %} yn-ph--plain yn-bg-{{ section.settings.bg }}{% endif %} yn-ph--{{ section.settings.align }} yn-ph--v-{{ section.settings.valign }} yn-ph--size-{{ section.settings.size }}"
+  id="yn-{{ section.id }}" style="--ph-h:{{ section.settings.height_d }}px;--ph-h-m:{{ section.settings.height_m }}px;--ph-ov:{{ section.settings.overlay | divided_by: 100.0 }};--ph-ov-c:{{ section.settings.overlay_color }};--ph-fg:{{ section.settings.fg }}">
+  {%- if has_img and section.settings.style == 'photo' -%}
+    <picture class="yn-ph__media">
+      {%- if section.settings.image_m != blank -%}
+        <source media="(max-width: 900px)" srcset="{{ section.settings.image_m | image_url: width: 900 }} 900w, {{ section.settings.image_m | image_url: width: 1400 }} 1400w" sizes="100vw">
+      {%- elsif section.settings.fallback_m != blank -%}
+        <source media="(max-width: 900px)" srcset="{{ section.settings.fallback_m | asset_url }}">
+      {%- endif -%}
+      {% render 'yn-img', image: section.settings.image, fallback: section.settings.fallback, alt: section.settings.alt, class: 'yn-ph__img', priority: true, sizes: '100vw' %}
+    </picture>
+  {%- endif -%}
+  <div class="yn-wrap yn-ph__in">
+    <div class="yn-ph__copy yn-rv is-in">
+      {%- if title != blank or section.settings.accent != blank -%}
+        <h1 class="yn-ph__title">{%- if title != blank -%}<span>{{ title }}</span>{%- endif -%}{%- if section.settings.accent != blank %} <em>{{ section.settings.accent }}</em>{%- endif -%}</h1>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}<div class="yn-ph__lead">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.settings.show_page_content and page.content != blank -%}<div class="yn-rte yn-ph__lead">{{ page.content }}</div>{%- endif -%}
+      {%- if section.settings.button_label != blank -%}<div class="yn-ph__btn">{% render 'yn-button', label: section.settings.button_label, link: section.settings.button_link %}</div>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "YUNA page hero",
+  "settings": [
+    { "type": "select", "id": "style", "label": "Style", "options": [{ "value": "photo", "label": "Photo banner" }, { "value": "plain", "label": "Plain (no photo)" }], "default": "plain" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "checkbox", "id": "use_page_title", "label": "Use the page title when the heading is empty", "default": true },
+    { "type": "text", "id": "accent", "label": "Heading accent" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "checkbox", "id": "show_page_content", "label": "Show the page’s own content", "default": false },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "select", "id": "align", "label": "Text alignment", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Centre" }], "default": "center" },
+    { "type": "select", "id": "size", "label": "Heading size", "options": [{ "value": "m", "label": "Medium" }, { "value": "l", "label": "Large" }], "default": "l" },
+    { "type": "select", "id": "bg", "label": "Background (plain style)", "options": [{ "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "beige", "label": "Beige" }, { "value": "navy", "label": "Navy" }], "default": "white" },
+    { "type": "header", "content": "Photo banner" },
+    { "type": "image_picker", "id": "image", "label": "Desktop image" },
+    { "type": "text", "id": "fallback", "label": "Default desktop image file (theme asset)" },
+    { "type": "image_picker", "id": "image_m", "label": "Mobile image" },
+    { "type": "text", "id": "fallback_m", "label": "Default mobile image file (theme asset)" },
+    { "type": "text", "id": "alt", "label": "Image description" },
+    { "type": "select", "id": "valign", "label": "Text position", "options": [{ "value": "center", "label": "Middle" }, { "value": "bottom", "label": "Bottom" }], "default": "bottom" },
+    { "type": "range", "id": "height_d", "label": "Height, desktop", "min": 320, "max": 900, "step": 10, "unit": "px", "default": 560 },
+    { "type": "range", "id": "height_m", "label": "Height, mobile", "min": 280, "max": 800, "step": 10, "unit": "px", "default": 520 },
+    { "type": "color", "id": "fg", "label": "Text colour", "default": "#FFFFFF" },
+    { "type": "color", "id": "overlay_color", "label": "Overlay colour", "default": "#161B30" },
+    { "type": "range", "id": "overlay", "label": "Overlay strength", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 30 }
+  ],
+  "presets": [{ "name": "YUNA page hero" }]
+}
+{% endschema %}

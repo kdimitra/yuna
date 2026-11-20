@@ -1,0 +1,91 @@
+{%- liquid
+  assign title = section.settings.heading | default: page.title
+-%}
+<section class="{% render 'yn-section-class', s: section %} yn-pol" id="yn-{{ section.id }}" data-yn-tabs>
+  <div class="yn-wrap yn-pol__in">
+    <h1 class="yn-ph__title">{{ title }}</h1>
+    {%- if section.blocks.size > 1 -%}
+      <div class="yn-pol__tabs" role="tablist" aria-label="{{ title | escape }}">
+        {%- for block in section.blocks -%}
+          {%- assign aid = block.settings.anchor | default: block.settings.title | handleize -%}
+          <a class="yn-pol__tab{% if forloop.first %} is-on{% endif %}" role="tab" id="tab-{{ aid }}" href="#{{ aid }}" aria-controls="{{ aid }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-yn-tab>{{ block.settings.title }}</a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign aid = block.settings.anchor | default: block.settings.title | handleize
+        assign body = blank
+        assign body2 = blank
+        case block.settings.source_2
+          when 'shipping'
+            assign body2 = shop.shipping_policy.body
+          when 'refund'
+            assign body2 = shop.refund_policy.body
+          when 'privacy'
+            assign body2 = shop.privacy_policy.body
+          when 'terms'
+            assign body2 = shop.terms_of_service.body
+        endcase
+        case block.settings.source
+          when 'shipping'
+            assign body = shop.shipping_policy.body
+          when 'refund'
+            assign body = shop.refund_policy.body
+          when 'privacy'
+            assign body = shop.privacy_policy.body
+          when 'terms'
+            assign body = shop.terms_of_service.body
+          when 'contact'
+            assign body = shop.contact_information.body
+        endcase
+      -%}
+      <article class="yn-pol__panel yn-rte" id="{{ aid }}" role="tabpanel" aria-labelledby="tab-{{ aid }}" data-yn-panel {{ block.shopify_attributes }}{% unless forloop.first %} data-hidden{% endunless %}>
+        <h2>{{ block.settings.title }}</h2>
+        {%- if block.settings.content != blank -%}
+          {%- if block.settings.always_show_text or body == blank and body2 == blank -%}{{ block.settings.content }}{%- endif -%}
+        {%- endif -%}
+        {%- if body != blank -%}{{ body }}{%- endif -%}
+        {%- if body2 != blank -%}{{ body2 }}{%- endif -%}
+        {%- if block.settings.content == blank and body == blank and body2 == blank -%}<p>Add the {{ block.settings.title }} text in Settings &gt; Policies, or write it in this block.</p>{%- endif -%}
+      </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "YUNA policies",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Policies", "info": "Leave empty to use the page title." },
+    { "type": "header", "content": "Section style" },
+    { "type": "select", "id": "bg", "label": "Background", "options": [{ "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "beige", "label": "Beige" }], "default": "white" },
+    { "type": "select", "id": "pt", "label": "Space above", "options": [{ "value": "none", "label": "None" }, { "value": "half", "label": "Half" }, { "value": "full", "label": "Full" }], "default": "full" },
+    { "type": "select", "id": "pb", "label": "Space below", "options": [{ "value": "none", "label": "None" }, { "value": "half", "label": "Half" }, { "value": "full", "label": "Full" }], "default": "full" }
+  ],
+  "blocks": [
+    { "type": "policy", "name": "Policy", "settings": [
+      { "type": "text", "id": "title", "label": "Title", "default": "Shipping & Refunds" },
+      { "type": "text", "id": "anchor", "label": "Anchor ID", "default": "shipping", "info": "Footer links like /pages/policies#shipping open this tab." },
+      { "type": "select", "id": "source", "label": "Include Shopify policy", "options": [
+        { "value": "none", "label": "None (only the text below)" },
+        { "value": "shipping", "label": "Shipping policy" },
+        { "value": "refund", "label": "Refund policy" },
+        { "value": "privacy", "label": "Privacy policy" },
+        { "value": "terms", "label": "Terms of service" },
+        { "value": "contact", "label": "Contact information" }
+      ], "default": "none", "info": "Texts from Settings > Policies stay the single source of truth." },
+      { "type": "select", "id": "source_2", "label": "Also include", "options": [
+        { "value": "none", "label": "Nothing else" },
+        { "value": "shipping", "label": "Shipping policy" },
+        { "value": "refund", "label": "Refund policy" },
+        { "value": "privacy", "label": "Privacy policy" },
+        { "value": "terms", "label": "Terms of service" }
+      ], "default": "none" },
+      { "type": "richtext", "id": "content", "label": "Fallback text", "info": "Shown when the Shopify policies above are empty." },
+      { "type": "checkbox", "id": "always_show_text", "label": "Always show this text (above the policies)", "default": false }
+    ] }
+  ],
+  "presets": [{ "name": "YUNA policies", "blocks": [{ "type": "policy" }] }]
+}
+{% endschema %}

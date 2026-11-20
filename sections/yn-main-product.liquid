@@ -1,0 +1,462 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign tiers = section.blocks | where: 'type', 'tier'
+  assign bundles_block = section.blocks | where: 'type', 'bundles' | first
+  assign use_tiers = false
+  if tiers.size > 0 and bundles_block != blank and bundles_block.settings.mode == 'theme'
+    assign use_tiers = true
+  endif
+  assign form_id = 'YnProductForm-' | append: section.id
+  assign nights_per_unit = section.settings.nights_per_unit | default: 30
+  assign unit_label = section.settings.unit_label | default: 'bottle'
+
+  comment
+    Pick the default tier: the first one ticked "selected by default", otherwise the first tier.
+  endcomment
+  assign default_tier = tiers | where: 'settings.default', true | first
+  if default_tier == blank
+    assign default_tier = tiers | first
+  endif
+-%}
+
+<section class="yn yn-pdp" id="yn-pdp-{{ section.id }}" data-yn-product data-section="{{ section.id }}" data-form="{{ form_id }}" data-nights-unit="{{ nights_per_unit }}" data-unit="{{ unit_label | escape }}">
+  <div class="yn-pdp__grid yn-wrap">
+    {%- comment -%} ============ Gallery ============ {%- endcomment -%}
+    <div class="yn-pdp__media">
+      {%- assign media_list = product.media -%}
+      {%- if media_list.size > 0 -%}
+        <div class="yn-gal" data-yn-gallery>
+          <div class="yn-gal__list" data-yn-gal-list>
+            {%- for media in media_list -%}
+              <figure class="yn-gal__item{% if forloop.first %} yn-gal__item--hero{% endif %}" data-media-id="{{ media.id }}">
+                {%- case media.media_type -%}
+                  {%- when 'image' -%}
+                    <button type="button" class="yn-gal__zoom" data-yn-zoom="{{ forloop.index0 }}" aria-label="Open image {{ forloop.index }} of {{ media_list.size }}">
+                      {%- if forloop.first -%}
+                        {{ media | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(max-width: 900px) 100vw, 46vw', widths: '400, 600, 800, 1000, 1400', alt: media.alt | default: product.title }}
+                      {%- else -%}
+                        {{ media | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(max-width: 900px) 100vw, 23vw', widths: '300, 500, 700, 1000', alt: media.alt | default: product.title }}
+                      {%- endif -%}
+                    </button>
+                  {%- when 'video' -%}
+                    {{ media | video_tag: controls: true, muted: true, playsinline: true, loop: true, image_size: '1000x' }}
+                  {%- when 'external_video' -%}
+                    <div class="yn-gal__ext">{{ media | external_video_tag }}</div>
+                  {%- else -%}
+                    {{ media | media_tag }}
+                {%- endcase -%}
+              </figure>
+            {%- endfor -%}
+          </div>
+          {%- if media_list.size > 1 -%}
+            <div class="yn-gal__thumbs" aria-label="Product images">
+              <button type="button" class="yn-gal__tarr" data-yn-gal-prev aria-label="Previous image">{% render 'yn-icon', name: 'arrow-left' %}</button>
+              <div class="yn-gal__strip" data-yn-gal-strip>
+                {%- for media in media_list -%}
+                  <button type="button" class="yn-gal__th{% if forloop.first %} is-on{% endif %}" data-yn-gal-go="{{ forloop.index0 }}" aria-label="Show image {{ forloop.index }}">
+                    {{ media.preview_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}
+                  </button>
+                {%- endfor -%}
+              </div>
+              <button type="button" class="yn-gal__tarr" data-yn-gal-next aria-label="Next image">{% render 'yn-icon', name: 'arrow-right' %}</button>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- else -%}
+        <div class="yn-gal"><figure class="yn-gal__item yn-gal__item--hero">{{ 'product-1' | placeholder_svg_tag: 'yn-ph-svg' }}</figure></div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} ============ Buy box ============ {%- endcomment -%}
+    <div class="yn-pdp__buy" data-yn-buy>
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'rating' -%}
+            {%- liquid
+              assign r_val = block.settings.manual_rating
+              assign r_cnt = block.settings.manual_count
+              if block.settings.use_live and product.metafields.reviews.rating.value != blank
+                assign r_val = product.metafields.reviews.rating.value.rating | round: 1
+                assign r_cnt = product.metafields.reviews.rating_count.value
+              endif
+              assign show_rating = true
+              if block.settings.use_live and block.settings.hide_empty and product.metafields.reviews.rating.value == blank
+                assign show_rating = false
+              endif
+            -%}
+            {%- if show_rating -%}
+              <div class="yn-pdp__rate" {{ block.shopify_attributes }}>
+                {%- render 'yn-stars', rating: r_val -%}
+                {%- if r_val != blank -%}<b>{{ r_val }}</b>{%- endif -%}
+                {%- if r_cnt != blank -%}<a href="#{{ block.settings.anchor | default: 'reviews' }}" class="yn-pdp__rlink">{{ block.settings.count_text | replace: '[count]', r_cnt }}</a>{%- endif -%}
+                {%- if block.settings.extra != blank -%}<i aria-hidden="true"></i><span>{{ block.settings.extra }}</span>{%- endif -%}
+              </div>
+            {%- endif -%}
+
+          {%- when 'title' -%}
+            <h1 class="yn-pdp__title" {{ block.shopify_attributes }}>{{ block.settings.override | default: product.title }}</h1>
+
+          {%- when 'price' -%}
+            <div class="yn-pdp__price" {{ block.shopify_attributes }}>
+              <div class="yn-price" data-yn-price-row>
+                <span class="yn-price__now" data-yn-price>{{ current_variant.price | money_without_trailing_zeros }}</span>
+                <s class="yn-price__was" data-yn-compare{% unless current_variant.compare_at_price > current_variant.price %} hidden{% endunless %}>{{ current_variant.compare_at_price | money_without_trailing_zeros }}</s>
+                {%- liquid
+                  assign save_pct = 0
+                  if current_variant.compare_at_price > current_variant.price
+                    assign save_pct = current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round
+                  endif
+                -%}
+                <span class="yn-save" data-yn-save data-template="{{ block.settings.save_text | escape }}"{% if save_pct == 0 %} hidden{% endif %}>{{ block.settings.save_text | replace: '[percent]', save_pct }}</span>
+                <span class="yn-price__soldout" data-yn-soldout-badge{% if current_variant.available %} hidden{% endif %}>{{ 'products.product.sold_out' | t }}</span>
+              </div>
+              {%- if block.settings.show_per_night -%}
+                <p class="yn-price__per" data-yn-per data-template="{{ block.settings.per_night_text | escape }}">{{ current_variant.price | divided_by: nights_per_unit | money }} {{ block.settings.per_night_text | remove: '[price]' | strip }}</p>
+              {%- endif -%}
+              {%- if block.settings.show_tax_note -%}<p class="yn-price__tax">{{ 'products.product.include_taxes' | t }}</p>{%- endif -%}
+            </div>
+
+          {%- when 'text' -%}
+            <div class="yn-pdp__intro yn-rte" {{ block.shopify_attributes }}>
+              {%- if block.settings.use_description -%}{{ product.description | strip_html | truncatewords: 40 }}{%- else -%}{{ block.settings.text }}{%- endif -%}
+            </div>
+
+          {%- when 'ticks' -%}
+            {%- assign lines = block.settings.lines | newline_to_br | split: '<br />' -%}
+            <ul class="yn-ticks" {{ block.shopify_attributes }}>
+              {%- for l in lines -%}{%- assign l2 = l | strip -%}{%- if l2 != blank -%}<li>{% render 'yn-icon', name: 'tick-filled' %}<span>{{ l2 }}</span></li>{%- endif -%}{%- endfor -%}
+            </ul>
+
+          {%- when 'variant_picker' -%}
+            {%- unless product.has_only_default_variant or use_tiers -%}
+              <div class="yn-vpick" {{ block.shopify_attributes }}>
+                {%- for option in product.options_with_values -%}
+                  <fieldset class="yn-vpick__opt">
+                    <legend>{{ option.name }}</legend>
+                    <div class="yn-vpick__vals">
+                      {%- for value in option.values -%}
+                        <label class="yn-vpick__val">
+                          <input type="radio" name="yn-opt-{{ section.id }}-{{ forloop.parentloop.index }}" value="{{ value | escape }}" data-yn-option="{{ forloop.parentloop.index0 }}"{% if option.selected_value == value %} checked{% endif %}>
+                          <span>{{ value }}</span>
+                        </label>
+                      {%- endfor -%}
+                    </div>
+                  </fieldset>
+                {%- endfor -%}
+              </div>
+            {%- endunless -%}
+
+          {%- when 'bundles' -%}
+            {%- if block.settings.mode == 'theme' and tiers.size > 0 -%}
+              <div class="yn-bundles" id="{{ block.settings.anchor | default: 'offer' }}" {{ block.shopify_attributes }}>
+                {%- if block.settings.heading != blank -%}<div class="yn-bundles__h"><span>{{ block.settings.heading }}</span></div>{%- endif -%}
+                <div class="yn-bundles__list" role="radiogroup" aria-label="{{ block.settings.heading | default: 'Choose your bundle' | escape }}">
+                  {%- for t in tiers -%}
+                    {%- liquid
+                      assign tv = current_variant
+                      assign tqty = t.settings.quantity | default: 1
+                      if t.settings.variant_match != blank
+                        for v in product.variants
+                          if v.title contains t.settings.variant_match
+                            assign tv = v
+                            break
+                          endif
+                        endfor
+                      endif
+                      assign unit_compare = tv.price
+                      if tv.compare_at_price > tv.price
+                        assign unit_compare = tv.compare_at_price
+                      endif
+                      assign t_full = unit_compare | times: tqty
+                      if t.settings.price != blank
+                        assign t_total = t.settings.price | times: 100 | round
+                      else
+                        assign pct_keep = 100 | minus: t.settings.discount
+                        assign t_total = tv.price | times: tqty | times: pct_keep | divided_by: 100
+                      endif
+                      assign t_units = t.settings.units | default: tqty
+                      assign t_nights = t.settings.nights
+                      if t_nights == blank
+                        assign t_nights = nights_per_unit | times: t_units
+                      endif
+                      assign t_save = 0
+                      if t_full > t_total
+                        assign t_save = t_full | minus: t_total | times: 100.0 | divided_by: t_full | round
+                      endif
+                      assign t_per_unit = t_total | divided_by: t_units
+                      assign t_per_night = t_total | divided_by: t_nights
+                      assign is_default = false
+                      if t.id == default_tier.id
+                        assign is_default = true
+                      endif
+                    -%}
+                    <label class="yn-tier{% if t.settings.ribbon != blank %} has-rib{% endif %}{% unless tv.available %} is-soldout{% endunless %}" {{ t.shopify_attributes }}>
+                      {%- if t.settings.ribbon != blank -%}<span class="yn-tier__rib">{{ t.settings.ribbon }}</span>{%- endif -%}
+                      <input type="radio" name="yn-tier-{{ section.id }}" value="{{ t.id }}"{% if is_default %} checked{% endif %}{% unless tv.available %} data-soldout{% endunless %}
+                        data-variant="{{ tv.id }}" data-qty="{{ tqty }}" data-total="{{ t_total }}" data-full="{{ t_full }}" data-save="{{ t_save }}"
+                        data-per-night="{{ t_per_night }}" data-label="{{ t.settings.label | escape }}" data-available="{{ tv.available }}">
+                      <span class="yn-tier__dot" aria-hidden="true"></span>
+                      <span class="yn-tier__bl">
+                        <span class="yn-tier__t">{{ t.settings.label }}</span>
+                        {%- if t_save > 0 and t.settings.show_save -%}<span class="yn-save yn-save--sm">{{ t.settings.save_text | replace: '[percent]', t_save }}</span>{%- endif -%}
+                        <span class="yn-tier__s">{{ t.settings.subtitle }}{% if t.settings.show_per_unit and t_units > 1 %} · {{ t_per_unit | money_without_trailing_zeros }} /{{ unit_label }}{% endif %}{% unless tv.available %} · {{ 'products.product.sold_out' | t }}{% endunless %}</span>
+                      </span>
+                      <span class="yn-tier__p"><b>{{ t_total | money_without_trailing_zeros }}</b>{%- if t_full > t_total -%}<s>{{ t_full | money_without_trailing_zeros }}</s>{%- endif -%}</span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+                {%- if block.settings.note != blank -%}<p class="yn-bundles__note">{{ block.settings.note }}</p>{%- endif -%}
+              </div>
+            {%- elsif block.settings.mode == 'app' -%}
+              <span id="{{ block.settings.anchor | default: 'offer' }}" class="yn-anchor" {{ block.shopify_attributes }}></span>
+            {%- endif -%}
+
+          {%- when 'buy_buttons' -%}
+            <div class="yn-pdp__form" {{ block.shopify_attributes }}>
+              {%- form 'product', product, id: form_id, class: 'yn-pform', novalidate: 'novalidate', data-yn-form: '' -%}
+                <input type="hidden" name="id" value="{{ current_variant.id }}" data-yn-variant-input>
+                <input type="hidden" name="quantity" value="1" data-yn-qty-input>
+                {%- if block.settings.show_qty and use_tiers == false -%}
+                  <div class="yn-qty">
+                    <button type="button" data-yn-qty="-1" aria-label="Decrease quantity">{% render 'yn-icon', name: 'minus' %}</button>
+                    <input type="number" min="1" value="1" aria-label="Quantity" data-yn-qty-visible>
+                    <button type="button" data-yn-qty="1" aria-label="Increase quantity">{% render 'yn-icon', name: 'plus' %}</button>
+                  </div>
+                {%- endif -%}
+                <button type="submit" name="add" class="yn-btn yn-btn--solid yn-btn--atc" id="YnAtc-{{ section.id }}" data-yn-atc data-label-add="{{ block.settings.label | default: 'Add to cart' | escape }}" data-label-sold="{{ 'products.product.sold_out' | t | escape }}"{% unless current_variant.available %} disabled{% endunless %}>
+                  <span data-yn-atc-text>{%- if current_variant.available -%}{{ block.settings.label | default: 'Add to cart' }}{%- else -%}{{ 'products.product.sold_out' | t }}{%- endif -%}</span>
+                </button>
+                {%- if block.settings.show_dynamic_checkout -%}{{ form | payment_button }}{%- endif -%}
+                <p class="yn-form-err" role="alert" data-yn-form-error hidden></p>
+              {%- endform -%}
+            </div>
+
+          {%- when 'award' -%}
+            <div class="yn-pdp__award" {{ block.shopify_attributes }}>
+              <div class="yn-award yn-award--box">
+                <img src="{{ 'yn-laurel-l.png' | asset_url }}" alt="" width="19" height="46" loading="lazy">
+                <span>{{ block.settings.l1 }}<br>{{ block.settings.l2 }}</span>
+                <img src="{{ 'yn-laurel-r.png' | asset_url }}" alt="" width="19" height="46" loading="lazy">
+              </div>
+              {%- if block.settings.text != blank -%}<div class="yn-rte">{{ block.settings.text }}</div>{%- endif -%}
+            </div>
+
+          {%- when 'stock' -%}
+            <div class="yn-pdp__stock" {{ block.shopify_attributes }}>
+              <p class="yn-stock" data-yn-stock data-in="{{ block.settings.in_stock | escape }}" data-out="{{ block.settings.out_stock | escape }}" data-low="{{ block.settings.low_stock | escape }}" data-threshold="{{ block.settings.low_threshold }}">
+                <span class="yn-stock__dot{% unless current_variant.available %} is-out{% endunless %}" aria-hidden="true"></span>
+                <span data-yn-stock-text>
+                  {%- if current_variant.available -%}
+                    {%- if current_variant.inventory_management == 'shopify' and current_variant.inventory_quantity > 0 and current_variant.inventory_quantity <= block.settings.low_threshold and block.settings.low_stock != blank -%}
+                      {{ block.settings.low_stock | replace: '[count]', current_variant.inventory_quantity }}
+                    {%- else -%}{{ block.settings.in_stock }}{%- endif -%}
+                  {%- else -%}{{ block.settings.out_stock }}{%- endif -%}
+                </span>
+              </p>
+              {%- if block.settings.t1 != blank or block.settings.t2 != blank or block.settings.t3 != blank -%}
+                <div class="yn-i3">
+                  {%- if block.settings.t1 != blank -%}<div><span class="yn-i3__ic">{% render 'yn-icon', name: block.settings.i1 %}</span><span>{{ block.settings.t1 | newline_to_br }}</span></div>{%- endif -%}
+                  {%- if block.settings.t2 != blank -%}<div><span class="yn-i3__ic">{% render 'yn-icon', name: block.settings.i2 %}</span><span>{{ block.settings.t2 | newline_to_br }}</span></div>{%- endif -%}
+                  {%- if block.settings.t3 != blank -%}<div><span class="yn-i3__ic">{% render 'yn-icon', name: block.settings.i3 %}</span><span>{{ block.settings.t3 | newline_to_br }}</span></div>{%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+
+          {%- when 'review_card' -%}
+            <figure class="yn-rbox" {{ block.shopify_attributes }}>
+              {%- render 'yn-stars', rating: 5 -%}
+              <blockquote>{{ block.settings.quote }}</blockquote>
+              <figcaption>
+                {%- if block.settings.image != blank or block.settings.fallback != blank -%}{% render 'yn-img', image: block.settings.image, fallback: block.settings.fallback, alt: block.settings.name, sizes: '52px', widths: '52, 104' %}{%- endif -%}
+                <span><b>{{ block.settings.name }}{% if block.settings.verified %}{% render 'yn-icon', name: 'verified' %}{% endif %}</b><small>{{ block.settings.sub }}</small></span>
+              </figcaption>
+            </figure>
+
+          {%- when 'highlights' -%}
+            {%- assign lines = block.settings.lines | newline_to_br | split: '<br />' -%}
+            <ul class="yn-hl" {{ block.shopify_attributes }}>
+              {%- for l in lines -%}{%- assign l2 = l | strip -%}{%- if l2 != blank -%}<li>{% render 'yn-icon', name: 'check' %}<span>{{ l2 }}</span></li>{%- endif -%}{%- endfor -%}
+            </ul>
+
+          {%- when 'accordion' -%}
+            <details class="yn-acc" {{ block.shopify_attributes }}{% if block.settings.open %} open{% endif %}>
+              <summary><span>{{ block.settings.title }}</span><i class="yn-pm" aria-hidden="true"></i></summary>
+              <div class="yn-acc__a yn-rte">
+                {%- if block.settings.source == 'description' -%}{{ product.description }}{%- else -%}{{ block.settings.content }}{%- endif -%}
+                {%- if block.settings.table != blank -%}
+                  {%- assign rows = block.settings.table | newline_to_br | split: '<br />' -%}
+                  <table class="yn-facts"><tbody>
+                    {%- for row in rows -%}
+                      {%- assign cells = row | split: '|' -%}
+                      {%- assign c0 = cells[0] | strip -%}
+                      {%- if c0 != blank -%}<tr><td>{{ c0 }}</td><td>{{ cells[1] | strip }}</td></tr>{%- endif -%}
+                    {%- endfor -%}
+                  </tbody></table>
+                {%- endif -%}
+                {%- if block.settings.page != blank -%}{{ block.settings.page.content }}{%- endif -%}
+              </div>
+            </details>
+
+          {%- when 'custom_liquid' -%}
+            <div class="yn-pdp__liquid" {{ block.shopify_attributes }}>{{ block.settings.liquid }}</div>
+
+          {%- when '@app' -%}
+            <div class="yn-pdp__app">{% render block %}</div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {%- if section.settings.sticky_atc -%}
+    <div class="yn-sticky" data-yn-sticky aria-hidden="true">
+      {%- if product.featured_image -%}{{ product.featured_image | image_url: width: 120 | image_tag: alt: '', loading: 'lazy' }}{%- endif -%}
+      <div class="yn-sticky__t"><b>{{ product.title }}</b><span data-yn-sticky-label>{{ current_variant.price | money_without_trailing_zeros }}</span></div>
+      <button type="button" class="yn-btn yn-btn--solid yn-btn--atc yn-btn--sm" data-yn-sticky-buy{% unless current_variant.available %} disabled{% endunless %}>{{ section.settings.sticky_label }}</button>
+    </div>
+  {%- endif -%}
+
+  <script type="application/json" data-yn-product-json>
+    {
+      "variants": [{%- for v in product.variants -%}{"id":{{ v.id }},"price":{{ v.price }},"compare":{{ v.compare_at_price | default: 0 }},"available":{{ v.available }},"options":{{ v.options | json }},"media":{{ v.featured_media.id | default: 'null' }},"inv":{% if v.inventory_management == 'shopify' %}{{ v.inventory_quantity }}{% else %}null{% endif %}}{% unless forloop.last %},{% endunless %}{%- endfor -%}],
+      "useTiers": {{ use_tiers }},
+      "stickyAfter": "YnAtc-{{ section.id }}"
+    }
+  </script>
+</section>
+
+{%- comment -%} Product structured data for SEO {%- endcomment -%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": {{ product.title | json }},
+    "url": {{ request.origin | append: product.url | json }},
+    {%- if product.featured_image -%}"image": [{{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }}],{%- endif -%}
+    "description": {{ product.description | strip_html | json }},
+    {%- if current_variant.sku != blank -%}"sku": {{ current_variant.sku | json }},{%- endif -%}
+    "brand": { "@type": "Brand", "name": {{ product.vendor | json }} },
+    {%- if product.metafields.reviews.rating.value != blank -%}
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": {{ product.metafields.reviews.rating.value.rating | json }}, "reviewCount": {{ product.metafields.reviews.rating_count.value | json }} },
+    {%- endif -%}
+    "offers": [
+      {%- for variant in product.variants -%}
+        { "@type": "Offer", {%- if variant.sku != blank -%}"sku": {{ variant.sku | json }},{%- endif -%}
+          "availability": "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+          "price": {{ variant.price | divided_by: 100.00 | json }}, "priceCurrency": {{ cart.currency.iso_code | json }},
+          "url": {{ request.origin | append: variant.url | json }} }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+</script>
+
+{% schema %}
+{
+  "name": "YUNA product",
+  "class": "yn-main-product-section",
+  "settings": [
+    { "type": "range", "id": "nights_per_unit", "label": "Nights per bottle", "min": 5, "max": 100, "step": 1, "default": 30, "info": "Used for the per-night price (60 capsules = 30 nights)." },
+    { "type": "text", "id": "unit_label", "label": "Unit name", "default": "bottle" },
+    { "type": "checkbox", "id": "sticky_atc", "label": "Sticky Add to cart bar on mobile", "default": true },
+    { "type": "text", "id": "sticky_label", "label": "Sticky bar button label", "default": "Add to cart" }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    { "type": "rating", "name": "Rating", "limit": 1, "settings": [
+      { "type": "checkbox", "id": "use_live", "label": "Use live review data", "default": true, "info": "Reads the product rating filled by your reviews app (Judge.me)." },
+      { "type": "checkbox", "id": "hide_empty", "label": "Hide when there are no reviews yet", "default": false },
+      { "type": "text", "id": "manual_rating", "label": "Fallback rating", "default": "4.9" },
+      { "type": "text", "id": "manual_count", "label": "Fallback review count", "default": "267" },
+      { "type": "text", "id": "count_text", "label": "Review count text", "default": "from [count] reviews", "info": "[count] is replaced by the number of reviews." },
+      { "type": "text", "id": "extra", "label": "Extra text", "default": "10,000+ nightly rituals" },
+      { "type": "text", "id": "anchor", "label": "Reviews section anchor", "default": "reviews" }
+    ] },
+    { "type": "title", "name": "Title", "limit": 1, "settings": [
+      { "type": "text", "id": "override", "label": "Title override", "info": "Leave empty to use the product title." }
+    ] },
+    { "type": "price", "name": "Price", "limit": 1, "settings": [
+      { "type": "text", "id": "save_text", "label": "Save badge text", "default": "Save [percent]%" },
+      { "type": "checkbox", "id": "show_per_night", "label": "Show price per night", "default": true },
+      { "type": "text", "id": "per_night_text", "label": "Per night text", "default": "[price] per night" },
+      { "type": "checkbox", "id": "show_tax_note", "label": "Show taxes note", "default": false }
+    ] },
+    { "type": "text", "name": "Text", "settings": [
+      { "type": "checkbox", "id": "use_description", "label": "Use a short version of the product description", "default": false },
+      { "type": "richtext", "id": "text", "label": "Text", "default": "<p><strong>A melatonin-free beauty sleep supplement that makes 5–6 hours of sleep feel like 8.</strong></p>" }
+    ] },
+    { "type": "ticks", "name": "Tick list", "settings": [
+      { "type": "textarea", "id": "lines", "label": "Lines (one per line)", "default": "Fall asleep more easily and rest deeper\nWake up refreshed, with a natural glow\n400 mg Imperial Lingzhi™ + 7 botanicals and probiotics" }
+    ] },
+    { "type": "variant_picker", "name": "Variant picker", "limit": 1, "settings": [
+      { "type": "paragraph", "content": "Shows the product options as buttons. Hidden when the product has a single variant or when theme bundle cards are used." }
+    ] },
+    { "type": "bundles", "name": "Bundle picker", "limit": 1, "settings": [
+      { "type": "select", "id": "mode", "label": "Bundle source", "options": [
+        { "value": "theme", "label": "Theme bundle cards (add Bundle tier blocks)" },
+        { "value": "app", "label": "App (e.g. Kaching Bundles app block)" }
+      ], "default": "theme", "info": "With theme cards, the real discount must be set up in Shopify Discounts or your bundle app, so the cart matches the prices shown." },
+      { "type": "text", "id": "heading", "label": "Heading", "default": "Bundle & Save" },
+      { "type": "text", "id": "anchor", "label": "Anchor ID", "default": "offer", "info": "Buttons linking to #offer scroll here." },
+      { "type": "text", "id": "note", "label": "Note under the cards" }
+    ] },
+    { "type": "tier", "name": "Bundle tier", "limit": 6, "settings": [
+      { "type": "text", "id": "label", "label": "Title", "default": "1 Bottle" },
+      { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "30 Night Trial" },
+      { "type": "range", "id": "quantity", "label": "Quantity added to cart", "min": 1, "max": 12, "step": 1, "default": 1 },
+      { "type": "text", "id": "variant_match", "label": "Use variant (optional)", "info": "Type part of a variant name, e.g. \"3 Bottles\", if each bundle is its own variant. Leave empty to add the quantity above of the selected variant." },
+      { "type": "number", "id": "price", "label": "Bundle price shown (optional)", "info": "E.g. 285. Leave empty to calculate from the variant price and the discount below." },
+      { "type": "range", "id": "discount", "label": "Discount used for the shown price", "min": 0, "max": 80, "step": 1, "unit": "%", "default": 0 },
+      { "type": "number", "id": "units", "label": "Bottles in this bundle (optional)", "info": "For the per-bottle and per-night price. Defaults to the quantity." },
+      { "type": "number", "id": "nights", "label": "Nights (optional)", "info": "Defaults to bottles × nights per bottle." },
+      { "type": "checkbox", "id": "show_save", "label": "Show save badge", "default": true },
+      { "type": "text", "id": "save_text", "label": "Save badge text", "default": "Save [percent]%" },
+      { "type": "checkbox", "id": "show_per_unit", "label": "Show price per bottle", "default": true },
+      { "type": "text", "id": "ribbon", "label": "Ribbon", "info": "E.g. Most popular" },
+      { "type": "checkbox", "id": "default", "label": "Selected by default", "default": false }
+    ] },
+    { "type": "buy_buttons", "name": "Add to cart", "limit": 1, "settings": [
+      { "type": "text", "id": "label", "label": "Button label", "default": "Add to cart" },
+      { "type": "checkbox", "id": "show_qty", "label": "Show quantity selector (when no bundle cards)", "default": false },
+      { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show dynamic checkout buttons", "default": false }
+    ] },
+    { "type": "award", "name": "Award badge", "settings": [
+      { "type": "text", "id": "l1", "label": "Line 1", "default": "Award-winning" },
+      { "type": "text", "id": "l2", "label": "Line 2", "default": "Formulation" },
+      { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Imperial Lingzhi™ and seven botanicals, <strong>formulated in Singapore</strong> for deeper rest and a morning glow. <a href=\"/pages/science\">Learn more</a></p>" }
+    ] },
+    { "type": "stock", "name": "Stock and trust icons", "settings": [
+      { "type": "text", "id": "in_stock", "label": "In stock text", "default": "In stock, ships in 1–2 working days" },
+      { "type": "text", "id": "low_stock", "label": "Low stock text", "default": "Only [count] left, ships in 1–2 working days", "info": "Only for products that track inventory." },
+      { "type": "range", "id": "low_threshold", "label": "Low stock below", "min": 1, "max": 50, "step": 1, "default": 10 },
+      { "type": "text", "id": "out_stock", "label": "Sold out text", "default": "Sold out, back soon" },
+      { "type": "select", "id": "i1", "label": "Icon 1", "options": [{ "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Delivery" }, { "value": "flask", "label": "Lab" }, { "value": "leaf", "label": "Leaf" }, { "value": "moon", "label": "Moon" }, { "value": "heart", "label": "Heart" }], "default": "shield" },
+      { "type": "textarea", "id": "t1", "label": "Text 1", "default": "90-night\nguarantee" },
+      { "type": "select", "id": "i2", "label": "Icon 2", "options": [{ "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Delivery" }, { "value": "flask", "label": "Lab" }, { "value": "leaf", "label": "Leaf" }, { "value": "moon", "label": "Moon" }, { "value": "heart", "label": "Heart" }], "default": "truck" },
+      { "type": "textarea", "id": "t2", "label": "Text 2", "default": "Free\ndelivery" },
+      { "type": "select", "id": "i3", "label": "Icon 3", "options": [{ "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Delivery" }, { "value": "flask", "label": "Lab" }, { "value": "leaf", "label": "Leaf" }, { "value": "moon", "label": "Moon" }, { "value": "heart", "label": "Heart" }], "default": "flask" },
+      { "type": "textarea", "id": "t3", "label": "Text 3", "default": "Third-party\nlab tested" }
+    ] },
+    { "type": "review_card", "name": "Review card", "settings": [
+      { "type": "textarea", "id": "quote", "label": "Quote", "default": "“Two capsules before bed is now part of my night routine. I fall asleep more easily and wake up feeling fresher, even after a short night.”" },
+      { "type": "image_picker", "id": "image", "label": "Photo" },
+      { "type": "text", "id": "fallback", "label": "Default photo file (theme asset)" },
+      { "type": "text", "id": "name", "label": "Name", "default": "Jaslyn" },
+      { "type": "checkbox", "id": "verified", "label": "Verified badge", "default": true },
+      { "type": "text", "id": "sub", "label": "Detail", "default": "Verified buyer · 90 Night Supply" }
+    ] },
+    { "type": "highlights", "name": "Highlights", "settings": [
+      { "type": "textarea", "id": "lines", "label": "Lines (one per line)", "default": "Melatonin-free\n400 mg Imperial Lingzhi™ per serving\nFree delivery on every order" }
+    ] },
+    { "type": "accordion", "name": "Accordion", "settings": [
+      { "type": "text", "id": "title", "label": "Title", "default": "Description" },
+      { "type": "select", "id": "source", "label": "Content", "options": [{ "value": "description", "label": "Product description" }, { "value": "custom", "label": "Custom text below" }], "default": "custom" },
+      { "type": "richtext", "id": "content", "label": "Text", "info": "Tip: connect a product metafield with the dynamic source button." },
+      { "type": "textarea", "id": "table", "label": "Table rows (optional)", "info": "One row per line: Name | Amount. E.g. Imperial Lingzhi™ | 400 mg" },
+      { "type": "page", "id": "page", "label": "Or show a page's content" },
+      { "type": "checkbox", "id": "open", "label": "Open by default", "default": false }
+    ] },
+    { "type": "custom_liquid", "name": "Custom Liquid", "settings": [
+      { "type": "liquid", "id": "liquid", "label": "Liquid" }
+    ] }
+  ]
+}
+{% endschema %}

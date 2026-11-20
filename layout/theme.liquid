@@ -643,9 +643,10 @@
     <style>
       {{ 'critical.css' | asset_url | read_asset }}
     </style>
+      {% render 'yn-head' %}
   </head>
 
-  <body class="gradient link-btns--{{ settings.link_btn_hover }} action-btns--{{ settings.action_btn_hover }}" data-cart-type="{{ settings.cart_type | default: 'drawer' }}">
+  <body class="yn-body gradient link-btns--{{ settings.link_btn_hover }} action-btns--{{ settings.action_btn_hover }}" data-cart-type="{{ settings.cart_type | default: 'drawer' }}">
 
     {% sections 'header-group' %}
     

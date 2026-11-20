@@ -1,0 +1,55 @@
+{%- comment -%} YUNA design layer: fonts, design tokens from Theme settings, stylesheet and script. {%- endcomment -%}
+{%- if settings.yn_font_url != blank -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ settings.yn_font_url }}">
+{%- endif -%}
+{%- liquid
+  assign navy = settings.yn_navy | default: '#161B30'
+  assign txt = settings.yn_text | default: '#161B30'
+-%}
+<style>
+  :root{
+    --yn-navy:{{ navy }};
+    --yn-navy-rgb:{{ navy | color_extract: 'red' }},{{ navy | color_extract: 'green' }},{{ navy | color_extract: 'blue' }};
+    --yn-text:{{ txt | color_modify: 'alpha', 0.82 }};
+    --yn-muted:{{ txt | color_modify: 'alpha', 0.72 }};
+    --yn-soft:{{ txt | color_modify: 'alpha', 0.56 }};
+    --yn-hair:{{ txt | color_modify: 'alpha', 0.1 }};
+    --yn-accent-h:{{ settings.yn_accent_heading | default: navy }};
+    --yn-white:{{ settings.yn_white | default: '#FFFFFF' }};
+    --yn-cream:{{ settings.yn_cream | default: '#FFFDFB' }};
+    --yn-beige:{{ settings.yn_beige | default: '#FEF8F1' }};
+    --yn-line:{{ settings.yn_line | default: '#ECE6DD' }};
+    --yn-tan:{{ settings.yn_tan | default: '#9A7B5C' }};
+    --yn-blue:{{ settings.yn_blue | default: '#3A5BA0' }};
+    --yn-star:{{ settings.yn_star | default: '#F2B33D' }};
+    --yn-footer:{{ settings.yn_footer_bg | default: '#171B2F' }};
+    --yn-save-bg:{{ settings.yn_save_bg | default: navy }};
+    --yn-save-fg:{{ settings.yn_save_text | default: '#FFFFFF' }};
+    --yn-font-h:{{ settings.yn_font_heading | default: 'Figtree' }},"Helvetica Neue",Arial,sans-serif;
+    --yn-font-b:{{ settings.yn_font_body | default: 'Figtree' }},"Helvetica Neue",Arial,sans-serif;
+    --yn-h-weight:{{ settings.yn_heading_weight | default: 300 }};
+    --yn-h-track:{{ settings.yn_heading_tracking | default: -40 | divided_by: 1000.0 }}em;
+    --yn-body-size:{{ settings.yn_body_size | default: 16 }}px;
+    --yn-page:{{ settings.yn_page_width | default: 1440 }}px;
+    --yn-gut-d:{{ settings.yn_gutter_d | default: 64 }}px;
+    --yn-gut-m:{{ settings.yn_gutter_m | default: 20 }}px;
+    --yn-space-d:{{ settings.yn_space_d | default: 72 }}px;
+    --yn-space-m:{{ settings.yn_space_m | default: 42 }}px;
+    --yn-r-card:{{ settings.yn_radius_card | default: 18 }}px;
+    --yn-r-img:{{ settings.yn_radius_image | default: 24 }}px;
+    --yn-r-btn:{{ settings.yn_button_shape | default: '999px' }};
+    --yn-atc-case:{% if settings.yn_atc_uppercase %}uppercase{% else %}none{% endif %};
+  }
+</style>
+{{ 'yuna.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'yuna.js' | asset_url }}" defer="defer"></script>
+<script>
+  window.YUNA = window.YUNA || {};
+  window.YUNA.moneyFormat = {{ shop.money_format | json }};
+  window.YUNA.cartAddUrl = {{ routes.cart_add_url | json }};
+  window.YUNA.cartUrl = {{ routes.cart_url | json }};
+  window.YUNA.animations = {{ settings.yn_animations | json }};
+  window.YUNA.designMode = {{ request.design_mode | json }};
+</script>

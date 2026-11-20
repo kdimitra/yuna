@@ -1,0 +1,2 @@
+{%- comment -%} Outputs the shared section classes from the bg / pt / pb settings. Param: s (section) {%- endcomment -%}
+yn yn-sec yn-bg-{{ s.settings.bg | default: 'white' }} yn-pt-{{ s.settings.pt | default: 'half' }} yn-pb-{{ s.settings.pb | default: 'half' }}

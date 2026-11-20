@@ -1,0 +1,42 @@
+{%- if section.blocks.size > 0 -%}
+<div class="yn yn-announce" style="--ann-bg:{{ section.settings.bg }};--ann-fg:{{ section.settings.fg }};--ann-hl:{{ section.settings.hl }}" data-yn-rotator data-interval="{{ section.settings.interval }}" role="region" aria-label="Announcements">
+  {%- for block in section.blocks -%}
+    <p class="yn-announce__item{% if forloop.first %} is-on{% endif %}{% if block.settings.highlight %} is-hl{% endif %}" {{ block.shopify_attributes }}{% unless forloop.first %} aria-hidden="true"{% endunless %}>
+      {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}">{{ block.settings.text }}</a>{%- else -%}{{ block.settings.text }}{%- endif -%}
+    </p>
+  {%- endfor -%}
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "YUNA announcement bar",
+  "class": "yn-announce-section",
+  "settings": [
+    { "type": "color", "id": "bg", "label": "Background", "default": "#161B30" },
+    { "type": "color", "id": "fg", "label": "Text", "default": "#FFFFFF" },
+    { "type": "color", "id": "hl", "label": "Highlighted message text", "default": "#FFFFFF" },
+    { "type": "range", "id": "interval", "label": "Seconds per message", "min": 2, "max": 12, "step": 1, "unit": "s", "default": 4 }
+  ],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        { "type": "inline_richtext", "id": "text", "label": "Text", "default": "Free delivery on every order" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "checkbox", "id": "highlight", "label": "Highlight (bold)", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "YUNA announcement bar",
+      "blocks": [
+        { "type": "message", "settings": { "text": "Year End Sale · 25% OFF sets · Free delivery", "highlight": true } },
+        { "type": "message", "settings": { "text": "90 Nights Risk-Free · Melatonin-free" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

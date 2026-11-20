@@ -1,0 +1,79 @@
+{%- assign btns = section.blocks | where: 'type', 'button' -%}
+<section class="{% render 'yn-section-class', s: section %} yn-it yn-it--{{ section.settings.width }} yn-it--img-{{ section.settings.image_side }} yn-it--txt-{{ section.settings.text_size }}{% if section.settings.mobile_image_first %} yn-it--m-img-first{% endif %}" id="yn-{{ section.id }}">
+  <div class="yn-wrap">
+    <div class="yn-it__grid">
+      <div class="yn-it__img yn-rv" style="--ratio:{{ section.settings.ratio }}">
+        {% render 'yn-img', image: section.settings.image, fallback: section.settings.fallback, alt: section.settings.alt, sizes: '(max-width: 900px) 100vw, 50vw', widths: '400, 600, 800, 1100, 1400' %}
+      </div>
+      <div class="yn-it__tx yn-rv">
+        {%- render 'yn-heading', heading: section.settings.heading, accent: section.settings.accent, size: section.settings.heading_size, class: section.settings.heading_weight -%}
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'text' -%}
+              <div class="yn-rte yn-it__rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+            {%- when 'tag' -%}
+              <p class="yn-it__tag" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+            {%- when 'list_item' -%}
+              <div class="yn-it__li" {{ block.shopify_attributes }}><b>{{ block.settings.title }}</b><span>{{ block.settings.aside }}</span></div>
+            {%- when 'numbered' -%}
+              <div class="yn-it__num" {{ block.shopify_attributes }}>
+                <span class="yn-it__n">{{ block.settings.number }}</span>
+                <div><h3>{{ block.settings.title }}</h3>{%- if block.settings.text != blank -%}<p>{{ block.settings.text }}</p>{%- endif -%}</div>
+              </div>
+            {%- when 'button' -%}
+              <div class="yn-it__btn{% if block.settings.mobile_after_image %} yn-it__btn--m-after{% endif %}" {{ block.shopify_attributes }}>{%- render 'yn-button', label: block.settings.label, link: block.settings.link, style: block.settings.style -%}</div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+      {%- for block in btns -%}
+        {%- if block.settings.mobile_after_image -%}
+          <div class="yn-it__btn yn-it__btn--m-only">{%- render 'yn-button', label: block.settings.label, link: block.settings.link, style: block.settings.style -%}</div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "YUNA image with text",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "fallback", "label": "Default image file (theme asset)" },
+    { "type": "text", "id": "alt", "label": "Image description" },
+    { "type": "select", "id": "ratio", "label": "Image shape", "options": [{ "value": "4/3", "label": "Landscape 4:3" }, { "value": "1/1", "label": "Square" }, { "value": "4/5", "label": "Portrait 4:5" }, { "value": "16/9", "label": "Wide 16:9" }], "default": "4/3" },
+    { "type": "select", "id": "image_side", "label": "Image position", "options": [{ "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }], "default": "left" },
+    { "type": "select", "id": "width", "label": "Layout width", "options": [{ "value": "narrow", "label": "Centred (1120px, equal columns)" }, { "value": "wide", "label": "Full width (larger image)" }], "default": "narrow" },
+    { "type": "checkbox", "id": "mobile_image_first", "label": "Image above text on mobile", "default": true },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Rooted in the mountains. Made for your skin." },
+    { "type": "text", "id": "accent", "label": "Heading accent" },
+    { "type": "select", "id": "heading_size", "label": "Heading size", "options": [{ "value": "s", "label": "Small" }, { "value": "m", "label": "Medium" }, { "value": "l", "label": "Large" }], "default": "s" },
+    { "type": "select", "id": "heading_weight", "label": "Heading weight", "options": [{ "value": "yn-h--light", "label": "Light" }, { "value": "yn-h--bold", "label": "Semibold" }], "default": "yn-h--bold" },
+    { "type": "select", "id": "text_size", "label": "Body text size", "options": [{ "value": "base", "label": "Regular" }, { "value": "lg", "label": "Large" }], "default": "base" },
+    { "type": "header", "content": "Section style" },
+    { "type": "select", "id": "bg", "label": "Background", "options": [{ "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "beige", "label": "Beige" }, { "value": "navy", "label": "Navy" }], "default": "white" },
+    { "type": "select", "id": "pt", "label": "Space above", "options": [{ "value": "none", "label": "None" }, { "value": "half", "label": "Half" }, { "value": "full", "label": "Full" }], "default": "half" },
+    { "type": "select", "id": "pb", "label": "Space below", "options": [{ "value": "none", "label": "None" }, { "value": "half", "label": "Half" }, { "value": "full", "label": "Full" }], "default": "half" }
+  ],
+  "blocks": [
+    { "type": "text", "name": "Text", "settings": [{ "type": "richtext", "id": "text", "label": "Text", "default": "<p>Add your text here.</p>" }] },
+    { "type": "tag", "name": "Tagline", "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Sleep better. Glow better." }] },
+    { "type": "list_item", "name": "List row", "settings": [
+      { "type": "text", "id": "title", "label": "Title", "default": "Antioxidant rich" },
+      { "type": "text", "id": "aside", "label": "Right-hand text", "default": "from Imperial Lingzhi™" }
+    ] },
+    { "type": "numbered", "name": "Numbered point", "settings": [
+      { "type": "text", "id": "number", "label": "Number", "default": "01" },
+      { "type": "text", "id": "title", "label": "Title", "default": "Melatonin-free" },
+      { "type": "textarea", "id": "text", "label": "Text" }
+    ] },
+    { "type": "button", "name": "Button", "settings": [
+      { "type": "text", "id": "label", "label": "Label", "default": "Discover our story" },
+      { "type": "url", "id": "link", "label": "Link" },
+      { "type": "select", "id": "style", "label": "Style", "options": [{ "value": "solid", "label": "Solid" }, { "value": "outline", "label": "Outline" }], "default": "solid" },
+      { "type": "checkbox", "id": "mobile_after_image", "label": "On mobile, show below the image", "default": false }
+    ] }
+  ],
+  "presets": [{ "name": "YUNA image with text", "blocks": [{ "type": "text" }, { "type": "button" }] }]
+}
+{% endschema %}

@@ -1,0 +1,44 @@
+<section class="{% render 'yn-section-class', s: section %} yn-reviews" id="{{ section.settings.anchor | default: 'reviews' }}">
+  <div class="yn-wrap">
+    {%- if section.settings.heading != blank -%}
+      <div class="yn-head yn-head--center yn-rv">
+        {%- render 'yn-heading', heading: section.settings.heading, accent: section.settings.accent, size: 'm' -%}
+        {%- if section.settings.text != blank -%}<p class="yn-head__sub">{{ section.settings.text }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+    <div class="yn-reviews__box" style="--rv-max:{{ section.settings.max_width }}px">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when '@app' -%}
+            {% render block %}
+          {%- when 'liquid' -%}
+            <div {{ block.shopify_attributes }}>{{ block.settings.liquid }}</div>
+        {%- endcase -%}
+      {%- else -%}
+        <p class="yn-center yn-muted">Add the Judge.me “Review widget” app block to this section in the theme editor to show your reviews.</p>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "YUNA reviews (app)",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Happy" },
+    { "type": "text", "id": "accent", "label": "Heading accent", "default": "Customers." },
+    { "type": "textarea", "id": "text", "label": "Subheading" },
+    { "type": "text", "id": "anchor", "label": "Anchor ID", "default": "reviews", "info": "Links like #reviews scroll here." },
+    { "type": "range", "id": "max_width", "label": "Content max width", "min": 700, "max": 1400, "step": 20, "unit": "px", "default": 1000 },
+    { "type": "header", "content": "Section style" },
+    { "type": "select", "id": "bg", "label": "Background", "options": [{ "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "beige", "label": "Beige" }, { "value": "navy", "label": "Navy" }], "default": "white" },
+    { "type": "select", "id": "pt", "label": "Space above", "options": [{ "value": "none", "label": "None" }, { "value": "half", "label": "Half" }, { "value": "full", "label": "Full" }], "default": "half" },
+    { "type": "select", "id": "pb", "label": "Space below", "options": [{ "value": "none", "label": "None" }, { "value": "half", "label": "Half" }, { "value": "full", "label": "Full" }], "default": "half" }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    { "type": "liquid", "name": "Custom Liquid", "settings": [{ "type": "liquid", "id": "liquid", "label": "Liquid" }] }
+  ],
+  "presets": [{ "name": "YUNA reviews (app)" }]
+}
+{% endschema %}

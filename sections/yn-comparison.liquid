@@ -1,0 +1,70 @@
+<section class="{% render 'yn-section-class', s: section %} yn-cmp" id="yn-{{ section.id }}">
+  <div class="yn-wrap">
+    <div class="yn-head yn-head--center yn-rv">
+      {%- render 'yn-heading', heading: section.settings.heading, accent: section.settings.accent, size: 'm' -%}
+      {%- if section.settings.text != blank -%}<p class="yn-head__sub">{{ section.settings.text }}</p>{%- endif -%}
+    </div>
+    <div class="yn-cmp__table yn-rv" role="table" aria-label="{{ section.settings.heading | append: ' ' | append: section.settings.accent | strip | escape }}">
+      <div class="yn-cmp__row yn-cmp__row--head" role="row">
+        <div role="columnheader"><span class="visually-hidden">Feature</span></div>
+        <div class="yn-cmp__us" role="columnheader">
+          {%- if section.settings.us_image != blank or section.settings.us_fallback != blank -%}{% render 'yn-img', image: section.settings.us_image, fallback: section.settings.us_fallback, alt: '', sizes: '120px', widths: '120, 240' %}{%- endif -%}
+          <b>{{ section.settings.us_label }}</b>
+        </div>
+        <div class="yn-cmp__them" role="columnheader">
+          {%- if section.settings.them_image != blank or section.settings.them_fallback != blank -%}{% render 'yn-img', image: section.settings.them_image, fallback: section.settings.them_fallback, alt: '', sizes: '120px', widths: '120, 240' %}{%- endif -%}
+          <b>{{ section.settings.them_label }}</b>
+        </div>
+      </div>
+      {%- for block in section.blocks -%}
+        <div class="yn-cmp__row" role="row" {{ block.shopify_attributes }}>
+          <div class="yn-cmp__f" role="rowheader"><b>{{ block.settings.title }}</b>{%- if block.settings.text != blank -%}<span>{{ block.settings.text }}</span>{%- endif -%}</div>
+          <div class="yn-cmp__us" role="cell">
+            {%- if block.settings.us == 'yes' -%}{% render 'yn-icon', name: 'tick-filled' %}<span class="visually-hidden">Yes</span>{%- else -%}{% render 'yn-icon', name: 'cross-filled' %}<span class="visually-hidden">No</span>{%- endif -%}
+            {%- if block.settings.us_note != blank -%}<small>{{ block.settings.us_note }}</small>{%- endif -%}
+          </div>
+          <div class="yn-cmp__them" role="cell">
+            {%- if block.settings.them == 'yes' -%}{% render 'yn-icon', name: 'tick-filled' %}<span class="visually-hidden">Yes</span>{%- else -%}{% render 'yn-icon', name: 'cross-filled' %}<span class="visually-hidden">No</span>{%- endif -%}
+            {%- if block.settings.them_note != blank -%}<small>{{ block.settings.them_note }}</small>{%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "YUNA comparison table",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Not just another" },
+    { "type": "text", "id": "accent", "label": "Heading accent", "default": "sleep supplement." },
+    { "type": "textarea", "id": "text", "label": "Subheading" },
+    { "type": "text", "id": "us_label", "label": "Our column title", "default": "YUNA Sleep" },
+    { "type": "image_picker", "id": "us_image", "label": "Our product image" },
+    { "type": "text", "id": "us_fallback", "label": "Default product image file (theme asset)", "default": "yn-cmp-yuna-jar.webp" },
+    { "type": "text", "id": "them_label", "label": "Other column title", "default": "Typical sleep aids" },
+    { "type": "image_picker", "id": "them_image", "label": "Other product image" },
+    { "type": "text", "id": "them_fallback", "label": "Default other image file (theme asset)", "default": "yn-cmp-other-bottle.webp" },
+    { "type": "header", "content": "Section style" },
+    { "type": "select", "id": "bg", "label": "Background", "options": [{ "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "beige", "label": "Beige" }, { "value": "navy", "label": "Navy" }], "default": "beige" },
+    { "type": "select", "id": "pt", "label": "Space above", "options": [{ "value": "none", "label": "None" }, { "value": "half", "label": "Half" }, { "value": "full", "label": "Full" }], "default": "full" },
+    { "type": "select", "id": "pb", "label": "Space below", "options": [{ "value": "none", "label": "None" }, { "value": "half", "label": "Half" }, { "value": "full", "label": "Full" }], "default": "full" }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Feature", "default": "Melatonin-free" },
+        { "type": "text", "id": "text", "label": "Detail" },
+        { "type": "select", "id": "us", "label": "Our product", "options": [{ "value": "yes", "label": "Tick" }, { "value": "no", "label": "Cross" }], "default": "yes" },
+        { "type": "text", "id": "us_note", "label": "Our note" },
+        { "type": "select", "id": "them", "label": "Others", "options": [{ "value": "yes", "label": "Tick" }, { "value": "no", "label": "Cross" }], "default": "no" },
+        { "type": "text", "id": "them_note", "label": "Others note" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "YUNA comparison table", "blocks": [{ "type": "row" }, { "type": "row" }, { "type": "row" }] }]
+}
+{% endschema %}

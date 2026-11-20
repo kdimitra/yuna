@@ -1,1 +1,276 @@
-{"sections":{"main":{"type":"main-page","settings":{"padding_top":68,"padding_bottom":0}},"image_with_blocks_HfiHQY":{"type":"image-with-blocks","blocks":{"image_BnVUcK":{"type":"image","settings":{"image_desktop":"shopify:\/\/shop_images\/yuna-sleep-mission.png","aspect_ratio_desktop":"auto","aspect_ratio_mobile":"auto","border_radius":24,"max_width":100,"margin_top":0,"margin_bottom":0}},"heading_Mybb9q":{"type":"heading","settings":{"heading_before":"To help busy women reclaim beauty sleep","highlighted_text":"","heading_after":"","highlight_position":"inline_second","heading_tag":"h2","text_align":"left","heading_color":"#1f2937","heading_font_size_desktop":48,"heading_font_size_mobile":32,"heading_font_weight":"500","heading_line_height":1.2,"heading_margin_top":0,"heading_margin_bottom":0,"highlighted_gradient_enabled":false,"highlighted_solid_color":"#ef4444","highlighted_gradient":"linear-gradient(90deg, rgba(237, 18, 45, 1), rgba(255, 107, 107, 1) 100%)","highlight_font_size_desktop":48,"highlight_font_size_mobile":32,"highlight_font_weight":"500","highlight_margin_top":0,"highlight_margin_bottom":10,"desktop_alignment":"left","margin_top":0,"margin_bottom":0}},"body_text_CrUJ3r":{"type":"body_text","settings":{"body_text":"<p>At YUNA, we believe every woman deserves to wake up feeling beautiful, refreshed, and truly herself. By blending time-honoured Eastern botanicals with modern wellness science, we're on a mission to help women reclaim their beauty sleep, naturally.<\/p>","font_weight":"400","text_color":"#203040","bg_color":"rgba(0,0,0,0)","padding":0,"border_width":0,"border_color":"#e5e7eb","border_style":"solid","border_radius":0,"font_size_mobile":15,"mobile_alignment":"left","font_size_desktop":16,"desktop_alignment":"left","margin_top":8,"margin_bottom":8}},"button_aX37cw":{"type":"button","settings":{"button_text":"Shop beauty sleep","button_link":"shopify:\/\/products\/daily-beauty-sleep","scroll_to_section":"","hide_on_desktop":false,"hide_on_mobile":false,"button_icon":"","button_icon_filled":false,"button_custom_icon":"","icon_position":"right","button_icon_size":20,"button_icon_gap":8,"button_icon_color":"#ffffff","alignment_desktop":"left","alignment_mobile":"left","use_custom_styles":true,"button_text_color":"#ffffff","button_bg_color":"#203040","use_gradient":false,"button_gradient":"","button_text_color_hover":"#ffffff","button_bg_color_hover":"#203040","border_width":0,"border_color":"#203040","border_radius":26,"font_size_desktop":16,"font_size_mobile":14,"font_weight":"600","text_transform":"uppercase","letter_spacing":1,"padding_vertical":14,"padding_horizontal":32,"full_width":false,"full_width_mobile_only":false,"use_custom_width":false,"custom_width_desktop":300,"custom_width_mobile":280,"margin_top":0,"margin_bottom":0}}},"block_order":["image_BnVUcK","heading_Mybb9q","body_text_CrUJ3r","button_aX37cw"],"name":"Image with Blocks","settings":{"use_theme_colors":true,"image_position":"left","image_width_desktop":50,"content_gap_desktop":45,"heading_position":"top-content","vertical_alignment":"center","background_color":"#ffffff","section_padding_top":25,"section_padding_bottom":60,"block_spacing_mobile":20,"block_spacing_desktop":12,"content_block_spacing_mobile":12,"content_block_spacing_desktop":20}},"image_banner_hJm6UU":{"type":"image-banner","name":"Image with Title","settings":{"use_theme_colors":true,"section_background_color":"#fffbf7","section_gradient_enabled":false,"section_background_gradient":"linear-gradient(180deg, rgba(255, 251, 247, 1), rgba(255, 251, 247, 1) 100%)","section_padding_top":0,"section_padding_bottom":0,"full_width":false,"image_ratio":"square","inherit_image_height":false,"enable_custom_height":true,"custom_height_desktop":200,"custom_height_mobile":120,"border_radius":0,"heading":"Our mission for 1,000,000 women","heading_tag":"h2","heading_color":"#203040","heading_font_size_desktop":48,"heading_font_size_mobile":22,"heading_font_weight":"700","text_align":"center","highlighted_text":"","highlight_position":"after","highlighted_gradient_enabled":false,"highlighted_color":"#203040","highlighted_gradient":"linear-gradient(90deg, rgba(237, 18, 45, 1), rgba(255, 107, 107, 1) 100%)","highlighted_font_size_desktop":48,"highlighted_font_size_mobile":22,"highlighted_font_weight":"400","text_position":"center","custom_html":"","html_position":"below","hide_on_mobile":false,"hide_on_desktop":false}},"image_with_blocks_JagAtT":{"type":"image-with-blocks","blocks":{"image_jNLk8j":{"type":"image","settings":{"image_desktop":"shopify:\/\/shop_images\/yuna-sleep-8-ingredients.png","aspect_ratio_desktop":"auto","aspect_ratio_mobile":"auto","border_radius":24,"max_width":100,"margin_top":0,"margin_bottom":0}},"heading_AfRjQE":{"type":"heading","settings":{"heading_before":"Rooted in ancient herbs. Backed by science.","highlighted_text":"","heading_after":"","highlight_position":"inline_second","heading_tag":"h2","text_align":"left","heading_color":"#1f2937","heading_font_size_desktop":48,"heading_font_size_mobile":30,"heading_font_weight":"500","heading_line_height":1.2,"heading_margin_top":0,"heading_margin_bottom":0,"highlighted_gradient_enabled":false,"highlighted_solid_color":"#ef4444","highlighted_gradient":"linear-gradient(90deg, rgba(237, 18, 45, 1), rgba(255, 107, 107, 1) 100%)","highlight_font_size_desktop":48,"highlight_font_size_mobile":32,"highlight_font_weight":"500","highlight_margin_top":0,"highlight_margin_bottom":10,"desktop_alignment":"left","margin_top":0,"margin_bottom":0}},"body_text_bc7exy":{"type":"body_text","settings":{"body_text":"<p>More than just a sleep supplement, YUNA brings together 8 carefully selected ingredients in a unique beauty sleep formula.&nbsp;<\/p><p>Featuring our hero ingredient Imperial Lingzhi™ alongside modern wellness ingredients, each component is thoughtfully chosen to support deeper rest, overnight renewal, and a naturally radiant morning glow.<\/p><p><strong>Sleep better. Glow better.<\/strong><\/p>","font_weight":"400","text_color":"#000000","bg_color":"rgba(0,0,0,0)","padding":0,"border_width":0,"border_color":"#e5e7eb","border_style":"solid","border_radius":0,"font_size_mobile":14,"mobile_alignment":"left","font_size_desktop":16,"desktop_alignment":"left","margin_top":8,"margin_bottom":8}},"button_yYHXGE":{"type":"button","settings":{"button_text":"See full ingredients","button_link":"shopify:\/\/pages\/science","scroll_to_section":"","hide_on_desktop":false,"hide_on_mobile":false,"button_icon":"","button_icon_filled":false,"button_custom_icon":"","icon_position":"right","button_icon_size":20,"button_icon_gap":8,"button_icon_color":"#ffffff","alignment_desktop":"left","alignment_mobile":"center","use_custom_styles":true,"button_text_color":"#ffffff","button_bg_color":"#203040","use_gradient":false,"button_gradient":"","button_text_color_hover":"#ffffff","button_bg_color_hover":"#203040","border_width":0,"border_color":"#203040","border_radius":25,"font_size_desktop":16,"font_size_mobile":14,"font_weight":"600","text_transform":"uppercase","letter_spacing":1,"padding_vertical":14,"padding_horizontal":32,"full_width":false,"full_width_mobile_only":false,"use_custom_width":false,"custom_width_desktop":300,"custom_width_mobile":280,"margin_top":0,"margin_bottom":0}}},"block_order":["image_jNLk8j","heading_AfRjQE","body_text_bc7exy","button_yYHXGE"],"name":"Image with Blocks","settings":{"use_theme_colors":true,"image_position":"right","image_width_desktop":50,"content_gap_desktop":45,"heading_position":"top-content","vertical_alignment":"center","background_color":"#ffffff","section_padding_top":60,"section_padding_bottom":95,"block_spacing_mobile":20,"block_spacing_desktop":12,"content_block_spacing_mobile":12,"content_block_spacing_desktop":20}}},"order":["main","image_with_blocks_HfiHQY","image_banner_hJm6UU","image_with_blocks_JagAtT"]}
+/*
+ * ------------------------------------------------------------
+ * YUNA redesign template. Edit content in the theme editor.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "yn-page-hero",
+      "settings": {
+        "style": "photo",
+        "heading": "Every woman deserves her beauty sleep.",
+        "use_page_title": false,
+        "align": "left",
+        "valign": "bottom",
+        "size": "l",
+        "fallback": "yn-os-hero-sleep.webp",
+        "alt": "A woman sleeping peacefully in warm morning light",
+        "height_d": 560,
+        "height_m": 460,
+        "fg": "#FFFFFF",
+        "overlay_color": "#161B30",
+        "overlay": 45
+      }
+    },
+    "mission": {
+      "type": "yn-image-text",
+      "settings": {
+        "fallback": "yn-life-morning.webp",
+        "alt": "A woman starting her morning refreshed",
+        "ratio": "4/3",
+        "image_side": "left",
+        "width": "wide",
+        "mobile_image_first": true,
+        "heading": "A mission to help busy women reclaim beauty sleep.",
+        "heading_size": "m",
+        "heading_weight": "yn-h--light",
+        "text_size": "lg",
+        "bg": "white",
+        "pt": "full",
+        "pb": "half"
+      },
+      "blocks": {
+        "b1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>By blending time-honoured Eastern botanicals with modern wellness science, we’re on a mission to help women reclaim their beauty sleep, naturally.</p><p>Late nights, early mornings and full days leave many women with 5–6 hours of sleep. Daily Beauty Sleep™, a natural sleep aid, was made to help those hours feel like more, so you wake up rested and glowing.</p>"
+          }
+        },
+        "b2": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Daily Beauty Sleep™",
+            "link": "",
+            "style": "solid",
+            "mobile_after_image": false
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ]
+    },
+    "rooted": {
+      "type": "yn-image-text",
+      "settings": {
+        "fallback": "yn-lingzhi-farm.webp",
+        "alt": "Growers hand-harvesting lingzhi from hardwood logs in the Wuyi Mountains",
+        "ratio": "4/3",
+        "image_side": "right",
+        "width": "wide",
+        "mobile_image_first": true,
+        "heading": "Rooted in ancient herbs.",
+        "accent": "Backed by science.",
+        "heading_size": "m",
+        "heading_weight": "yn-h--light",
+        "text_size": "lg",
+        "bg": "white",
+        "pt": "half",
+        "pb": "half"
+      },
+      "blocks": {
+        "b1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>More than just a sleep supplement or lingzhi supplement, YUNA brings together 8 carefully selected ingredients in a unique beauty sleep formula.</p><p>Featuring our hero ingredient Imperial Lingzhi™, a premium lingzhi mushroom from the Wuyi Mountains, alongside modern wellness ingredients, each component is thoughtfully chosen to support deeper rest, overnight renewal, and a naturally radiant morning glow.</p>"
+          }
+        },
+        "b2": {
+          "type": "tag",
+          "settings": {
+            "text": "Sleep better. Glow better."
+          }
+        },
+        "b3": {
+          "type": "button",
+          "settings": {
+            "label": "See Full Ingredients",
+            "link": "/pages/science",
+            "style": "solid",
+            "mobile_after_image": false
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "better": {
+      "type": "yn-image-text",
+      "settings": {
+        "fallback": "yn-lab-lingzhi.webp",
+        "alt": "A YUNA lab scientist testing Imperial Lingzhi™",
+        "ratio": "4/3",
+        "image_side": "left",
+        "width": "wide",
+        "mobile_image_first": true,
+        "heading": "It’s not about more sleep.",
+        "accent": "It’s about better sleep.",
+        "heading_size": "m",
+        "heading_weight": "yn-h--light",
+        "text_size": "lg",
+        "bg": "cream",
+        "pt": "half",
+        "pb": "half"
+      },
+      "blocks": {
+        "b1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Every batch starts in nature and is checked in the lab before it becomes part of your nightly ritual.</p>"
+          }
+        },
+        "b2": {
+          "type": "numbered",
+          "settings": {
+            "number": "01",
+            "title": "Melatonin-free",
+            "text": "A melatonin-free sleep aid: gentle, natural support for rest, with no grogginess the next morning."
+          }
+        },
+        "b3": {
+          "type": "numbered",
+          "settings": {
+            "number": "02",
+            "title": "Rooted in herbs",
+            "text": "Imperial Lingzhi™, jujube seed, ashwagandha and more, chosen for busy women in Singapore."
+          }
+        },
+        "b4": {
+          "type": "numbered",
+          "settings": {
+            "number": "03",
+            "title": "Third-party tested",
+            "text": "Made in GMP and HACCP certified facilities and independently tested."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "origins": {
+      "type": "yn-card-grid",
+      "settings": {
+        "heading": "From the mountains",
+        "accent": "to your nightly ritual.",
+        "text": "We chose wellness ingredients with long traditions behind them, from the places they grow best.",
+        "style": "card",
+        "columns": 4,
+        "columns_m": "2",
+        "ratio": "1/1",
+        "bg": "white",
+        "pt": "half",
+        "pb": "none"
+      },
+      "blocks": {
+        "b1": {
+          "type": "card",
+          "settings": {
+            "fallback": "yn-lingzhi-mountain.webp",
+            "alt": "Wild lingzhi in the misty Wuyi Mountains",
+            "title": "Imperial Lingzhi™",
+            "text": "Harvested naturally in the Wuyi Mountains, rich in antioxidants."
+          }
+        },
+        "b2": {
+          "type": "card",
+          "settings": {
+            "fallback": "yn-org-jujube.webp",
+            "alt": "Ripe jujube fruit in a sunny orchard",
+            "title": "Jujube Seed",
+            "text": "From the sour jujube fruit, a time-honoured herb for sleep."
+          }
+        },
+        "b3": {
+          "type": "card",
+          "settings": {
+            "fallback": "yn-org-poria.webp",
+            "alt": "Fu ling growing at the roots of pine trees",
+            "title": "Fu Ling",
+            "text": "Grows on the roots of pine trees in misty mountain forests."
+          }
+        },
+        "b4": {
+          "type": "card",
+          "settings": {
+            "fallback": "yn-org-ashwagandha.webp",
+            "alt": "Freshly harvested ashwagandha roots in the field",
+            "title": "Ashwagandha",
+            "text": "An adaptogenic root that helps quiet a busy mind."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "ritual": {
+      "type": "yn-image-text",
+      "settings": {
+        "fallback": "yn-life-sleep-jar.webp",
+        "alt": "A woman sleeping peacefully with her YUNA jar on the bedside table",
+        "ratio": "4/3",
+        "image_side": "left",
+        "width": "narrow",
+        "mobile_image_first": true,
+        "heading": "Make YUNA your nightly ritual.",
+        "heading_size": "s",
+        "heading_weight": "yn-h--bold",
+        "text_size": "base",
+        "bg": "white",
+        "pt": "half",
+        "pb": "full"
+      },
+      "blocks": {
+        "b1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Two capsules before bed, alongside the rituals you already love. Nature does the quiet work overnight, so you wake up refreshed.</p>"
+          }
+        },
+        "b2": {
+          "type": "button",
+          "settings": {
+            "label": "See the full science",
+            "link": "/pages/science",
+            "style": "solid",
+            "mobile_after_image": false
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "mission",
+    "rooted",
+    "better",
+    "origins",
+    "ritual"
+  ]
+}

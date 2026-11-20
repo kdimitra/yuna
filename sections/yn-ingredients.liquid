@@ -1,0 +1,77 @@
+<section class="{% render 'yn-section-class', s: section %} yn-ings yn-ings--{{ section.settings.style }}" id="yn-{{ section.id }}">
+  <div class="yn-wrap">
+    <div class="yn-head yn-head--split yn-rv">
+      <div>
+        {%- render 'yn-heading', heading: section.settings.heading, accent: section.settings.accent, size: 'm' -%}
+        {%- if section.settings.text != blank -%}<p class="yn-head__sub">{{ section.settings.text }}</p>{%- endif -%}
+      </div>
+      <div class="yn-arrows yn-hide-m">
+        <button type="button" class="yn-arrow" aria-label="Previous ingredients" data-yn-prev>{% render 'yn-icon', name: 'arrow-left' %}</button>
+        <button type="button" class="yn-arrow" aria-label="Next ingredients" data-yn-next>{% render 'yn-icon', name: 'arrow-right' %}</button>
+      </div>
+    </div>
+
+    <div class="yn-ings__rail" data-yn-scroller tabindex="0" aria-label="Ingredients">
+      {%- for block in section.blocks -%}
+        <article class="yn-ing" {{ block.shopify_attributes }}>
+          <div class="yn-ing__im">{% render 'yn-img', image: block.settings.image, fallback: block.settings.fallback, alt: block.settings.name, sizes: '320px', widths: '320, 480, 640' %}</div>
+          <div class="yn-ing__bd">
+            <h3>{{ block.settings.name }}</h3>
+            <p>{{ block.settings.text }}</p>
+            <div class="yn-ing__ft">{%- if block.settings.pill != blank -%}<span class="yn-pill">{{ block.settings.pill }}</span>{%- endif -%}<b>{{ block.settings.dose }}</b></div>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+
+    <div class="yn-ings__acc">
+      {%- for block in section.blocks -%}
+        <details class="yn-acc-ing">
+          <summary>
+            <span class="yn-acc-ing__th">{% render 'yn-img', image: block.settings.image, fallback: block.settings.fallback, alt: '', sizes: '64px', widths: '64, 128' %}</span>
+            <span class="yn-acc-ing__t"><b>{{ block.settings.name }}</b><small><strong>{{ block.settings.dose }}</strong>{% if block.settings.pill != blank %} · {{ block.settings.pill }}{% endif %}</small></span>
+            <i class="yn-pm" aria-hidden="true"></i>
+          </summary>
+          <p>{{ block.settings.text }}</p>
+        </details>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.button_label != blank -%}
+      <p class="yn-center yn-mt-l">{% render 'yn-button', label: section.settings.button_label, link: section.settings.button_link %}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "YUNA ingredients",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "8 premium ingredients." },
+    { "type": "text", "id": "accent", "label": "Heading accent", "default": "One nightly ritual." },
+    { "type": "textarea", "id": "text", "label": "Subheading", "default": "From lingzhi and jujube seed to L-theanine and ashwagandha: eight natural ingredients in one herbal sleep aid." },
+    { "type": "select", "id": "style", "label": "Card style", "options": [{ "value": "photo", "label": "Studio photo on dark" }, { "value": "light", "label": "Cut-out on light" }], "default": "photo" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop Daily Beauty Sleep™" },
+    { "type": "url", "id": "button_link", "label": "Button link", "info": "On the product page, use #offer to scroll to the bundle picker." },
+    { "type": "header", "content": "Section style" },
+    { "type": "select", "id": "bg", "label": "Background", "options": [{ "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "beige", "label": "Beige" }, { "value": "navy", "label": "Navy" }], "default": "white" },
+    { "type": "select", "id": "pt", "label": "Space above", "options": [{ "value": "none", "label": "None" }, { "value": "half", "label": "Half" }, { "value": "full", "label": "Full" }], "default": "half" },
+    { "type": "select", "id": "pb", "label": "Space below", "options": [{ "value": "none", "label": "None" }, { "value": "half", "label": "Half" }, { "value": "full", "label": "Full" }], "default": "half" }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "fallback", "label": "Default image file (theme asset)" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Imperial Lingzhi™" },
+        { "type": "textarea", "id": "text", "label": "Description" },
+        { "type": "text", "id": "pill", "label": "Benefit pill", "default": "Rest & repair" },
+        { "type": "text", "id": "dose", "label": "Dose", "default": "400 mg" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "YUNA ingredients", "blocks": [{ "type": "ingredient" }, { "type": "ingredient" }, { "type": "ingredient" }, { "type": "ingredient" }] }]
+}
+{% endschema %}

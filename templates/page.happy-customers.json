@@ -1,0 +1,703 @@
+/*
+ * ------------------------------------------------------------
+ * YUNA redesign template. Edit content in the theme editor.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "yn-page-hero",
+      "settings": {
+        "style": "plain",
+        "heading": "Happy customers,",
+        "accent": "happy mornings.",
+        "use_page_title": false,
+        "text": "<p>Real women who made our beauty sleep supplement part of their nightly ritual. Watch their stories and see their mornings for yourself.</p>",
+        "button_label": "Shop Daily Beauty Sleep™",
+        "align": "center",
+        "size": "l",
+        "bg": "white"
+      }
+    },
+    "reels": {
+      "type": "yn-reels",
+      "settings": {
+        "heading": "Why women are",
+        "accent": "making it their ritual.",
+        "text": "Busy women in Singapore, in their own words.",
+        "rating": "4.9",
+        "rating_text": "10,000+ nightly rituals",
+        "verified_label": "Verified customer",
+        "speed": 28,
+        "bg": "white",
+        "pt": "none",
+        "pb": "half"
+      },
+      "blocks": {
+        "b1": {
+          "type": "video",
+          "settings": {
+            "video_fallback": "yn-ugc-april.mp4",
+            "fallback": "yn-ugc-april.jpg",
+            "quote": "“Falling asleep is so much easier now.”",
+            "name": "April"
+          }
+        },
+        "b2": {
+          "type": "video",
+          "settings": {
+            "video_fallback": "yn-ugc-claryl.mp4",
+            "fallback": "yn-ugc-claryl.jpg",
+            "quote": "“My skin looks fresher in the mornings.”",
+            "name": "Claryl"
+          }
+        },
+        "b3": {
+          "type": "video",
+          "settings": {
+            "video_fallback": "yn-ugc-rayne.mp4",
+            "fallback": "yn-ugc-rayne.jpg",
+            "quote": "“Finally, a sleep aid without melatonin.”",
+            "name": "Rayne"
+          }
+        },
+        "b4": {
+          "type": "video",
+          "settings": {
+            "video_fallback": "yn-ugc-reel4.mp4",
+            "fallback": "yn-ugc-reel4.jpg",
+            "quote": "“Part of my night routine, every single night.”",
+            "name": "Shu Ying"
+          }
+        },
+        "b5": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-ugc-carmen.webp",
+            "alt": "Carmen with her jar of YUNA",
+            "quote": "“I wake up feeling properly rested.”",
+            "name": "Carmen"
+          }
+        },
+        "b6": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-ugc-taedra.webp",
+            "alt": "Taedra with her jar of YUNA",
+            "quote": "“Love that it’s made for women like me.”",
+            "name": "Taedra"
+          }
+        },
+        "b7": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-ugc-jiahui.webp",
+            "alt": "Jia Hui with her jar of YUNA",
+            "quote": "“My sleep score went from 76 to 93.”",
+            "name": "Jia Hui"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7"
+      ]
+    },
+    "before_after": {
+      "type": "yn-ba-wall",
+      "settings": {
+        "heading": "Before & after,",
+        "accent": "night after night.",
+        "text": "Hundreds of mornings, one ritual. Real changes our customers shared after making Daily Beauty Sleep™ part of their night.",
+        "label": "Customer before and after photos",
+        "columns": 4,
+        "speed": 60,
+        "before_label": "Before",
+        "after_label": "After",
+        "note": "Individual results may vary.",
+        "bg": "white",
+        "pt": "half",
+        "pb": "half"
+      },
+      "blocks": {
+        "b1": {
+          "type": "pair",
+          "settings": {
+            "name": "Chloe",
+            "before_fallback": "yn-cust-chloe-before.webp",
+            "after_fallback": "yn-cust-chloe-after.webp",
+            "caption": ""
+          }
+        },
+        "b2": {
+          "type": "pair",
+          "settings": {
+            "name": "Jia",
+            "before_fallback": "yn-cust-jia-before.webp",
+            "after_fallback": "yn-cust-jia-after.webp",
+            "caption": ""
+          }
+        },
+        "b3": {
+          "type": "pair",
+          "settings": {
+            "name": "Melina",
+            "before_fallback": "yn-cust-melina-before.webp",
+            "after_fallback": "yn-cust-melina-after.webp",
+            "caption": ""
+          }
+        },
+        "b4": {
+          "type": "pair",
+          "settings": {
+            "name": "Liza",
+            "before_fallback": "yn-baw-liza-before.webp",
+            "after_fallback": "yn-baw-liza-after.webp",
+            "caption": ""
+          }
+        },
+        "b5": {
+          "type": "pair",
+          "settings": {
+            "name": "Kath",
+            "before_fallback": "yn-cust-kath-before.webp",
+            "after_fallback": "yn-cust-kath-after.webp",
+            "caption": ""
+          }
+        },
+        "b6": {
+          "type": "pair",
+          "settings": {
+            "name": "Patricia",
+            "before_fallback": "yn-cust-patricia-before.webp",
+            "after_fallback": "yn-cust-patricia-after.webp",
+            "caption": ""
+          }
+        },
+        "b7": {
+          "type": "pair",
+          "settings": {
+            "name": "Clarybel",
+            "before_fallback": "yn-cust-clarybel-before.webp",
+            "after_fallback": "yn-cust-clarybel-after.webp",
+            "caption": ""
+          }
+        },
+        "b8": {
+          "type": "pair",
+          "settings": {
+            "name": "Yuenyung",
+            "before_fallback": "yn-cust-yuenyung-before.webp",
+            "after_fallback": "yn-cust-yuenyung-after.webp",
+            "caption": ""
+          }
+        },
+        "b9": {
+          "type": "pair",
+          "settings": {
+            "name": "Jaslyn",
+            "before_fallback": "yn-cust-jaslyn-before.webp",
+            "after_fallback": "yn-cust-jaslyn-after.webp",
+            "caption": ""
+          }
+        },
+        "b10": {
+          "type": "pair",
+          "settings": {
+            "name": "Keisha",
+            "before_fallback": "yn-cust-keisha-before.webp",
+            "after_fallback": "yn-cust-keisha-after.webp",
+            "caption": ""
+          }
+        },
+        "b11": {
+          "type": "pair",
+          "settings": {
+            "name": "Jervine",
+            "before_fallback": "yn-cust-jervine-before.webp",
+            "after_fallback": "yn-cust-jervine-after.webp",
+            "caption": ""
+          }
+        },
+        "b12": {
+          "type": "pair",
+          "settings": {
+            "name": "Lydia",
+            "before_fallback": "yn-cust-lydia-before.webp",
+            "after_fallback": "yn-cust-lydia-after.webp",
+            "caption": ""
+          }
+        },
+        "b13": {
+          "type": "pair",
+          "settings": {
+            "name": "Shihui",
+            "before_fallback": "yn-baw-shihui-before.webp",
+            "after_fallback": "yn-baw-shihui-after.webp",
+            "caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13"
+      ]
+    },
+    "results": {
+      "type": "yn-stories",
+      "settings": {
+        "heading": "Real results in weeks.",
+        "accent": "Refreshed mornings.",
+        "text": "",
+        "layout": "carousel",
+        "verified_label": "Verified customer",
+        "note": "",
+        "bg": "cream",
+        "pt": "full",
+        "pb": "half"
+      },
+      "blocks": {
+        "b1": {
+          "type": "story",
+          "settings": {
+            "title": "“Woke up with a glow”",
+            "name": "Shi Hui",
+            "quote": "I was sooo happy to see my face looking radiant in the mirror. Not only is my face happy, my mind feels rested!",
+            "verified": true,
+            "rating": 5,
+            "tag": "",
+            "fallback": "yn-tst-ba.webp",
+            "alt": "Shi Hui on day 1 and after 3 weeks",
+            "dark": false
+          }
+        },
+        "b2": {
+          "type": "story",
+          "settings": {
+            "title": "“Sleep quality improved”",
+            "name": "Jia Hui",
+            "quote": "On the first night, I found myself falling asleep with ease naturally after taking YUNA sleep before going to bed.",
+            "verified": true,
+            "rating": 5,
+            "tag": "",
+            "fallback": "yn-jiahui-sleepscore.webp",
+            "alt": "Jia Hui’s sleep score rising from 76 to 93",
+            "dark": true
+          }
+        },
+        "b3": {
+          "type": "story",
+          "settings": {
+            "title": "“Lesser disruptive nights”",
+            "name": "Jeslyn",
+            "quote": "I’m a light sleeper so I naturally toss around a lot at night. My hubby shared I move around lesser when I sleep now.",
+            "verified": true,
+            "rating": 5,
+            "tag": "",
+            "fallback": "yn-tst-hold.webp",
+            "alt": "Jeslyn with her jar of Yuna",
+            "dark": false
+          }
+        },
+        "b4": {
+          "type": "story",
+          "settings": {
+            "title": "“I wake up looking rested”",
+            "name": "Chloe",
+            "quote": "I only get about 6 hours with work. Now I fall asleep faster and my skin looks brighter in the morning.",
+            "verified": true,
+            "rating": 5,
+            "tag": "",
+            "before_fallback": "yn-cust-chloe-before.webp",
+            "before_alt": "Chloe before",
+            "fallback": "yn-cust-chloe-after.webp",
+            "alt": "Chloe after"
+          }
+        },
+        "b5": {
+          "type": "story",
+          "settings": {
+            "title": "“My mornings feel lighter”",
+            "name": "Jia",
+            "quote": "Two capsules before bed and I stopped waking up feeling heavy. My face looks fresher before any makeup.",
+            "verified": true,
+            "rating": 5,
+            "tag": "",
+            "before_fallback": "yn-cust-jia-before.webp",
+            "before_alt": "Jia before",
+            "fallback": "yn-cust-jia-after.webp",
+            "alt": "Jia after"
+          }
+        },
+        "b6": {
+          "type": "story",
+          "settings": {
+            "title": "“Less dull, more glow”",
+            "name": "Kath",
+            "quote": "My skin used to look tired by the end of the week. After a few weeks it looks smoother and more even.",
+            "verified": true,
+            "rating": 5,
+            "tag": "",
+            "before_fallback": "yn-cust-kath-before.webp",
+            "before_alt": "Kath before",
+            "fallback": "yn-cust-kath-after.webp",
+            "alt": "Kath after"
+          }
+        },
+        "b7": {
+          "type": "story",
+          "settings": {
+            "title": "“Part of my night routine now”",
+            "name": "Jaslyn",
+            "quote": "I take it with my skincare. I fall asleep more easily and wake up feeling fresher, even after a short night.",
+            "verified": true,
+            "rating": 5,
+            "tag": "",
+            "before_fallback": "yn-cust-jaslyn-before.webp",
+            "before_alt": "Jaslyn before",
+            "fallback": "yn-cust-jaslyn-after.webp",
+            "alt": "Jaslyn after"
+          }
+        },
+        "b8": {
+          "type": "story",
+          "settings": {
+            "title": "“My friends noticed the glow”",
+            "name": "Clarybel",
+            "quote": "I didn’t change anything else. A few weeks in, my friends asked what I was doing differently.",
+            "verified": true,
+            "rating": 5,
+            "tag": "",
+            "before_fallback": "yn-cust-clarybel-before.webp",
+            "before_alt": "Clarybel before",
+            "fallback": "yn-cust-clarybel-after.webp",
+            "alt": "Clarybel after"
+          }
+        },
+        "b9": {
+          "type": "story",
+          "settings": {
+            "title": "“Short nights, fresher face”",
+            "name": "Jervine",
+            "quote": "With a toddler, 8 hours isn’t happening. Yuna helps me sleep deeper, and the dark circles look softer.",
+            "verified": true,
+            "rating": 5,
+            "tag": "",
+            "before_fallback": "yn-cust-jervine-before.webp",
+            "before_alt": "Jervine before",
+            "fallback": "yn-cust-jervine-after.webp",
+            "alt": "Jervine after"
+          }
+        },
+        "b10": {
+          "type": "story",
+          "settings": {
+            "title": "“I fall asleep so much easier”",
+            "name": "Keisha",
+            "quote": "My mind used to race at night. Now I drift off calmly and wake up with skin that looks rested.",
+            "verified": true,
+            "rating": 5,
+            "tag": "",
+            "before_fallback": "yn-cust-keisha-before.webp",
+            "before_alt": "Keisha before",
+            "fallback": "yn-cust-keisha-after.webp",
+            "alt": "Keisha after"
+          }
+        },
+        "b11": {
+          "type": "story",
+          "settings": {
+            "title": "“Makeup goes on smoother”",
+            "name": "Lydia",
+            "quote": "My skin feels calmer in the morning, so foundation sits better. I need less concealer now.",
+            "verified": true,
+            "rating": 5,
+            "tag": "",
+            "before_fallback": "yn-cust-lydia-before.webp",
+            "before_alt": "Lydia before",
+            "fallback": "yn-cust-lydia-after.webp",
+            "alt": "Lydia after"
+          }
+        },
+        "b12": {
+          "type": "story",
+          "settings": {
+            "title": "“Rested even on busy weeks”",
+            "name": "Melina",
+            "quote": "Deadlines mean late nights for me. I still wake up looking like I slept well.",
+            "verified": true,
+            "rating": 5,
+            "tag": "",
+            "before_fallback": "yn-cust-melina-before.webp",
+            "before_alt": "Melina before",
+            "fallback": "yn-cust-melina-after.webp",
+            "alt": "Melina after"
+          }
+        },
+        "b13": {
+          "type": "story",
+          "settings": {
+            "title": "“My skin looks more even”",
+            "name": "Patricia",
+            "quote": "I noticed my complexion looking brighter and more even after a month of taking it every night.",
+            "verified": true,
+            "rating": 5,
+            "tag": "",
+            "before_fallback": "yn-cust-patricia-before.webp",
+            "before_alt": "Patricia before",
+            "fallback": "yn-cust-patricia-after.webp",
+            "alt": "Patricia after"
+          }
+        },
+        "b14": {
+          "type": "story",
+          "settings": {
+            "title": "“Calmer nights, brighter skin”",
+            "name": "Yuen Yung",
+            "quote": "It’s become my wind-down ritual. I sleep more soundly and my skin has a natural glow.",
+            "verified": true,
+            "rating": 5,
+            "tag": "",
+            "before_fallback": "yn-cust-yuenyung-before.webp",
+            "before_alt": "Yuen Yung before",
+            "fallback": "yn-cust-yuenyung-after.webp",
+            "alt": "Yuen Yung after"
+          }
+        },
+        "b15": {
+          "type": "story",
+          "settings": {
+            "title": "“I look less tired in photos”",
+            "name": "Liza",
+            "quote": "My before and after photos say it all. My face looks fresher and more awake.",
+            "verified": true,
+            "rating": 5,
+            "tag": "",
+            "fallback": "yn-cust-liza-ba.webp",
+            "alt": "Liza before and after",
+            "dark": false
+          }
+        },
+        "b16": {
+          "type": "story",
+          "settings": {
+            "title": "“A visible difference in 3 weeks”",
+            "name": "Shi Hui",
+            "quote": "Day 1 compared with 3 weeks in. My skin looks clearer and more rested.",
+            "verified": true,
+            "rating": 5,
+            "tag": "",
+            "fallback": "yn-tst-ba.webp",
+            "alt": "Shi Hui before and after",
+            "dark": false
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13",
+        "b14",
+        "b15",
+        "b16"
+      ]
+    },
+    "community": {
+      "type": "yn-ugc-wall",
+      "settings": {
+        "heading": "The YUNA",
+        "accent": "community.",
+        "rating": "4.9",
+        "rating_text": "10,000+ nightly rituals",
+        "button_label": "",
+        "speed": 40,
+        "bg": "white",
+        "pt": "half",
+        "pb": "half"
+      },
+      "blocks": {
+        "b1": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-cust-kath-product.webp",
+            "alt": "Kath with YUNA",
+            "quote": "“My new nightly ritual.”",
+            "name": "Kath",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "1"
+          }
+        },
+        "b2": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-ugc-carmen.webp",
+            "alt": "Carmen with YUNA",
+            "quote": "“I toss around less at night.”",
+            "name": "Carmen",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "1"
+          }
+        },
+        "b3": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-cust-chloe-after.webp",
+            "alt": "Chloe with YUNA",
+            "quote": "“My skin looks more rested.”",
+            "name": "Chloe",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "1"
+          }
+        },
+        "b4": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-ugc-taedra.webp",
+            "alt": "Taedra with YUNA",
+            "quote": "“Part of my wind-down routine.”",
+            "name": "Taedra",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "1"
+          }
+        },
+        "b5": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-cust-keisha-product.webp",
+            "alt": "Keisha with YUNA",
+            "quote": "“Mornings feel easier.”",
+            "name": "Keisha",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "1"
+          }
+        },
+        "b6": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-ugc-jiahui.webp",
+            "alt": "Jia Hui with YUNA",
+            "quote": "“My sleep score went from 76 to 93.”",
+            "name": "Jia Hui",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "2"
+          }
+        },
+        "b7": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-cust-liza-product.webp",
+            "alt": "Liza with YUNA",
+            "quote": "“Two capsules before bed.”",
+            "name": "Liza",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "2"
+          }
+        },
+        "b8": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-cust-melina-product.webp",
+            "alt": "Melina with YUNA",
+            "quote": "“Waking up refreshed.”",
+            "name": "Melina",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "2"
+          }
+        },
+        "b9": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-cust-jaslyn-after.webp",
+            "alt": "Jaslyn with YUNA",
+            "quote": "“I fall asleep more easily.”",
+            "name": "Jaslyn",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "2"
+          }
+        },
+        "b10": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-cust-patricia-product.webp",
+            "alt": "Patricia with YUNA",
+            "quote": "“My skin looks rested.”",
+            "name": "Patricia",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "2"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10"
+      ]
+    },
+    "cta": {
+      "type": "yn-rich-text",
+      "settings": {
+        "heading": "",
+        "accent": "",
+        "text": "",
+        "align": "center",
+        "max_width": 760,
+        "button_label": "Shop Daily Beauty Sleep™",
+        "button_style": "solid",
+        "bg": "white",
+        "pt": "none",
+        "pb": "full"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "reels",
+    "before_after",
+    "results",
+    "community",
+    "cta"
+  ]
+}

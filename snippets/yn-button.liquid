@@ -1,0 +1,18 @@
+{%- comment -%}
+  Params: label, link, style ('solid'|'outline'|'light'), class, attrs
+  An empty link falls back to the store's first product (YUNA is a single-product store), then to /collections/all.
+{%- endcomment -%}
+{%- if label != blank -%}
+  {%- liquid
+    assign _href = link
+    if _href == blank
+      assign _first = collections.all.products.first
+      if _first != blank
+        assign _href = _first.url
+      else
+        assign _href = routes.all_products_collection_url
+      endif
+    endif
+  -%}
+  <a class="yn-btn yn-btn--{{ style | default: 'solid' }} {{ class }}" href="{{ _href }}"{% if attrs %} {{ attrs }}{% endif %}>{{ label }}</a>
+{%- endif -%}

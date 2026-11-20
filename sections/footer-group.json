@@ -1,1 +1,76 @@
-{"name":"t:sections.footer.name","type":"footer","sections":{"footer":{"type":"footer","blocks":{"link_list_axfe3K":{"type":"link_list","settings":{"heading":"Shop","menu":"main-menu","width_desktop":3,"width_mobile":"1"}},"link_list_GCYKzC":{"type":"link_list","settings":{"heading":"Support","menu":"footer","width_desktop":2,"width_mobile":"1"}},"text_column_8cJi7K":{"type":"text_column","settings":{"heading":"","text":"<p>We're on a mission to help 1,000,000 women restore beauty sleep and wake up refreshed.<\/p>","width_desktop":3,"width_mobile":"2"}}},"block_order":["link_list_axfe3K","link_list_GCYKzC","text_column_8cJi7K"],"settings":{"show_brand_column":true,"logo":"shopify:\/\/shop_images\/yuna-sleep-footer-brand.png","logo_width":280,"brand_name":"","logo_description":"","brand_description":"","show_footer_bottom":true,"show_copyright":true,"copyright_text":"© 2026 YUNA Sleep. All rights reserved.","show_payment_icons":true,"show_localization":false,"enable_country_selector":false,"enable_language_selector":true,"show_social":false,"footer_bg_color":"#f8f5f2","footer_text_color":"#5f6b81","footer_heading_color":"#203040","footer_border_color":"#203040","footer_menu_color":"#5f6b81","footer_menu_hover_color":"#5f6b81","footer_divider_color":"#5f6b81","localization_label_color":"#203040","footer_heading_size":18,"footer_text_size":14,"copyright_text_size":12,"localization_label_size":14,"margin_top":20}}},"order":["footer"]}
+/*
+ * YUNA redesign: header/footer group
+ */
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "newsletter": {
+      "type": "yn-newsletter",
+      "settings": {
+        "style": "navy",
+        "heading": "Join the YUNA ritual.",
+        "text": "Sleep tips, early access to new rituals and member-only offers.",
+        "placeholder": "Your email address",
+        "button": "Sign up",
+        "success": "You’re on the list. Sweet dreams!"
+      }
+    },
+    "footer": {
+      "type": "yn-footer",
+      "settings": {
+        "bg": "#171B2F",
+        "logo_fallback": "yn-logo-yuna-light.png",
+        "logo_width": 116,
+        "mission": "<p>We’re on a mission to help 1,000,000 women restore beauty sleep and wake up refreshed.</p>",
+        "badges_fallback": "yn-certs-navy.png",
+        "copyright": "© 2026 YUNA Sleep. All rights reserved.",
+        "show_payment": false
+      },
+      "blocks": {
+        "b1": {
+          "type": "menu",
+          "settings": {
+            "heading": "Shop",
+            "menu": "main-menu"
+          }
+        },
+        "b2": {
+          "type": "menu",
+          "settings": {
+            "heading": "Support",
+            "menu": "footer"
+          }
+        },
+        "b3": {
+          "type": "social",
+          "settings": {
+            "heading": "Follow us",
+            "note": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "popup": {
+      "type": "yn-popup",
+      "settings": {
+        "enable": false,
+        "preview": false,
+        "delay": 10,
+        "version": "1",
+        "image_fallback": "yn-pdp-lux-ritual.webp",
+        "image_label": "10% off"
+      }
+    }
+  },
+  "order": [
+    "newsletter",
+    "footer",
+    "popup"
+  ]
+}

@@ -1,0 +1,25 @@
+{%- comment -%}
+  Responsive image with a theme-asset fallback.
+  Params: image (image object, optional), fallback (asset filename, e.g. 'yn-tst-ba.webp'),
+          alt, class, sizes, widths, loading ('lazy'|'eager'), priority (true = fetchpriority high), ratio_w, ratio_h
+{%- endcomment -%}
+{%- liquid
+  assign _alt = alt | default: ''
+  if image != blank and _alt == ''
+    assign _alt = image.alt | default: ''
+  endif
+  assign _loading = loading | default: 'lazy'
+  assign _sizes = sizes | default: '100vw'
+  assign _widths = widths | default: '360, 540, 720, 960, 1200, 1600, 2000, 2400'
+-%}
+{%- if image != blank -%}
+  {%- if priority -%}
+    {{ image | image_url: width: 2400 | image_tag: alt: _alt, class: class, sizes: _sizes, widths: _widths, loading: 'eager', fetchpriority: 'high' }}
+  {%- else -%}
+    {{ image | image_url: width: 2400 | image_tag: alt: _alt, class: class, sizes: _sizes, widths: _widths, loading: _loading }}
+  {%- endif -%}
+{%- elsif fallback != blank -%}
+  <img src="{{ fallback | asset_url }}" alt="{{ _alt | escape }}" class="{{ class }}" {% if priority %}fetchpriority="high" loading="eager"{% else %}loading="{{ _loading }}"{% endif %}{% if ratio_w %} width="{{ ratio_w }}" height="{{ ratio_h }}"{% endif %} decoding="async">
+{%- else -%}
+  <span class="yn-ph {{ class }}" role="img" aria-label="{{ _alt | escape }}">{{ 'image' | placeholder_svg_tag: 'yn-ph-svg' }}</span>
+{%- endif -%}

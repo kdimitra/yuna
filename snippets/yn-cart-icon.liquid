@@ -1,0 +1,13 @@
+{%- liquid
+  assign yn_count = cart.item_count
+  for item in cart.items
+    if item.product.tags contains 'cart-hidden'
+      assign yn_count = yn_count | minus: item.quantity
+    endif
+  endfor
+-%}
+{% render 'yn-icon', name: 'cart' %}
+<span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+{%- if yn_count > 0 -%}
+  <span class="yn-cart-count cart-count-bubble"><span aria-hidden="true">{{ yn_count }}</span><span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: yn_count }}</span></span>
+{%- endif -%}

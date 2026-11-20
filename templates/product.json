@@ -1,1 +1,902 @@
-{"sections":{"main":{"type":"main-product","blocks":{"custom_liquid_VgcNkQ":{"type":"custom_liquid","settings":{"custom_liquid":"<style>\n.itg-icon-image {\n  filter: brightness(100);\n}\n<\/style>"}},"rating_stars_pTTC7n":{"type":"rating_stars","settings":{"rating":5,"richtext_content":"<p>4.9 (267 Reviews)<\/p>","text_color":"#203040","text_font_size":14,"text_font_weight":"400","text_margin_top":0,"scroll_id":"","bg_stars_style":"filled","star_color":"#7895b6","bg_star_color":"#e0e0e0","size":16,"alignment":"flex-start","mobile_alignment":"flex-start","margin_top":21,"margin_bottom":0,"overlay_on_image_mobile":false,"mobile_vertical_position":"top","mobile_position_offset":15}},"title":{"type":"title","settings":{"custom_title":"Daily Beauty Sleep™","title_color":"#151a27","title_gradient":"","title_font_size_mobile":32,"title_font_size_desktop":36,"title_font_weight":400,"title_alignment":"left","badge_html":"","margin_top":12,"margin_bottom":0,"overlay_on_image_mobile":false,"mobile_vertical_position":"bottom","mobile_position_offset":60}},"product_text_block_yXgqnn":{"type":"product_text_block","settings":{"text":"<p>Singapore’s #1 beauty sleep supplement for deeper rest and morning radiant skin. Enhanced with antioxidant-rich Imperial Lingzhi™.<\/p>","highlight_text":"","text_color":"#203040","font_size_desktop":16,"font_size_mobile":15,"line_height_desktop":1.6,"line_height_mobile":1.5,"text_align":"left","font_weight":400,"highlight_color":"#203040","highlight_text_color":"#203040","highlight_padding":2,"margin_top":20,"margin_bottom":0}},"benefit_list_FdRf8V":{"type":"benefit_list","settings":{"item_1_icon":"<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 24 24\" fill=\"currentColor\"><path fill-rule=\"evenodd\" d=\"M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z\" clip-rule=\"evenodd\"><\/path><\/svg>","item_1_text":"<b>Sleep better:<\/b> Fall asleep faster in 1 night","item_2_icon":"<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 24 24\" fill=\"currentColor\"><path fill-rule=\"evenodd\" d=\"M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z\" clip-rule=\"evenodd\"><\/path><\/svg>","item_2_text":"<b>Restore:<\/b> Supports overnight skin renewal","item_3_icon":"<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 24 24\" fill=\"currentColor\"><path fill-rule=\"evenodd\" d=\"M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z\" clip-rule=\"evenodd\"><\/path><\/svg>","item_3_text":"<b>Glow:<\/b> Wake up looking refreshed naturally","list_alignment":"flex-start","list_gap":6,"list_gap_mobile":12,"item_max_width":100,"item_background":"rgba(0,0,0,0)","item_gradient_enabled":false,"item_gradient":"linear-gradient(135deg, rgba(243, 244, 246, 1), rgba(229, 231, 235, 1) 100%)","item_padding_vertical":0,"item_padding_horizontal":0,"item_padding_vertical_mobile":0,"item_padding_horizontal_mobile":0,"item_border_radius":0,"item_border_width":0,"item_border_style":"solid","item_border_color":"#8298b1","icon_size":24,"icon_size_mobile":24,"icon_color":"#7895b6","icon_text_gap":12,"icon_text_gap_mobile":8,"text_size":15,"text_size_mobile":15,"text_weight":"400","text_color":"#203040","text_line_height":1.5,"item_vertical_alignment":"center","margin_top":21,"margin_bottom":0}},"buy_buttons":{"type":"buy_buttons","settings":{"show_dynamic_checkout":false,"skip_cart":false,"use_theme_colors":false,"button_label":"Add To Cart","uppercase_text":true,"display_price":false,"enable_custom_color":true,"custom_color":"#203040","button_text_color":"#ffffff","button_padding_top":15,"button_padding_bottom":15,"button_padding_left":20,"button_padding_right":20,"button_border_radius":25,"button_border_width":0,"button_border_color":"#202f3e","button_text_font_weight":600,"button_text_font_size":18,"button_price_font_weight":400,"button_price_color":"","button_price_font_size":16,"show_compare_price_in_button":false,"button_compare_price_color":"","button_compare_price_font_size":14,"button_compare_price_font_weight":400,"button_text_price_gap":8,"button_price_gap":6,"button_price_separator":"-","button_price_separator_gap":8,"enable_button_gradient":false,"button_gradient":"linear-gradient(180deg, rgba(255, 0, 0, 1), rgba(0, 0, 255, 1) 100%)","button_icon":"","button_icon_filled":false,"button_custom_icon":"","button_icon_position":"after","button_icon_size":24,"button_icon_color":"#ffffff","button_icon_gap":8,"margin_top":30,"margin_bottom":15}},"product_flag_ejd69r":{"type":"product_flag","settings":{"show_two_items":true,"layout":"horizontal","alignment":"center","gap":12,"icon_text_gap":4,"icon_1_svg":"<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 36 24\">\n  <rect width=\"36\" height=\"12\" fill=\"#EF3340\"><\/rect>\n  <rect y=\"12\" width=\"36\" height=\"12\" fill=\"#FFFFFF\"><\/rect>\n  <circle cx=\"9\" cy=\"6\" r=\"4.5\" fill=\"#FFFFFF\"><\/circle>\n  <circle cx=\"10.8\" cy=\"6\" r=\"3.7\" fill=\"#EF3340\"><\/circle>\n  <g fill=\"#FFFFFF\">\n    <circle cx=\"14.2\" cy=\"3.1\" r=\".65\"><\/circle>\n    <circle cx=\"16.2\" cy=\"4.5\" r=\".65\"><\/circle>\n    <circle cx=\"15.5\" cy=\"6.8\" r=\".65\"><\/circle>\n    <circle cx=\"12.9\" cy=\"6.8\" r=\".65\"><\/circle>\n    <circle cx=\"12.2\" cy=\"4.5\" r=\".65\"><\/circle>\n  <\/g>\n<\/svg>","icon_1":"","icon_1_filled":false,"icon_1_size":20,"icon_1_color":"#203040","text_1":"<p>Singapore Formulated<\/p>","text_1_size":12,"text_1_weight":"400","text_1_color":"#203040","item_1_bg_color":"rgba(0,0,0,0)","icon_2_svg":"<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-award\" viewbox=\"0 0 16 16\">\n  <path d=\"M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702z\"><\/path>\n  <path d=\"M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z\"><\/path>\n<\/svg>","icon_2":"local_shipping","icon_2_filled":true,"icon_2_size":20,"icon_2_color":"#fcbe26","text_2":"<p>Award-Winning Product<\/p>","text_2_size":12,"text_2_weight":"400","text_2_color":"#203040","item_2_bg_color":"rgba(0,0,0,0)","item_padding_vertical":0,"item_padding_horizontal":0,"item_border_radius":50,"show_separator":true,"separator_color":"#203040","separator_width":1,"separator_length":10,"margin_top":8,"margin_bottom":0}},"delivery_date_jYAaxk":{"type":"delivery_date","settings":{"days_ahead":2,"date_format":"[day], [month] [date]","delivery_text":"<p>In stock. Receive by [date]<\/p>","text_size":13,"text_size_mobile":12,"text_weight":"400","text_color":"#203040","radio_size":12,"radio_color":"#4caf50","radio_inner_color":"#ffffff","gap":8,"enable_glow":true,"glow_color":"#4caf50","glow_intensity":8,"alignment":"center","compact_mode":false,"bg_color":"rgba(0,0,0,0)","border_color":"rgba(0,0,0,0)","border_width":0,"border_radius":0,"padding_vertical":0,"padding_horizontal":0,"margin_top":15,"margin_bottom":12}},"product_icon_features_BVMtmU":{"type":"product_icon_features","settings":{"layout":"row_3","mobile_layout":"row_3","alignment":"center","text_alignment":"center","item_layout":"column","mobile_item_layout":"column","max_width":550,"mobile_max_width":500,"icon_size":45,"mobile_icon_size":40,"icon_bg_color":"#ffffff","icon_color":"#203040","icon_padding":15,"mobile_icon_padding":0,"border_width":1,"border_color":"#e8eaec","border_radius":100,"material_icon_size":40,"mobile_material_icon_size":40,"material_weight":400,"material_fill":false,"svg_icon_size":40,"mobile_svg_icon_size":40,"image_size":44,"mobile_image_size":40,"text_font_size":14,"mobile_text_font_size":13,"text_font_weight":400,"text_color":"#5f6b81","text_line_height":1.3,"text_max_width":130,"gap_horizontal":10,"gap_vertical":15,"mobile_gap_horizontal":10,"mobile_gap_vertical":10,"icon_text_gap":10,"margin_top":25,"margin_bottom":0,"icon_1_name":"check","icon_1_svg":"","icon_1_text":"90 Days Money-Back Guarantee","icon_1_color":"#203040","icon_1_bg_color":"","icon_1_border_color":"","icon_2_name":"package_2","icon_2_svg":"","icon_2_text":"Free Delivery Islandwide","icon_2_color":"#203040","icon_2_bg_color":"","icon_2_border_color":"","icon_3_name":"psychiatry","icon_3_svg":"","icon_3_text":"Lab-Tested Ingredients","icon_3_color":"#1f2e3e","icon_3_bg_color":"","icon_3_border_color":"","icon_4_name":"","icon_4_svg":"","icon_4_text":"","icon_4_color":"","icon_4_bg_color":"","icon_4_border_color":""}},"customer_review_card_awEAwj":{"type":"customer_review_card","settings":{"customer_name":"Janice Ng","review_text":"“6 hours of sleep is all I get. Took Yuna on the first night and woke up feeling like 8 hours of quality rest! My face even had a glow without any changes to my skincare routine.\"","star_count":5,"show_verified_badge":true,"card_background":"#f8f8f8","card_gradient_enabled":false,"card_gradient":"linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 250, 252, 1) 100%)","card_padding_vertical":20,"card_padding_horizontal":20,"card_padding_vertical_mobile":18,"card_padding_horizontal_mobile":18,"card_border_radius":12,"card_border_width":1,"card_border_style":"solid","card_border_color":"#e3e3e3","card_shadow":"none","card_max_width":95,"name_size":16,"name_size_mobile":17,"name_weight":"500","name_color":"#203040","badge_size":20,"badge_size_mobile":18,"badge_background":"rgba(0,0,0,0)","badge_icon_size":20,"badge_icon_size_mobile":18,"badge_icon_color":"#42a5f6","star_size":16,"star_size_mobile":16,"star_color":"#f5c83f","star_gap":1,"star_gap_mobile":0,"review_size":14,"review_size_mobile":14,"review_weight":"400","review_color":"#5f6b81","review_line_height":1.5,"header_gap":8,"header_gap_mobile":4,"header_review_gap":8,"header_review_gap_mobile":8,"margin_top":28,"margin_bottom":0}},"e7a28cbe-03cb-4c9d-a2c4-0e3e76ffb3e5":{"type":"sticky_atc","settings":{"display_when":"after_scroll","background_color":"#ffffff","text_color":"#203040","enable_background_gradient":false,"background_gradient":"linear-gradient(133deg, rgba(250, 220, 54, 1) 11%, rgba(254, 98, 146, 1) 49%, rgba(250, 220, 54, 1) 87%)","background_opacity":50,"backdrop_blur":14,"function":"scroll_#ProductInfo-id","button_label":"Save 25%","enable_custom_btn_color":true,"custom_btn_color":"#203040","enable_button_gradient":false,"button_gradient":"linear-gradient(180deg, rgba(255, 228, 49, 1), rgba(249, 32, 32, 1) 100%)","button_padding_top_bottom":3,"button_padding_left_right":17,"button_border_width":1,"button_border_color":"#203040","button_border_radius":4,"button_text_color":"#ffffff","button_font_size_desktop":15,"button_font_size_mobile":13,"button_font_weight":"600","desktop_show_title":true,"mobile_show_title":true,"title_color":"#203040","title_font_size_desktop":16,"title_font_size_mobile":16,"title_font_weight":"500","desktop_show_price":false,"mobile_show_price":false,"desktop_show_sale_badge":true,"mobile_show_sale_badge":true,"desktop_show_price_in_button":false,"mobile_show_price_in_button":false,"show_compare_price_in_button":false,"price_gap":8,"price_item_gap":6,"price_color":"#203040","compare_price_color":"#5f6b81","price_font_size_desktop":18,"price_font_size_mobile":14,"price_font_weight":"600","compare_price_font_size_desktop":16,"compare_price_font_size_mobile":12,"compare_price_font_weight":"400","price_margin_top":0,"picker_type":"combined","desktop_variant_picker":true,"mobile_variant_picker":false,"desktop_rating_stars":false,"mobile_rating_stars":true,"star_color":"#f5c83f","stars_label":"(267 Reviews)","desktop_show_image":true,"desktop_image_width":80,"desktop_full_button_width":false,"mobile_show_image":true,"mobile_image_width":60,"mobile_full_button_width":false}}},"block_order":["custom_liquid_VgcNkQ","rating_stars_pTTC7n","title","product_text_block_yXgqnn","benefit_list_FdRf8V","buy_buttons","product_flag_ejd69r","delivery_date_jYAaxk","product_icon_features_BVMtmU","customer_review_card_awEAwj","e7a28cbe-03cb-4c9d-a2c4-0e3e76ffb3e5"],"custom_css":[".upsell-price {font-weight: 500 !important;}"],"settings":{"display_id":false,"enable_sticky_info":true,"enable_section_background":false,"section_bg_color":"#ffffff","use_section_gradient":false,"section_bg_gradient":"linear-gradient(135deg, rgba(102, 126, 234, 1), rgba(118, 75, 162, 1) 100%)","overlay_info_on_image_mobile":false,"display_variant_image_first":false,"disable_prepend":false,"hide_variants":true,"variant_image_filtering":"none","image_zoom":"none","arrows_background_color":"#25262a","arrows_icon_color":"#ffffff","transparent_arrows":true,"dots_color":"#25262a","video_player":"autoplay","enable_video_looping":true,"autoplay_videos_pause_btn":false,"video_sound_btn":false,"video_timeline":false,"play_btn_background_color":"#3f5975","play_btn_icon_color":"#ffffff","sound_btn_background_color":"#25262a","sound_btn_icon_color":"#ffffff","timeline_color":"#3f5975","media_size":"medium","media_position":"left","gallery_layout":"thumbnail_slider","desktop_thumbnails_count":6,"constrain_to_viewport":false,"media_fit":"cover","media_ratio_desktop":"auto","media_ratio_mobile":"1\/1","desktop_arrows_position":"hidden","thumbnail_gap":12,"thumbnail_border_radius":12,"thumbnail_border_width":0,"thumbnail_border_color":"rgba(0,0,0,0)","thumbnail_active_border_width":1,"thumbnail_active_border_color":"#f7f7f7","mobile_media_corner_radius":12,"mobile_spacing_pixels":2,"mobile_arrows_position":"hidden","mobile_pagination":"hidden","mobile_thumbnails":"show","mobile_thumbnails_count":5,"mobile_scroll_padding_percentage":3,"mobile_scroll_padding_pixels":0,"enable_mobile_outher_spacing":true,"mobile_slides_container_width":100,"mobile_slides_inner_width":100,"trust_badge_position":"top-right","trust_badge_size":"small","enable_image_icons":false,"image_icons_position":"left","image_icons_width":22,"image_icons_gap":0.5,"icon_column_bg_color":"rgba(0,0,0,0)","icon_column_gradient":"","icon_column_border_color":"rgba(0,0,0,0)","icon_column_border_width":0,"icon_column_border_radius":0,"hide_icons_desktop":true,"icon_box_border_radius":10,"icon_size_desktop":56,"icon_text_font_size_desktop":14,"icon_size_mobile":28,"icon_text_font_size_mobile":11,"icon_text_font_weight":500,"image_icons_bg_color":"#ffffff","image_icons_text_color":"#000000","image_icon_1":"verified","image_icon_1_text":"Feature 1","image_icon_1_bg_color":"#000000","image_icon_1_gradient":"","image_icon_1_text_color":"#ffffff","image_icon_1_border_color":"rgba(0,0,0,0)","image_icon_1_border_width":0,"image_icon_2":"verified","image_icon_2_text":"Feature 2","image_icon_2_bg_color":"#000000","image_icon_2_gradient":"","image_icon_2_text_color":"#ffffff","image_icon_2_border_color":"rgba(0,0,0,0)","image_icon_2_border_width":0,"image_icon_3":"verified","image_icon_3_text":"Feature 3","image_icon_3_bg_color":"#000000","image_icon_3_gradient":"","image_icon_3_text_color":"#ffffff","image_icon_3_border_color":"#000000","image_icon_3_border_width":2,"mobile_padding_top":8,"mobile_padding_bottom":16,"desktop_padding_top":36,"desktop_padding_bottom":36}},"customer_review_slider_pC87nM":{"type":"customer-review-slider","blocks":{"review_BbMgRK":{"type":"review","settings":{"customer_image":"shopify:\/\/shop_images\/yuna-sleep-ugc-jiahui.png","customer_name":"\"Sleep quality improved\"","customer_age":"","rating":5,"review_text":"<p>On the first night, I found myself falling asleep with ease naturally after taking YUNA sleep before going to bed - Jia Hui<\/p>","product_reference":"","product_title_override":"","product_price_override":"","product_compare_price_override":"","purchase_date_text":"Purchased on March 15","custom_html":"","custom_html_position":"below_product"}},"review_6CiiNt":{"type":"review","settings":{"customer_image":"shopify:\/\/shop_images\/yuna-sleep-ugc-carmen.png","customer_name":"\"Lesser disruptive nights\"","customer_age":"","rating":5,"review_text":"<p>I'm a light sleeper so i naturally toss around a lot at night. My hubby shared i move around lesser when i sleep now - Carmen<\/p>","product_reference":"","product_title_override":"","product_price_override":"","product_compare_price_override":"","purchase_date_text":"Purchased on March 15","custom_html":"","custom_html_position":"below_product"}},"review_dDeqDg":{"type":"review","settings":{"customer_image":"shopify:\/\/shop_images\/yuna-sleep-shihui.png","customer_name":"\"Woke up with a glow\"","customer_age":"","rating":5,"review_text":"<p>I was sooo happy to see my face looking radiant in the mirror. Not only is my face happy, my mind feels rested! - Shi hui<\/p>","product_reference":"","product_title_override":"","product_price_override":"","product_compare_price_override":"","purchase_date_text":"Purchased on March 15","custom_html":"","custom_html_position":"below_product"}}},"block_order":["review_BbMgRK","review_6CiiNt","review_dDeqDg"],"custom_css":[".crs-product {border-radius: 50px; padding: 0px 6px;}",".crs-card-body {padding: 10px 10px;}"],"name":"Customer Review Slider","settings":{"use_theme_colors":true,"use_section_gradient":false,"background_color":"#ffffff","gradient_enabled":false,"gradient_background":"linear-gradient(180deg, rgba(94, 201, 255, 1), rgba(9, 138, 203, 1) 100%)","padding_top_desktop":80,"padding_bottom_desktop":80,"padding_top_mobile":48,"padding_bottom_mobile":48,"show_section_review":true,"section_review_show_stars":true,"section_review_star_rating":5,"section_review_star_size":16,"section_review_star_color":"#203040","section_review_star_spacing":0,"section_review_count":"<p>10,000+ Nightly Rituals<\/p>","section_review_font_size":14,"section_review_font_weight":"400","section_review_text_color":"#5f6b81","section_review_bg_color":"#f8f8f8","section_review_padding":0,"section_review_border_width":0,"section_review_border_color":"#e3e3e3","section_review_border_style":"solid","section_review_border_radius":12,"section_review_margin_top":0,"section_review_margin_bottom":12,"heading_before":"Real results in weeks.<br> Refreshed mornings.","highlighted_text":"","heading_after":"","highlight_position":"inline_second","heading_tag":"h2","heading_text_align":"center","heading_color":"#203040","heading_font_size_desktop":36,"heading_font_size_mobile":30,"heading_font_weight":"500","heading_margin_bottom":30,"header_spacing":8,"highlighted_gradient_enabled":false,"highlighted_color":"#203040","highlighted_gradient":"linear-gradient(95deg, rgba(0, 0, 0, 1), rgba(161, 161, 161, 1) 100%)","highlighted_font_size_desktop":48,"highlighted_font_size_mobile":30,"highlighted_font_weight":"500","highlighted_spacing":14,"intro_text":"","intro_text_color":"#5f6b81","intro_spacing":24,"card_gap":12,"slide_padding":4,"slide_padding_mobile":0,"slide_width_mobile":92,"slide_width_tablet":33,"slide_width_desktop":33,"show_dots":false,"show_customer_image":true,"image_aspect_ratio":"square","customer_image_margin_top":0,"customer_image_margin_bottom":0,"card_padding":0,"card_background":"#f8f8f8","card_border_radius":12,"card_border_width":1,"card_border_color":"#e3e3e3","card_body_gap":0,"rating_margin_top":0,"rating_margin_bottom":0,"customer_info_margin_top":0,"customer_info_margin_bottom":8,"customer_info_bg_color":"rgba(0,0,0,0)","customer_info_padding":0,"customer_info_border_radius":0,"customer_info_border_width":0,"customer_info_border_color":"#0f172a1a","customer_name_color":"#203040","customer_name_size":18,"customer_name_weight":"600","customer_age_color":"#0f172a99","customer_age_size":13,"customer_age_weight":"400","verified_badge_icon_color":"#42a5f6","verified_badge_icon_size":16,"verified_badge_text":"Verified","verified_badge_text_color":"#203040","verified_badge_text_size":12,"verified_badge_text_weight":"500","star_filled_color":"#f7f7f7","star_empty_color":"#f7f7f7","star_size":12,"review_text_margin_top":0,"review_text_margin_bottom":10,"review_text_color":"#5f6b81","review_font_size":14,"show_product":false,"show_product_image":true,"product_margin_top":0,"product_margin_bottom":0,"product_background":"#e9f0ca","enable_product_gradient":false,"product_gradient":"linear-gradient(180deg, rgba(243, 244, 246, 1), rgba(229, 231, 235, 1) 100%)","product_border_radius":30,"product_border_width":1,"product_border_style":"dotted","product_border_color":"#203040","product_padding":6,"product_image_border_radius":4,"product_title_color":"#203040","product_price_color":"#203040","product_compare_price_color":"#0f172a80","product_purchase_color":"#0f172ab3","product_title_font_size":14,"product_title_font_weight":"500","product_price_font_size":13,"product_price_font_weight":"500","product_purchase_detail_size":9}},"animated_progress_sections_m8i77J":{"type":"animated-progress-sections","blocks":{"progress_section_m9CYYi":{"type":"progress_section","settings":{"heading":"Day 1 - Fall asleep faster","content":"Calm your mind. Ease into restful sleep.","hide_image":false,"image_title":"","image_subtitle":"","progress_number":"","google_icon":"","custom_svg":"","icon_size":24,"number_text_color_inactive":"#999999","number_text_color_active":"#ffffff","number_bg_color_inactive":"#f0f0f0","number_bg_color_active":"#ec4899"}},"progress_section_CjDyfW":{"type":"progress_section","settings":{"heading":"Week 2 - wake up refreshed","content":"Recharged mornings. Start the day well.","hide_image":false,"image_title":"","image_subtitle":"","progress_number":"","google_icon":"","custom_svg":"","icon_size":24,"number_text_color_inactive":"#999999","number_text_color_active":"#ffffff","number_bg_color_inactive":"#f0f0f0","number_bg_color_active":"#ec4899"}},"progress_section_4DrnE3":{"type":"progress_section","settings":{"heading":"Week 4 - hello, morning glow","content":"Natural glowy, radiant skin without makeup.","hide_image":false,"image_title":"","image_subtitle":"","progress_number":"","google_icon":"","custom_svg":"","icon_size":24,"number_text_color_inactive":"#999999","number_text_color_active":"#ffffff","number_bg_color_inactive":"#f0f0f0","number_bg_color_active":"#ec4899"}},"progress_section_nDFqKQ":{"type":"progress_section","settings":{"heading":"Week 12 - Beauty sleep consistency","content":"Enjoy long term sleep wellness benefits.","hide_image":false,"image_title":"","image_subtitle":"","progress_number":"","google_icon":"","custom_svg":"","icon_size":24,"number_text_color_inactive":"#999999","number_text_color_active":"#ffffff","number_bg_color_inactive":"#f0f0f0","number_bg_color_active":"#ec4899"}}},"block_order":["progress_section_m9CYYi","progress_section_CjDyfW","progress_section_4DrnE3","progress_section_nDFqKQ"],"name":"Progress Sections","settings":{"section_padding_top_mobile":36,"section_padding_bottom_mobile":36,"section_padding_top_desktop":60,"section_padding_bottom_desktop":60,"section_bg_color":"#ffffff","enable_section_gradient":false,"section_gradient_bg":"","use_theme_colors":true,"heading_before":"What to Expect on YourBeauty Sleep Journey","highlighted_text":"","heading_after":"","highlight_position":"inline_second","heading_tag":"h2","heading_text_align":"center","heading_color":"#203040","heading_font_size_desktop":48,"heading_font_size_mobile":30,"heading_font_weight":"500","heading_margin_bottom":10,"header_spacing":20,"highlighted_gradient_enabled":false,"highlighted_color":"#496582","highlighted_gradient":"linear-gradient(71deg, rgba(0, 0, 0, 1), rgba(161, 161, 161, 1) 100%)","highlighted_font_size_desktop":48,"highlighted_font_size_mobile":32,"highlighted_font_weight":"500","highlighted_spacing":12,"intro_text":"","intro_text_color":"#5f6b81","intro_spacing":8,"section_image":"shopify:\/\/shop_images\/yuna-sleep-weeks-1.png","hide_image_on_mobile":false,"section_image_position":"left","image_width_desktop":50,"image_vertical_align":"flex-start","content_gap_desktop":40,"content_gap_mobile":0,"section_image_radius":12,"progress_bar_width":10,"progress_bar_bg":"#dddddd","progress_fill_gradient_enabled":true,"progress_fill_color":"#203040","progress_fill_gradient":"linear-gradient(180deg, rgba(88, 129, 176, 1), rgba(120, 149, 182, 1) 52%, rgba(178, 193, 211, 1) 100%)","progress_bar_radius":10,"number_size":26,"number_font_size":15,"number_border_radius":50,"number_top_offset":26,"number_border_width":2,"number_border_color_inactive":"#dddddd","number_border_color_active":"#203040","header_margin_left":6,"trigger_threshold":80,"content_reveal_threshold":30,"keep_content_open":false,"section_heading_font_size":22,"section_heading_color":"#203040","content_font_size":15,"content_color":"#5f6b81","image_width":125,"image_height":60,"image_radius":8,"overlay_padding":8,"overlay_text_align":"center","image_title_size":14,"image_title_size_mobile":12,"image_title_weight":"600","image_title_color":"#ffffff","image_subtitle_size":11,"image_subtitle_size_mobile":9,"image_subtitle_weight":"400","image_subtitle_color":"#f7f7f7","title_subtitle_spacing":3}},"multicolumn_advanced_eYNAFr":{"type":"multicolumn-advanced","blocks":{"column_64gpz9":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/yuna-sleep-ingredient-imperial-lingzhi.png","title":"Imperial Lingzhi™","text":"<p>Antioxidants-rich for skin, sleep renewal.<\/p>","button_text":"","button_url":"","enable_number":false,"number_value":1,"google_icon":"","custom_svg":"","custom_svg_color":"#ffffff","icon_size":24,"icon_color":"#ffffff","icon_fill_enabled":true,"icon_fill_color":"#ffffff","icon_outline_enabled":false,"icon_outline_color":"#203040","icon_outline_width":1,"custom_html":"","enable_custom_background":false,"custom_background_color":"#f3f4f6","enable_custom_title_color":false,"custom_title_color":"#203040","enable_custom_text_color":false,"custom_text_color":"#6b7280"}},"column_C6YxxR":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/yuna-sleep-ingredient-lilybulb.png","title":"Dream Lily Bulb","text":"<p>Relax + Unwind<\/p>","button_text":"","button_url":"","enable_number":false,"number_value":4,"google_icon":"","custom_svg":"","custom_svg_color":"#ffffff","icon_size":24,"icon_color":"#ffffff","icon_fill_enabled":true,"icon_fill_color":"#ffffff","icon_outline_enabled":false,"icon_outline_color":"#000000","icon_outline_width":1,"custom_html":"","enable_custom_background":false,"custom_background_color":"#f3f4f6","enable_custom_title_color":false,"custom_title_color":"#1f2937","enable_custom_text_color":false,"custom_text_color":"#6b7280"}},"column_yWydyx":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/yuna-sleep-ingredient-fuling.png","title":"Fu Ling (Poria)","text":"<p>Calming support<\/p>","button_text":"","button_url":"","enable_number":false,"number_value":3,"google_icon":"","custom_svg":"","custom_svg_color":"#ffffff","icon_size":24,"icon_color":"#ffffff","icon_fill_enabled":true,"icon_fill_color":"#ffffff","icon_outline_enabled":false,"icon_outline_color":"#000000","icon_outline_width":1,"custom_html":"","enable_custom_background":false,"custom_background_color":"#f3f4f6","enable_custom_title_color":false,"custom_title_color":"#1f2937","enable_custom_text_color":false,"custom_text_color":"#6b7280"}},"column_9y4TE8":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/yuna-sleep-ingredient-jujube-seed.png","title":"Jujube Seed","text":"<p>Sleep better naturally. Fall asleep faster.<\/p>","button_text":"","button_url":"","enable_number":false,"number_value":2,"google_icon":"","custom_svg":"","custom_svg_color":"#ffffff","icon_size":24,"icon_color":"#ffffff","icon_fill_enabled":true,"icon_fill_color":"#ffffff","icon_outline_enabled":false,"icon_outline_color":"#000000","icon_outline_width":1,"custom_html":"","enable_custom_background":false,"custom_background_color":"#f3f4f6","enable_custom_title_color":false,"custom_title_color":"#1f2937","enable_custom_text_color":false,"custom_text_color":"#6b7280"}},"column_M3mrPm":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/yuna-sleep-ingredient-ltheanine.png","title":"L-Theanine","text":"<p>Quiet the busy mind<\/p>","button_text":"","button_url":"","enable_number":false,"number_value":1,"google_icon":"","custom_svg":"","custom_svg_color":"#ffffff","icon_size":24,"icon_color":"#ffffff","icon_fill_enabled":true,"icon_fill_color":"#ffffff","icon_outline_enabled":false,"icon_outline_color":"#000000","icon_outline_width":1,"custom_html":"","enable_custom_background":false,"custom_background_color":"#f3f4f6","enable_custom_title_color":false,"custom_title_color":"#1f2937","enable_custom_text_color":false,"custom_text_color":"#6b7280"}},"column_npfhFz":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/yuna-sleep-ingredient-silktreebark.png","title":"Silk Tree Bark","text":"<p>Ease restlessness<\/p>","button_text":"","button_url":"","enable_number":false,"number_value":1,"google_icon":"","custom_svg":"","custom_svg_color":"#ffffff","icon_size":24,"icon_color":"#ffffff","icon_fill_enabled":true,"icon_fill_color":"#ffffff","icon_outline_enabled":false,"icon_outline_color":"#000000","icon_outline_width":1,"custom_html":"","enable_custom_background":false,"custom_background_color":"#f3f4f6","enable_custom_title_color":false,"custom_title_color":"#1f2937","enable_custom_text_color":false,"custom_text_color":"#6b7280"}},"column_AdK9tq":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/yuna-sleep-ingredient-ashwagandha.png","title":"Ashwagandha","text":"<p>Stress relief support<\/p>","button_text":"","button_url":"","enable_number":false,"number_value":1,"google_icon":"","custom_svg":"","custom_svg_color":"#ffffff","icon_size":24,"icon_color":"#ffffff","icon_fill_enabled":true,"icon_fill_color":"#ffffff","icon_outline_enabled":false,"icon_outline_color":"#000000","icon_outline_width":1,"custom_html":"","enable_custom_background":false,"custom_background_color":"#f3f4f6","enable_custom_title_color":false,"custom_title_color":"#1f2937","enable_custom_text_color":false,"custom_text_color":"#6b7280"}},"column_yWVep8":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/yuna-sleep-ingredient-biome-probiotics.png","title":"Biome Probiotics™","text":"<p>Gut-skin rebalance<\/p>","button_text":"","button_url":"","enable_number":false,"number_value":1,"google_icon":"","custom_svg":"","custom_svg_color":"#ffffff","icon_size":24,"icon_color":"#ffffff","icon_fill_enabled":true,"icon_fill_color":"#ffffff","icon_outline_enabled":false,"icon_outline_color":"#000000","icon_outline_width":1,"custom_html":"","enable_custom_background":false,"custom_background_color":"#f3f4f6","enable_custom_title_color":false,"custom_title_color":"#1f2937","enable_custom_text_color":false,"custom_text_color":"#6b7280"}}},"block_order":["column_64gpz9","column_C6YxxR","column_yWydyx","column_9y4TE8","column_M3mrPm","column_npfhFz","column_AdK9tq","column_yWVep8"],"name":"Multicolumn Advanced","settings":{"use_theme_colors":true,"heading_before":"8 premium ingredients.<br> One nightly ritual.","highlighted_text":"","heading_after":"","highlight_position":"inline_second","heading_tag":"h2","heading_text_align":"center","heading_color":"#203040","heading_font_size_desktop":48,"heading_font_size_mobile":30,"heading_font_weight":"500","heading_line_height":1.2,"heading_spacing_desktop":30,"heading_spacing_mobile":15,"highlighted_gradient_enabled":false,"highlighted_color":"#203040","highlighted_gradient":"","highlight_font_size_desktop":48,"highlight_font_size_mobile":30,"highlight_font_weight":"500","highlight_margin_top":0,"highlight_margin_bottom":10,"subheading":"For deep restorative sleep, waking up feeling refreshed and natural glowing skin.","subheading_color":"#5f6b81","subheading_font_size_desktop":16,"subheading_font_size_mobile":15,"subheading_font_weight":"400","subheading_max_width":700,"subheading_spacing_desktop":50,"subheading_spacing_mobile":35,"custom_html_above_heading":"","custom_html_above_heading_spacing":20,"custom_html_below_heading":"","custom_html_below_heading_spacing":20,"custom_html_below_subtext":"","custom_html_below_subtext_spacing":20,"custom_html_below_columns":"","custom_html_below_columns_spacing":20,"columns_desktop":4,"columns_mobile":"2","gap_desktop":30,"gap_mobile":15,"column_content_alignment":"left","show_column_images":true,"image_aspect_ratio":"4 \/ 3","image_border_radius":8,"image_spacing_desktop":20,"image_spacing_mobile":16,"column_background_enabled":false,"column_background_color":"#6b8bb1","column_padding_desktop":24,"column_padding_mobile":20,"column_border_radius":12,"number_size":25,"number_font_size_desktop":24,"number_font_size_mobile":16,"number_font_weight":"700","number_background":"#ffffff","number_text_color":"#203040","number_border_width":2,"number_border_color":"#203040","number_border_radius":0,"number_spacing":10,"column_title_color":"#203040","column_title_size_desktop":22,"column_title_size_mobile":17,"column_title_weight":"700","title_spacing_desktop":12,"title_spacing_mobile":10,"column_text_color":"#5f6b81","column_text_size_desktop":16,"column_text_size_mobile":15,"column_text_weight":"400","text_spacing_desktop":18,"text_spacing_mobile":28,"custom_html_spacing":20,"button_background_color":"#1f2937","button_background_hover":"#374151","button_text_color":"#ffffff","button_font_size":14,"button_font_weight":"600","button_padding_vertical":12,"button_padding_horizontal":28,"button_border_width":0,"button_border_color":"#203040","button_border_style":"solid","button_border_radius":6,"background_color":"#ffffff","gradient_enabled":false,"gradient_background":"linear-gradient(180deg, rgba(4, 75, 111, 1), rgba(0, 144, 189, 1) 100%)","padding_top_desktop":60,"padding_bottom_desktop":60,"padding_top_mobile":40,"padding_bottom_mobile":40}},"us_vs_them_PHAnVd":{"type":"us-vs-them","blocks":{"comparison_row_X8PVWY":{"type":"comparison_row","settings":{"benefit_text":"Fall asleep faster naturally","us_value":"text","us_custom_text":"1 Night","us_custom_svg":"","us_google_icon":"check_circle","us_icon_color":"#203040","us_icon_size":26,"them_value":"text","them_custom_text":"Slow","them_custom_svg":"","them_google_icon":"arrow_right_alt","them_icon_color":"#5f6b81","them_icon_size":24}},"comparison_row_iBTYcU":{"type":"comparison_row","settings":{"benefit_text":"Sleep quality compounds","us_value":"text","us_custom_text":"Natural","us_custom_svg":"","us_google_icon":"check_circle","us_icon_color":"#203040","us_icon_size":24,"them_value":"text","them_custom_text":"Side effects","them_custom_svg":"","them_google_icon":"cancel","them_icon_color":"#5f6b81","them_icon_size":24}},"comparison_row_3rRgWF":{"type":"comparison_row","settings":{"benefit_text":"Skin and body renew support","us_value":"check","us_custom_text":"","us_custom_svg":"","us_google_icon":"check_circle","us_icon_color":"#203040","us_icon_size":24,"them_value":"cross","them_custom_text":"","them_custom_svg":"","them_google_icon":"cancel","them_icon_color":"#5f6b81","them_icon_size":24}},"comparison_row_zb3qKG":{"type":"comparison_row","settings":{"benefit_text":"Gut-skin health support","us_value":"check","us_custom_text":"","us_custom_svg":"","us_google_icon":"check_circle","us_icon_color":"#203040","us_icon_size":24,"them_value":"cross","them_custom_text":"FEW","them_custom_svg":"","them_google_icon":"cancel","them_icon_color":"#5f6b81","them_icon_size":24}},"comparison_row_V98eUY":{"type":"comparison_row","settings":{"benefit_text":"100% natural herbs formula","us_value":"check","us_custom_text":"","us_custom_svg":"","us_google_icon":"check_circle","us_icon_color":"#203040","us_icon_size":24,"them_value":"cross","them_custom_text":"FEW","them_custom_svg":"","them_google_icon":"cancel","them_icon_color":"#5f6b81","them_icon_size":24}},"comparison_row_JeJA4R":{"type":"comparison_row","settings":{"benefit_text":"Save money and time","us_value":"text","us_custom_text":"1 formula","us_custom_svg":"","us_google_icon":"check_circle","us_icon_color":"#ffffff","us_icon_size":24,"them_value":"text","them_custom_text":"Take 5-8 supplements","them_custom_svg":"","them_google_icon":"cancel","them_icon_color":"#ef4444","them_icon_size":24}}},"block_order":["comparison_row_X8PVWY","comparison_row_iBTYcU","comparison_row_3rRgWF","comparison_row_zb3qKG","comparison_row_V98eUY","comparison_row_JeJA4R"],"name":"Us vs Them Comparison","settings":{"use_theme_colors":true,"use_section_gradient":false,"background_color":"#ffffff","enable_section_gradient":false,"section_gradient_bg":"","section_padding_top":50,"section_padding_bottom":50,"heading_before":"The next evolution of<br> natural beauty sleep","heading_after":"","heading_tag":"h2","heading_text_align":"center","heading_font_size_desktop":48,"heading_font_size_mobile":30,"heading_font_weight":500,"heading_color":"#203040","heading_margin_bottom":25,"highlighted_text":"","highlight_position":"inline","highlighted_gradient_enabled":true,"highlighted_gradient":"linear-gradient(135deg, rgba(102, 126, 234, 1), rgba(118, 75, 162, 1) 100%)","highlighted_color":"#667eea","highlighted_font_size_desktop":48,"highlighted_font_size_mobile":32,"highlighted_font_weight":500,"highlighted_spacing":10,"intro_text":"<p>More than just sleep. See why YUNA is different.<\/p>","intro_font_size":14,"intro_text_color":"#5f6b81","intro_text_spacing":35,"table_max_width":650,"table_border_radius":12,"show_desktop_image":false,"hide_desktop_image_on_mobile":true,"desktop_image_position":"right","desktop_image_alignment":"center","desktop_image_width":45,"desktop_image_gap":30,"desktop_image_border_radius":12,"benefit_column_label":"","us_column_label":"Yuna Sleep","them_column_label":"Other brands","label_image_spacing":8,"label_image_border_radius":12,"header_background":"rgba(0,0,0,0)","header_text_color":"#203040","header_font_size":16,"header_font_weight":400,"header_padding":20,"cell_padding":10,"cell_font_size":13,"cell_text_color":"#203040","benefit_font_weight":500,"us_gradient_enabled":false,"us_gradient":"linear-gradient(91deg, rgba(123, 146, 171, 1) 11%, rgba(125, 150, 178, 1) 87%)","us_background":"#f8f5f2","us_text_color":"#203040","us_label_font_size":14,"us_label_font_weight":600,"us_label_color":"#203040","us_image_enabled":true,"us_image":"shopify:\/\/shop_images\/yuna-sleep-comparison-table-us.png","us_image_width":90,"us_image_width_mobile":65,"us_image_position":"above","us_image_visibility":"always","us_use_image_as_label":false,"us_border_width":0,"us_border_color":"#cfdae5","us_border_radius":12,"them_gradient_enabled":false,"them_gradient":"linear-gradient(135deg, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1) 100%)","them_background":"#ffffff","them_text_color":"#5f6b81","them_label_font_size":14,"them_label_font_weight":400,"them_label_color":"#5f6b81","them_image_enabled":true,"them_image":"shopify:\/\/shop_images\/yuna-sleep-comparison-table-them.png","them_image_width":80,"them_image_width_mobile":60,"them_image_position":"above","them_image_visibility":"always","them_use_image_as_label":false,"override_row_height":false,"header_row_height":60,"us_row_height":70,"them_row_height":70,"highlight_corner_radius":10,"row_border_width":0,"row_border_color":"#e8eaec","us_top_border_width":1,"us_top_border_color":"#d9e3ec","them_top_border_width":1,"them_top_border_color":"#e8eaec","icon_size":24,"check_icon_color":"#ffffff","cross_icon_color":"#5f6b81","us_icon_color":"#ffffff","us_icon_size":24,"us_icon_fill":"filled","them_icon_color":"#5f6b81","them_icon_size":24,"them_icon_fill":"filled"}},"image_collage_3xLyrR":{"type":"image-collage","blocks":{"image_Hftj34":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/yuna-sleep-weeks-2.png","link":"","open_new_tab":false}},"image_gmmfg3":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/yuna-sleep-ugc-taedra.png","link":"","open_new_tab":false}},"image_b7tKmU":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/yuna-sleep-ugc-carmen.png","link":"","open_new_tab":false}},"image_3dxgyU":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/yuna-sleep-ingredient-biome-probiotics.png","link":"","open_new_tab":false}},"image_jCaWTF":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/yuna-sleep-shihui.png","link":"","open_new_tab":false}},"image_gc6WBn":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/yuna-sleep-weeks-1.png","link":"","open_new_tab":false}},"image_EiEXfb":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/yuna-sleep-ugc-carmen.png","link":"","open_new_tab":false}},"image_CNr3ii":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/yuna-daily-beauty-sleep-product-2.png","link":"","open_new_tab":false}},"image_Nhwq3W":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/yuna-sleep-ugc-taedra.png","link":"","open_new_tab":false}}},"block_order":["image_Hftj34","image_gmmfg3","image_b7tKmU","image_3dxgyU","image_jCaWTF","image_gc6WBn","image_EiEXfb","image_CNr3ii","image_Nhwq3W"],"name":"Image Collage","settings":{"use_theme_colors":true,"background_color":"#ffffff","gradient_enabled":false,"gradient_background":"linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(240, 240, 240, 1) 100%)","padding_top_desktop":60,"padding_bottom_desktop":60,"padding_top_mobile":40,"padding_bottom_mobile":40,"heading_before":"Loved by Singaporeans, mums and couples","heading_after":"","highlighted_text":"","highlight_position":"inline_second","heading_tag":"h2","heading_text_align":"center","heading_color":"#203040","heading_font_size_desktop":48,"heading_font_size_mobile":30,"heading_font_weight":"500","heading_margin_bottom":10,"header_spacing":20,"highlighted_gradient_enabled":false,"highlighted_color":"#ed122d","highlighted_gradient":"linear-gradient(90deg, rgba(237, 18, 45, 1), rgba(255, 107, 107, 1) 100%)","highlighted_font_size_desktop":48,"highlighted_font_size_mobile":30,"highlighted_font_weight":"500","highlighted_spacing":10,"text_before":"","number_text":"","text_after":"","subheading_color":"#5f6b81","subheading_font_size_desktop":14,"subheading_font_size_mobile":15,"subheading_font_weight":"400","number_font_weight":"700","subheading_text_transform":"capitalize","subheading_spacing":40,"social_platform":"none","show_border":true,"border_width":2,"border_padding_vertical":4,"border_padding_horizontal":20,"border_radius":30,"subheading_bg_color":"#ffffff","use_custom_border_color":false,"custom_border_color":"#000000","enable_gradient_border":false,"custom_gradient_border":"linear-gradient(45deg, rgba(255, 0, 0, 1), rgba(0, 0, 255, 1) 100%)","grid_max_width_desktop":1100,"image_max_width_desktop":190,"grid_columns_desktop":3,"grid_gap_desktop":10,"grid_gap_mobile":6,"grid_columns_mobile":3,"image_border_radius":12,"image_border_width":0,"image_border_color":"#000000","image_hover_scale":1.1}},"1788969274a2d5c829":{"type":"apps","blocks":{"judge_me_reviews_review_widget_MFbkWV":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","settings":{"review_data":"sample_data","max_width":1200,"show_shop_reviews":false,"empty_state":"empty_widget"}}},"block_order":["judge_me_reviews_review_widget_MFbkWV"],"settings":{"display_id":false,"include_margins":true}},"faq_accordion_4_XMCMLm":{"type":"faq-accordion-4","blocks":{"faq_item_hkCdnw":{"type":"faq_item","settings":{"question":"How does beauty sleep works?","answer":"<p>Beauty Sleep is your body’s natural overnight recovery process. While you rest, your body supports essential repair and renewal. <\/p><p>YUNA complements this process with 8 premium ingredients that support restful sleep, relaxation, antioxidant protection and gut health — helping you wake up feeling refreshed, restored and radiant.<\/p>","custom_html":"","open_by_default":false,"badge_text":"","badge_override_section":false,"badge_bg_color":"#000000","badge_text_color":"#ffffff","badge_font_size":12,"badge_font_weight":"600","badge_border_color":"#000000","badge_border_width":0,"badge_border_radius":4,"badge_padding_vertical":4,"badge_padding_horizontal":12,"badge_margin_bottom":8,"icon_material":"","icon_material_filled":false,"icon_svg":""}},"faq_item_k98mMe":{"type":"faq_item","settings":{"question":"When should I take Yuna?","answer":"<p>Take 2 capsules 30-60 minutes before bedtime. Consistent daily use at the same time every night gives the best results.<\/p>","custom_html":"","open_by_default":false,"badge_text":"","badge_override_section":false,"badge_bg_color":"#000000","badge_text_color":"#ffffff","badge_font_size":12,"badge_font_weight":"600","badge_border_color":"#000000","badge_border_width":0,"badge_border_radius":4,"badge_padding_vertical":4,"badge_padding_horizontal":12,"badge_margin_bottom":8,"icon_material":"","icon_material_filled":false,"icon_svg":""}},"faq_item_mzTReV":{"type":"faq_item","settings":{"question":"How soon will I feel the difference?","answer":"<p>Most people feel the difference on the first week. For noticeable results, we recommend consistent daily use over 8-12 weeks.<br\/><br\/><\/p>","custom_html":"","open_by_default":false,"badge_text":"","badge_override_section":false,"badge_bg_color":"#000000","badge_text_color":"#ffffff","badge_font_size":12,"badge_font_weight":"600","badge_border_color":"#000000","badge_border_width":0,"badge_border_radius":4,"badge_padding_vertical":4,"badge_padding_horizontal":12,"badge_margin_bottom":8,"icon_material":"","icon_material_filled":false,"icon_svg":""}},"faq_item_GrcitB":{"type":"faq_item","settings":{"question":"Does Yuna have side effects?","answer":"<p><strong>No. We use natural herbs formula.<\/strong><br\/><br\/>That's what sets us apart from sleep supplements that just sedate you into sleep with high-dose melatonin or antihistamines, prescription sleep aids.<\/p><p>Yuna works differently. It focuses on overnight skin and body renewal support while you sleep. <\/p><p>As a result, our customers shared they wake up feeling refreshed in the mornings.<\/p>","custom_html":"","open_by_default":false,"badge_text":"","badge_override_section":false,"badge_bg_color":"#000000","badge_text_color":"#ffffff","badge_font_size":12,"badge_font_weight":"600","badge_border_color":"#000000","badge_border_width":0,"badge_border_radius":4,"badge_padding_vertical":4,"badge_padding_horizontal":12,"badge_margin_bottom":8,"icon_material":"","icon_material_filled":false,"icon_svg":""}},"faq_item_JfLmjD":{"type":"faq_item","settings":{"question":"Is it safe to take with other medicine?","answer":"<p>Yuna's supplement formula is made of natural herbs. That being shared, if you are on prescribed medication please consult your healthcare provider before use.<br\/><br\/><\/p>","custom_html":"","open_by_default":false,"badge_text":"","badge_override_section":false,"badge_bg_color":"#000000","badge_text_color":"#ffffff","badge_font_size":12,"badge_font_weight":"600","badge_border_color":"#000000","badge_border_width":0,"badge_border_radius":4,"badge_padding_vertical":4,"badge_padding_horizontal":12,"badge_margin_bottom":8,"icon_material":"","icon_material_filled":false,"icon_svg":""}}},"block_order":["faq_item_hkCdnw","faq_item_k98mMe","faq_item_mzTReV","faq_item_GrcitB","faq_item_JfLmjD"],"name":"Accordion","settings":{"use_theme_colors":true,"background_color":"#ffffff","gradient_enabled":false,"gradient_background":"linear-gradient(180deg, rgba(9, 138, 203, 1), rgba(4, 75, 111, 1) 100%)","padding_top_desktop":60,"padding_bottom_desktop":60,"padding_top_mobile":40,"padding_bottom_mobile":40,"heading_before":"Have any questions?","highlighted_text":"","heading_after":"","highlight_position":"inline_second","heading_tag":"h2","heading_text_align":"center","heading_color":"#203040","heading_font_size_desktop":48,"heading_font_size_mobile":30,"heading_font_weight":"500","heading_margin_top":0,"heading_margin_bottom":16,"highlighted_gradient_enabled":false,"highlighted_color":"#203040","highlighted_gradient":"linear-gradient(90deg, rgba(237, 18, 45, 1), rgba(255, 107, 107, 1) 100%)","highlighted_font_size_desktop":48,"highlighted_font_size_mobile":30,"highlighted_font_weight":"500","highlighted_spacing":12,"intro_text":"<p>We are happy to help.<\/p>","intro_text_color":"#5f6b81","intro_font_size_desktop":16,"intro_font_size_mobile":14,"intro_font_weight":"400","intro_max_width":50,"intro_margin_bottom":28,"layout":"image-left","layout_gap":40,"show_image":true,"image":"shopify:\/\/shop_images\/yuna-sleep-corporate.png","image_width":45,"image_aspect_ratio":"original","image_border_radius":12,"hide_image_on_mobile":true,"accordion_gap":12,"accordion_border_width":1,"accordion_border_color":"#e8eaec","accordion_border_radius":4,"border_bottom_only":false,"border_bottom_color":"#e8eaec","border_bottom_width":1,"badge_bg_color":"#203040","badge_text_color":"#ffffff","badge_font_size":12,"badge_font_weight":"600","badge_border_color":"#203040","badge_border_width":0,"badge_border_radius":4,"badge_padding_vertical":4,"badge_padding_horizontal":12,"badge_margin_bottom":8,"icon_size":24,"icon_color":"#203040","icon_color_active":"#203040","icon_bg_color":"rgba(0,0,0,0)","icon_bg_color_active":"rgba(0,0,0,0)","icon_border_width":0,"icon_border_color":"#203040","icon_border_color_active":"#203040","icon_border_radius":0,"icon_padding":0,"question_bg_color":"#fefefe","question_bg_color_hover":"#f7f7f7","question_bg_color_active":"#ffffff","question_text_color":"#203040","question_text_color_active":"#203040","question_font_size_desktop":18,"question_font_size_mobile":16,"question_font_weight":"600","question_padding_vertical":16,"question_padding_horizontal":20,"answer_bg_color":"#ffffff","answer_text_color":"#5f6b81","answer_font_size_desktop":16,"answer_font_size_mobile":14,"answer_font_weight":"400","answer_padding_vertical":20,"answer_padding_horizontal":20}}},"order":["main","customer_review_slider_pC87nM","animated_progress_sections_m8i77J","multicolumn_advanced_eYNAFr","us_vs_them_PHAnVd","image_collage_3xLyrR","1788969274a2d5c829","faq_accordion_4_XMCMLm"]}
+/*
+ * ------------------------------------------------------------
+ * YUNA redesign template. Edit content in the theme editor.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "yn-main-product",
+      "settings": {
+        "nights_per_unit": 30,
+        "unit_label": "bottle",
+        "sticky_atc": true,
+        "sticky_label": "Add to cart"
+      },
+      "blocks": {
+        "rating": {
+          "type": "rating",
+          "settings": {
+            "use_live": true,
+            "hide_empty": false,
+            "manual_rating": "4.9",
+            "manual_count": "267",
+            "count_text": "from [count] reviews",
+            "extra": "10,000+ nightly rituals",
+            "anchor": "reviews"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "override": ""
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "save_text": "Save [percent]%",
+            "show_per_night": true,
+            "per_night_text": "[price] per night",
+            "show_tax_note": false
+          }
+        },
+        "intro": {
+          "type": "text",
+          "settings": {
+            "use_description": false,
+            "text": "<p><strong>A melatonin-free beauty sleep supplement that makes 5–6 hours of sleep feel like 8.</strong></p>"
+          }
+        },
+        "ticks": {
+          "type": "ticks",
+          "settings": {
+            "lines": "Fall asleep more easily and rest deeper\nWake up refreshed, with a natural glow\n400 mg Imperial Lingzhi™ + 7 botanicals and probiotics"
+          }
+        },
+        "variants": {
+          "type": "variant_picker",
+          "settings": {}
+        },
+        "bundles": {
+          "type": "bundles",
+          "settings": {
+            "mode": "theme",
+            "heading": "Bundle & Save",
+            "anchor": "offer",
+            "note": ""
+          }
+        },
+        "tier1": {
+          "type": "tier",
+          "settings": {
+            "label": "1 Bottle",
+            "subtitle": "30 Night Trial",
+            "quantity": 1,
+            "discount": 0,
+            "show_save": true,
+            "save_text": "Save [percent]%",
+            "show_per_unit": true,
+            "ribbon": "",
+            "default": false
+          }
+        },
+        "tier3": {
+          "type": "tier",
+          "settings": {
+            "label": "3 Bottles",
+            "subtitle": "90 Night Supply",
+            "quantity": 3,
+            "price": 285,
+            "discount": 0,
+            "show_save": true,
+            "save_text": "Save [percent]%",
+            "show_per_unit": true,
+            "ribbon": "Most popular",
+            "default": true
+          }
+        },
+        "tier6": {
+          "type": "tier",
+          "settings": {
+            "label": "6 Bottles",
+            "subtitle": "180 Night Supply",
+            "quantity": 6,
+            "price": 558,
+            "discount": 0,
+            "show_save": true,
+            "save_text": "Save [percent]%",
+            "show_per_unit": true,
+            "ribbon": "Best value",
+            "default": false
+          }
+        },
+        "buy": {
+          "type": "buy_buttons",
+          "settings": {
+            "label": "Add to cart",
+            "show_qty": false,
+            "show_dynamic_checkout": false
+          }
+        },
+        "award": {
+          "type": "award",
+          "settings": {
+            "l1": "Award-winning",
+            "l2": "Formulation",
+            "text": "<p>Imperial Lingzhi™ and seven botanicals, <strong>formulated in Singapore</strong> for deeper rest and a morning glow. <a href=\"/pages/science\">Learn more</a></p>"
+          }
+        },
+        "stock": {
+          "type": "stock",
+          "settings": {
+            "in_stock": "In stock, ships in 1–2 working days",
+            "low_stock": "Only [count] left, ships in 1–2 working days",
+            "low_threshold": 10,
+            "out_stock": "Sold out, back soon",
+            "i1": "shield",
+            "t1": "90-night\nguarantee",
+            "i2": "truck",
+            "t2": "Free\ndelivery",
+            "i3": "flask",
+            "t3": "Third-party\nlab tested"
+          }
+        },
+        "review": {
+          "type": "review_card",
+          "settings": {
+            "quote": "“Two capsules before bed is now part of my night routine. I fall asleep more easily and wake up feeling fresher, even after a short night.”",
+            "fallback": "yn-cust-kath-product.webp",
+            "name": "Jaslyn",
+            "verified": true,
+            "sub": "Verified buyer · 90 Night Supply"
+          }
+        },
+        "highlights": {
+          "type": "highlights",
+          "settings": {
+            "lines": "Melatonin-free\n400 mg Imperial Lingzhi™ per serving\nFree delivery on every order"
+          }
+        },
+        "acc_desc": {
+          "type": "accordion",
+          "settings": {
+            "title": "Description",
+            "source": "description",
+            "content": "",
+            "open": false
+          }
+        },
+        "acc_who": {
+          "type": "accordion",
+          "settings": {
+            "title": "Who it’s for",
+            "source": "custom",
+            "content": "<p>Made for busy women who only get 5–6 hours of sleep: working professionals, mums and anyone who wants to wake up feeling refreshed, with a natural glow. As a melatonin-free sleep aid, it suits nightly use without next-morning grogginess. Not recommended if you are pregnant or breastfeeding; check with your doctor first if you take medication or have a medical condition.</p>",
+            "open": false
+          }
+        },
+        "acc_how": {
+          "type": "accordion",
+          "settings": {
+            "title": "How to use",
+            "source": "custom",
+            "content": "<p>Take 2 capsules daily, 30–60 minutes before bed. For the best results, make it a nightly ritual.</p>",
+            "open": false
+          }
+        },
+        "acc_facts": {
+          "type": "accordion",
+          "settings": {
+            "title": "Supplement facts",
+            "source": "custom",
+            "content": "<p>Per serving: 2 capsules</p>",
+            "table": "Imperial Lingzhi™ (Reishi) | 400 mg\nJujube Seed (Suan Zao Ren) | 90 mg\nPoria (Fu Ling) | 60 mg\nLily Bulb (Bai He) | 50 mg\nSilk Tree Bark (He Huan Pi) | 50 mg\nL-Theanine | 60 mg\nAshwagandha | 70 mg\nBiome Probiotics™ | 10 billion CFU",
+            "open": false
+          }
+        },
+        "acc_quality": {
+          "type": "accordion",
+          "settings": {
+            "title": "Quality & safety",
+            "source": "custom",
+            "content": "<p>Third-party lab tested. Made in a GMP and HACCP certified facility. A plant-based, natural, melatonin-free sleep aid. Not intended to diagnose, treat, cure or prevent any disease. If you are pregnant, breastfeeding, taking medication or have a medical condition, please check with your doctor first.</p>",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "rating",
+        "title",
+        "price",
+        "intro",
+        "ticks",
+        "variants",
+        "bundles",
+        "tier1",
+        "tier3",
+        "tier6",
+        "buy",
+        "award",
+        "stock",
+        "review",
+        "highlights",
+        "acc_desc",
+        "acc_who",
+        "acc_how",
+        "acc_facts",
+        "acc_quality"
+      ]
+    },
+    "results": {
+      "type": "yn-stories",
+      "settings": {
+        "heading": "Real results in weeks.",
+        "accent": "Refreshed mornings.",
+        "text": "Real stories from women in Singapore who made Daily Beauty Sleep™ part of their nightly ritual.",
+        "layout": "grid",
+        "verified_label": "Verified customer",
+        "note": "Individual results may vary.",
+        "bg": "white",
+        "pt": "full",
+        "pb": "half"
+      },
+      "blocks": {
+        "b1": {
+          "type": "story",
+          "settings": {
+            "fallback": "yn-tst-ba.webp",
+            "alt": "Shi Hui on day 1 and after 3 weeks",
+            "tag": "After 3 weeks",
+            "title": "“Woke up with a glow”",
+            "quote": "I was sooo happy to see my face looking radiant in the mirror. Not only is my face happy, my mind feels rested!",
+            "name": "Shi Hui",
+            "verified": true,
+            "rating": 5
+          }
+        },
+        "b2": {
+          "type": "story",
+          "settings": {
+            "fallback": "yn-jiahui-sleepscore.webp",
+            "alt": "Jia Hui’s sleep score rising from 76 to 93",
+            "tag": "Sleep score 76 → 93",
+            "dark": true,
+            "title": "“Sleep quality improved”",
+            "quote": "On the first night, I found myself falling asleep with ease naturally after taking YUNA sleep before going to bed.",
+            "name": "Jia Hui",
+            "verified": true,
+            "rating": 5
+          }
+        },
+        "b3": {
+          "type": "story",
+          "settings": {
+            "fallback": "yn-tst-hold.webp",
+            "alt": "Jeslyn with her jar of YUNA",
+            "tag": "Light sleeper",
+            "title": "“Lesser disruptive nights”",
+            "quote": "I’m a light sleeper so I naturally toss around a lot at night. My hubby shared I move around lesser when I sleep now.",
+            "name": "Jeslyn",
+            "verified": true,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "timeline": {
+      "type": "yn-timeline",
+      "settings": {
+        "heading": "Your night,",
+        "accent": "step by step.",
+        "text": "How Daily Beauty Sleep™ works with your body, from the first hour to the morning after.",
+        "button_label": "Start your 90 nights",
+        "button_link": "#offer",
+        "bg": "white",
+        "pt": "half",
+        "pb": "half"
+      },
+      "blocks": {
+        "b1": {
+          "type": "step",
+          "settings": {
+            "time": "The first hour",
+            "title": "Wind down",
+            "text": "L-theanine for sleep and ashwagandha help quiet a busy mind, so you can let go of the day.",
+            "tag": "Calm mind"
+          }
+        },
+        "b2": {
+          "type": "step",
+          "settings": {
+            "time": "Falling asleep",
+            "title": "Drift off",
+            "text": "Jujube seed, lily bulb and silk tree bark, time-honoured herbs for sleep, help you relax into sleep more easily.",
+            "tag": "Easier sleep"
+          }
+        },
+        "b3": {
+          "type": "step",
+          "settings": {
+            "time": "Through the night",
+            "title": "Rest deeper",
+            "text": "Imperial Lingzhi™ and poria support calm, restorative rest.",
+            "tag": "Deeper rest"
+          }
+        },
+        "b4": {
+          "type": "step",
+          "settings": {
+            "time": "The morning",
+            "title": "Wake up glowing",
+            "text": "Antioxidants and probiotics support your skin from within, so you wake up refreshed.",
+            "tag": "Morning glow"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "ingredients": {
+      "type": "yn-ingredients",
+      "settings": {
+        "heading": "8 premium ingredients.",
+        "accent": "One nightly ritual.",
+        "text": "From lingzhi and jujube seed to L-theanine and ashwagandha: eight natural ingredients in one herbal sleep aid.",
+        "style": "photo",
+        "button_label": "Shop Daily Beauty Sleep™",
+        "button_link": "#offer",
+        "bg": "white",
+        "pt": "half",
+        "pb": "half"
+      },
+      "blocks": {
+        "b1": {
+          "type": "ingredient",
+          "settings": {
+            "fallback": "yn-ings-lingzhi.webp",
+            "name": "Imperial Lingzhi™",
+            "text": "A premium lingzhi reishi mushroom, harvested naturally in the Wuyi Mountains and rich in antioxidants.",
+            "pill": "Rest & repair",
+            "dose": "400 mg"
+          }
+        },
+        "b2": {
+          "type": "ingredient",
+          "settings": {
+            "fallback": "yn-ings-jujube.webp",
+            "name": "Jujube Seed",
+            "text": "A time-honoured herb for sleep that helps you relax into sleep more easily.",
+            "pill": "Sleep deeper",
+            "dose": "90 mg"
+          }
+        },
+        "b3": {
+          "type": "ingredient",
+          "settings": {
+            "fallback": "yn-ings-poria.webp",
+            "name": "Fu Ling",
+            "text": "Also called poria. Works with Imperial Lingzhi™ to support calm, restorative rest.",
+            "pill": "Calm & de-stress",
+            "dose": "60 mg"
+          }
+        },
+        "b4": {
+          "type": "ingredient",
+          "settings": {
+            "fallback": "yn-ings-ashwagandha.webp",
+            "name": "Ashwagandha",
+            "text": "An adaptogenic root that helps quiet a busy mind, so you can let go of the day.",
+            "pill": "Adaptogenic herb",
+            "dose": "70 mg"
+          }
+        },
+        "b5": {
+          "type": "ingredient",
+          "settings": {
+            "fallback": "yn-ings-lily.webp",
+            "name": "Lily Bulb",
+            "text": "A time-honoured herb for sleep, traditionally used to nourish and rejuvenate.",
+            "pill": "Nourish & rejuvenate",
+            "dose": "50 mg"
+          }
+        },
+        "b6": {
+          "type": "ingredient",
+          "settings": {
+            "fallback": "yn-ings-silktree.webp",
+            "name": "Silk Tree Bark",
+            "text": "A time-honoured herb for sleep that helps you relax and unwind at night.",
+            "pill": "Relax & unwind",
+            "dose": "50 mg"
+          }
+        },
+        "b7": {
+          "type": "ingredient",
+          "settings": {
+            "fallback": "yn-ings-theanine.webp",
+            "name": "L-Theanine",
+            "text": "An amino acid from green tea that helps quiet a busy mind before bed.",
+            "pill": "Amino acid",
+            "dose": "60 mg"
+          }
+        },
+        "b8": {
+          "type": "ingredient",
+          "settings": {
+            "fallback": "yn-ings-probiotics.webp",
+            "name": "Biome Probiotics™",
+            "text": "Probiotics that support your skin from within, so you wake up refreshed.",
+            "pill": "Gut-skin rebalance",
+            "dose": "10 bn CFU"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8"
+      ]
+    },
+    "comparison": {
+      "type": "yn-comparison",
+      "settings": {
+        "heading": "Not just another",
+        "accent": "sleep supplement.",
+        "text": "Choosing the best sleep supplement? Here’s how Daily Beauty Sleep™ compares with typical sleep aids and sleep gummies.",
+        "us_label": "YUNA Sleep",
+        "us_fallback": "yn-cmp-yuna-jar.webp",
+        "them_label": "Typical sleep aids",
+        "them_fallback": "yn-cmp-other-bottle.webp",
+        "bg": "beige",
+        "pt": "full",
+        "pb": "full"
+      },
+      "blocks": {
+        "b1": {
+          "type": "row",
+          "settings": {
+            "title": "Made for skin and sleep together",
+            "text": "Formulated for rest and next-morning radiance.",
+            "us": "yes",
+            "us_note": "",
+            "them": "no",
+            "them_note": "Sleep only"
+          }
+        },
+        "b2": {
+          "type": "row",
+          "settings": {
+            "title": "Melatonin-free",
+            "text": "No hormones added. A plant-based way to wind down.",
+            "us": "yes",
+            "us_note": "Always",
+            "them": "no",
+            "them_note": "Often contains melatonin"
+          }
+        },
+        "b3": {
+          "type": "row",
+          "settings": {
+            "title": "Imperial Lingzhi™ (400 mg)",
+            "text": "Our hero herb from the Wuyi Mountains.",
+            "us": "yes",
+            "us_note": "",
+            "them": "no",
+            "them_note": "Rarely included"
+          }
+        },
+        "b4": {
+          "type": "row",
+          "settings": {
+            "title": "Probiotics for the gut‑skin connection",
+            "text": "Biome probiotics in every serving.",
+            "us": "yes",
+            "us_note": "",
+            "them": "no",
+            "them_note": "Rarely included"
+          }
+        },
+        "b5": {
+          "type": "row",
+          "settings": {
+            "title": "Plant-based formula",
+            "text": "Eight botanicals and nutrients, fully disclosed.",
+            "us": "yes",
+            "us_note": "",
+            "them": "no",
+            "them_note": "Varies"
+          }
+        },
+        "b6": {
+          "type": "row",
+          "settings": {
+            "title": "Third-party lab tested",
+            "text": "Made in GMP and HACCP certified facilities.",
+            "us": "yes",
+            "us_note": "",
+            "them": "no",
+            "them_note": "Varies"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ]
+    },
+    "loved": {
+      "type": "yn-ugc-wall",
+      "settings": {
+        "heading": "Loved by",
+        "accent": "Singaporeans.",
+        "rating": "4.9",
+        "rating_text": "10,000+ nightly rituals",
+        "button_label": "",
+        "speed": 40,
+        "bg": "white",
+        "pt": "half",
+        "pb": "half"
+      },
+      "blocks": {
+        "b1": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-cust-kath-product.webp",
+            "alt": "Kath with YUNA",
+            "quote": "“My new nightly ritual.”",
+            "name": "Kath",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "1"
+          }
+        },
+        "b2": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-ugc-carmen.webp",
+            "alt": "Carmen with YUNA",
+            "quote": "“I toss around less at night.”",
+            "name": "Carmen",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "1"
+          }
+        },
+        "b3": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-cust-chloe-after.webp",
+            "alt": "Chloe with YUNA",
+            "quote": "“My skin looks more rested.”",
+            "name": "Chloe",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "1"
+          }
+        },
+        "b4": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-ugc-taedra.webp",
+            "alt": "Taedra with YUNA",
+            "quote": "“Part of my wind-down routine.”",
+            "name": "Taedra",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "1"
+          }
+        },
+        "b5": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-cust-keisha-product.webp",
+            "alt": "Keisha with YUNA",
+            "quote": "“Mornings feel easier.”",
+            "name": "Keisha",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "1"
+          }
+        },
+        "b6": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-ugc-jiahui.webp",
+            "alt": "Jia Hui with YUNA",
+            "quote": "“My sleep score went from 76 to 93.”",
+            "name": "Jia Hui",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "2"
+          }
+        },
+        "b7": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-cust-liza-product.webp",
+            "alt": "Liza with YUNA",
+            "quote": "“Two capsules before bed.”",
+            "name": "Liza",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "2"
+          }
+        },
+        "b8": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-cust-melina-product.webp",
+            "alt": "Melina with YUNA",
+            "quote": "“Waking up refreshed.”",
+            "name": "Melina",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "2"
+          }
+        },
+        "b9": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-cust-jaslyn-after.webp",
+            "alt": "Jaslyn with YUNA",
+            "quote": "“I fall asleep more easily.”",
+            "name": "Jaslyn",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "2"
+          }
+        },
+        "b10": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-cust-patricia-product.webp",
+            "alt": "Patricia with YUNA",
+            "quote": "“My skin looks rested.”",
+            "name": "Patricia",
+            "verified": true,
+            "link": "/pages/happy-customers",
+            "row": "2"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10"
+      ]
+    },
+    "reels": {
+      "type": "yn-reels",
+      "settings": {
+        "heading": "Why women are",
+        "accent": "making it their ritual.",
+        "text": "Busy women in Singapore, in their own words.",
+        "rating": "4.9",
+        "rating_text": "10,000+ nightly rituals",
+        "verified_label": "Verified customer",
+        "speed": 28,
+        "bg": "white",
+        "pt": "half",
+        "pb": "half"
+      },
+      "blocks": {
+        "b1": {
+          "type": "video",
+          "settings": {
+            "video_fallback": "yn-ugc-april.mp4",
+            "fallback": "yn-ugc-april.jpg",
+            "quote": "“Falling asleep is so much easier now.”",
+            "name": "April"
+          }
+        },
+        "b2": {
+          "type": "video",
+          "settings": {
+            "video_fallback": "yn-ugc-claryl.mp4",
+            "fallback": "yn-ugc-claryl.jpg",
+            "quote": "“My skin looks fresher in the mornings.”",
+            "name": "Claryl"
+          }
+        },
+        "b3": {
+          "type": "video",
+          "settings": {
+            "video_fallback": "yn-ugc-rayne.mp4",
+            "fallback": "yn-ugc-rayne.jpg",
+            "quote": "“Finally, a sleep aid without melatonin.”",
+            "name": "Rayne"
+          }
+        },
+        "b4": {
+          "type": "video",
+          "settings": {
+            "video_fallback": "yn-ugc-reel4.mp4",
+            "fallback": "yn-ugc-reel4.jpg",
+            "quote": "“Part of my night routine, every single night.”",
+            "name": "Shu Ying"
+          }
+        },
+        "b5": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-ugc-carmen.webp",
+            "alt": "Carmen with her jar of YUNA",
+            "quote": "“I wake up feeling properly rested.”",
+            "name": "Carmen"
+          }
+        },
+        "b6": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-ugc-taedra.webp",
+            "alt": "Taedra with her jar of YUNA",
+            "quote": "“Love that it’s made for women like me.”",
+            "name": "Taedra"
+          }
+        },
+        "b7": {
+          "type": "photo",
+          "settings": {
+            "fallback": "yn-ugc-jiahui.webp",
+            "alt": "Jia Hui with her jar of YUNA",
+            "quote": "“My sleep score went from 76 to 93.”",
+            "name": "Jia Hui"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7"
+      ]
+    },
+    "reviews": {
+      "type": "yn-reviews",
+      "settings": {
+        "heading": "Happy",
+        "accent": "Customers.",
+        "text": "",
+        "anchor": "reviews",
+        "max_width": 1000,
+        "bg": "white",
+        "pt": "half",
+        "pb": "half"
+      },
+      "blocks": {
+        "judgeme": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judgeme"
+      ]
+    },
+    "faq": {
+      "type": "yn-faq",
+      "settings": {
+        "heading": "Frequently asked",
+        "accent": "questions.",
+        "text": "<p>Can’t find your answer? <a href=\"/pages/contact\">Contact us</a>.</p>",
+        "anchor": "faq",
+        "schema_markup": true,
+        "bg": "white",
+        "pt": "half",
+        "pb": "full"
+      },
+      "blocks": {
+        "b1": {
+          "type": "question",
+          "settings": {
+            "question": "What is Daily Beauty Sleep™?",
+            "answer": "<p>A beauty sleep supplement made for women who don’t get enough sleep. Two capsules a night combine Imperial Lingzhi™ with seven botanicals and probiotics, to support deeper rest and help you wake up with a natural glow.</p>"
+          }
+        },
+        "b2": {
+          "type": "question",
+          "settings": {
+            "question": "How does beauty sleep work?",
+            "answer": "<p>Beauty sleep is your body’s natural overnight recovery. While you rest, your body does its quiet repair and renewal work. Daily Beauty Sleep™ supports it with 8 ingredients for restful sleep, relaxation, antioxidant support and gut health.</p>"
+          }
+        },
+        "b3": {
+          "type": "question",
+          "settings": {
+            "question": "How is it different from other sleep supplements?",
+            "answer": "<p>Most sleep aids focus only on helping you fall asleep. Daily Beauty Sleep™ is a supplement for sleep and skin together, with 400 mg of Imperial Lingzhi™ and probiotics for the gut-skin connection.</p>"
+          }
+        },
+        "b4": {
+          "type": "question",
+          "settings": {
+            "question": "How do I take it?",
+            "answer": "<p>Take 2 capsules daily, 30–60 minutes before bed. Make it part of your evening routine, like your skincare.</p>"
+          }
+        },
+        "b5": {
+          "type": "question",
+          "settings": {
+            "question": "When will I notice a difference?",
+            "answer": "<p>Everyone is different. Many women take Yuna every night for at least a month, as sleep and skin both respond best to a consistent ritual.</p>"
+          }
+        },
+        "b6": {
+          "type": "question",
+          "settings": {
+            "question": "How is it different from melatonin for sleep?",
+            "answer": "<p>Melatonin is a hormone, and many sleep aids sold in Singapore rely on it. Daily Beauty Sleep™ is a melatonin-free sleep aid. It uses herbs such as Imperial Lingzhi™, jujube seed and L-theanine to help you relax into sleep, and supports your skin while you rest.</p>"
+          }
+        },
+        "b7": {
+          "type": "question",
+          "settings": {
+            "question": "Is it safe? Does lingzhi have side effects?",
+            "answer": "<p>Lingzhi has a long history of traditional use. Our lingzhi supplement is plant-based and third-party lab tested, in a GMP and HACCP certified facility. As with any supplement, if you are pregnant, breastfeeding, taking medication or have a medical condition, please check with your doctor first.</p>"
+          }
+        },
+        "b8": {
+          "type": "question",
+          "settings": {
+            "question": "Where is it made?",
+            "answer": "<p>Daily Beauty Sleep™ is manufactured in Henan, China and distributed by Imperial Laboratories Pte Ltd in Singapore. Our Imperial Lingzhi™ is sourced from the Wuyi Mountains.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "results",
+    "timeline",
+    "ingredients",
+    "comparison",
+    "loved",
+    "reels",
+    "reviews",
+    "faq"
+  ]
+}

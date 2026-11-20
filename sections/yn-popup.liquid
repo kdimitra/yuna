@@ -1,0 +1,50 @@
+{%- if section.settings.enable -%}
+<div class="yn yn-pop" id="YnPopup-{{ section.id }}" role="dialog" aria-modal="true" aria-labelledby="YnPopTitle-{{ section.id }}" hidden data-yn-popup data-delay="{{ section.settings.delay }}" data-key="yn_pop_{{ section.settings.version }}"{% if request.design_mode and section.settings.preview %} data-preview{% endif %}>
+  <div class="yn-pop__box">
+    <button class="yn-iconbtn yn-pop__x" type="button" aria-label="Close" data-yn-pop-close>{% render 'yn-icon', name: 'close' %}</button>
+    <div class="yn-pop__im">
+      {% render 'yn-img', image: section.settings.image, fallback: section.settings.image_fallback, alt: '', sizes: '360px', widths: '360, 720' %}
+      {%- if section.settings.image_label != blank -%}<span>{{ section.settings.image_label }}</span>{%- endif -%}
+    </div>
+    <div class="yn-pop__bd">
+      <p class="yn-pop__a">{{ section.settings.kicker }}</p>
+      <p class="yn-pop__b" id="YnPopTitle-{{ section.id }}">{{ section.settings.title }}</p>
+      <p class="yn-pop__c">{{ section.settings.subtitle }}</p>
+      {%- form 'customer', class: 'yn-pop__form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter,popup">
+        {%- if form.posted_successfully? -%}
+          <p class="yn-form-ok" role="status">{{ section.settings.success }}</p>
+        {%- else -%}
+          <input class="yn-input" type="email" name="contact[email]" required autocomplete="email" placeholder="{{ section.settings.placeholder }}" aria-label="{{ section.settings.placeholder }}">
+          <button class="yn-btn yn-btn--solid" type="submit">{{ section.settings.button }}</button>
+          {%- if form.errors -%}<p class="yn-form-err" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>{%- endif -%}
+        {%- endif -%}
+      {%- endform -%}
+      {%- if section.settings.consent != blank -%}<p class="yn-pop__d">{{ section.settings.consent }}</p>{%- endif -%}
+    </div>
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "YUNA sign-up pop-up",
+  "settings": [
+    { "type": "checkbox", "id": "enable", "label": "Show pop-up", "default": false, "info": "Make sure the offer (e.g. a 10% welcome discount) exists in Shopify before switching this on." },
+    { "type": "checkbox", "id": "preview", "label": "Always show in the theme editor", "default": true },
+    { "type": "range", "id": "delay", "label": "Delay", "min": 0, "max": 30, "step": 1, "unit": "s", "default": 10 },
+    { "type": "text", "id": "version", "label": "Campaign ID", "default": "1", "info": "Change it to show the pop-up again to visitors who already closed it." },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "image_fallback", "label": "Default image file (theme asset)", "default": "yn-pdp-lux-ritual.webp" },
+    { "type": "text", "id": "image_label", "label": "Image label", "default": "10% off" },
+    { "type": "text", "id": "kicker", "label": "Small title", "default": "You’ve got" },
+    { "type": "text", "id": "title", "label": "Large title", "default": "10% off" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Your first order offer" },
+    { "type": "text", "id": "placeholder", "label": "Email placeholder", "default": "Email address" },
+    { "type": "text", "id": "button", "label": "Button label", "default": "Continue" },
+    { "type": "text", "id": "success", "label": "Success message", "default": "Thank you! Your 10% off code is on its way to your inbox." },
+    { "type": "text", "id": "consent", "label": "Consent text", "default": "By submitting my email, I consent to receive marketing emails from YUNA." }
+  ],
+  "presets": [{ "name": "YUNA sign-up pop-up" }]
+}
+{% endschema %}
