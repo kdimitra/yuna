@@ -44,6 +44,8 @@
       {%- if section.settings.show_account and shop.customer_accounts_enabled -%}
         <a class="yn-iconbtn yn-hide-m" href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" aria-label="{% if customer %}Account{% else %}Log in{% endif %}">{% render 'yn-icon', name: 'user' %}</a>
       {%- endif -%}
+      {%- comment -%} The legacy cart drawer script reads a data attribute from a form inside .header__icons; without it the drawer fails to start. {%- endcomment -%}
+      <form class="yn-legacy-hook" data-modal="" hidden aria-hidden="true"></form>
       <a href="{{ routes.cart_url }}" class="yn-iconbtn yn-hdr__cart" id="cart-icon-bubble" data-yn-cart-link>
         {%- render 'yn-cart-icon' -%}
       </a>

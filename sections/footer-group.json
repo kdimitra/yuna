@@ -34,7 +34,8 @@
         "mission": "<p>We’re on a mission to help 1,000,000 women restore beauty sleep and wake up refreshed.</p>",
         "badges_fallback": "yn-certs-navy.png",
         "copyright": "© 2026 YUNA Sleep. All rights reserved.",
-        "show_payment": false
+        "show_payment": false,
+        "badges_light": true
       },
       "blocks": {
         "b1": {
@@ -55,7 +56,8 @@
           "type": "social",
           "settings": {
             "heading": "Follow us",
-            "note": ""
+            "note": "",
+            "instagram": "https://www.instagram.com/yunasleepclub/"
           }
         }
       },

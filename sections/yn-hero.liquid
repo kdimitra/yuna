@@ -1,17 +1,63 @@
 {%- liquid
   assign slides = section.blocks | where: 'type', 'slide'
   assign feats = section.blocks | where: 'type', 'feature'
+  assign first = slides | first
   assign rp = section.settings.rating_product
   assign rating_value = section.settings.rating_value
   if section.settings.use_product_rating and rp.metafields.reviews.rating.value != blank
     assign rating_value = rp.metafields.reviews.rating.value.rating | round: 1
   endif
+  assign hid = 'YnHero-' | append: section.id
 -%}
-<section class="yn yn-hero" data-yn-hero data-interval="{{ section.settings.interval }}"
-  style="--hero-h:{{ section.settings.height_d }}px;--hero-h-m:{{ section.settings.height_m }}px;--hero-fg:{{ section.settings.fg_d }};--hero-fg-m:{{ section.settings.fg_m }};--hero-ov-d:{{ section.settings.overlay_d | divided_by: 100.0 }};--hero-ov-m:{{ section.settings.overlay_m | divided_by: 100.0 }};--hero-ov-c:{{ section.settings.overlay_color }};--hero-copy-w:{{ section.settings.copy_width }}px">
-  <div class="yn-hero__media" aria-hidden="{% if slides.size > 1 %}false{% else %}true{% endif %}">
+
+{%- comment -%}
+  Every slide carries its own colour scheme. The section gets data-slide="N" and the
+  matching variables below switch the text, button, rating pill, feature items, overlay and dots.
+{%- endcomment -%}
+{%- style -%}
+  {%- for s in slides -%}
+    {%- liquid
+      assign st = s.settings
+      assign ov_d = st.overlay_d | divided_by: 100.0
+      assign ov_m = st.overlay_m | divided_by: 100.0
+      assign a_rate_bg = st.rate_bg_opacity | divided_by: 100.0
+      assign rate_bg = st.rate_bg | color_modify: 'alpha', a_rate_bg
+      assign a_rate_bd = st.rate_border_opacity | divided_by: 100.0
+      assign rate_bd = st.rate_border | color_modify: 'alpha', a_rate_bd
+      assign a_feat_bg = st.feat_box_opacity | divided_by: 100.0
+      assign feat_bg = st.feat_box_bg | color_modify: 'alpha', a_feat_bg
+      assign a_feat_line = st.feat_line_opacity | divided_by: 100.0
+      assign feat_line = st.feat_line | color_modify: 'alpha', a_feat_line
+      assign a_ic_bd = st.feat_icon_border_opacity | divided_by: 100.0
+      assign ic_bd = st.feat_icon_border | color_modify: 'alpha', a_ic_bd
+      assign a_ic_bg = st.feat_icon_bg_opacity | divided_by: 100.0
+      assign ic_bg = st.feat_icon_bg | color_modify: 'alpha', a_ic_bg
+      assign m_rate_bg = st.m_title | color_modify: 'alpha', 0.16
+      assign m_rate_bd = st.m_title | color_modify: 'alpha', 0.4
+      assign m_line = st.m_title | color_modify: 'alpha', 0.3
+      assign m_ic_bd = st.m_title | color_modify: 'alpha', 0.55
+    -%}
+    #{{ hid }}[data-slide="{{ forloop.index0 }}"]{
+      --h-title:{{ st.title_color }};--h-accent:{{ st.accent_color }};--h-lead:{{ st.lead_color }};--h-note:{{ st.note_color }};
+      --h-award:{{ st.award_color }};--h-ld:{% if st.laurel == 'light' %}none{% else %}block{% endif %};--h-ll:{% if st.laurel == 'light' %}block{% else %}none{% endif %};
+      --h-rate-bg:{{ rate_bg }};--h-rate-bd:{{ rate_bd }};--h-rate-fg:{{ st.rate_text }};--h-star:{{ st.star_color }};--h-rate-div:{{ st.rate_text | color_modify: 'alpha', 0.3 }};
+      --h-btn-bg:{{ st.btn_bg }};--h-btn-fg:{{ st.btn_text }};--h-btn-bd:{{ st.btn_border }};--h-btn-hbg:{{ st.btn_hover_bg }};--h-btn-hfg:{{ st.btn_hover_text }};
+      --h-ft:{{ st.feat_title }};--h-fx:{{ st.feat_text }};--h-fic:{{ st.feat_icon }};--h-fic-bd:{{ ic_bd }};--h-fic-bg:{{ ic_bg }};--h-fbox:{{ feat_bg }};--h-fline:{{ feat_line }};
+      --h-dot:{{ st.dot_color | color_modify: 'alpha', 0.3 }};--h-dot-on:{{ st.dot_color }};
+      --h-ov:{{ st.overlay_color }};--h-ov-d:{{ ov_d }};--h-ov-m:{{ ov_m }};
+      --h-m-title:{{ st.m_title }};--h-m-accent:{{ st.m_accent }};--h-m-lead:{{ st.m_lead }};--h-m-btn-bg:{{ st.m_btn_bg }};--h-m-btn-fg:{{ st.m_btn_text }};
+      --h-m-rate-bg:{{ m_rate_bg }};--h-m-rate-bd:{{ m_rate_bd }};--h-m-line:{{ m_line }};--h-m-ic-bd:{{ m_ic_bd }};
+    }
+  {%- endfor -%}
+{%- endstyle -%}
+
+<section class="yn yn-hero" id="{{ hid }}" data-yn-hero data-interval="{{ section.settings.interval }}"
+  data-slide="0" data-feats="{{ first.settings.feat_style | default: 'card' }}"
+  style="--hero-h:{{ section.settings.height_d }}px;--hero-h-m:{{ section.settings.height_m }}px;--hero-copy-w:{{ section.settings.copy_width }}px">
+  <div class="yn-hero__media">
     {%- for block in slides -%}
-      <picture class="yn-hero__slide{% if forloop.first %} is-on{% endif %}" {{ block.shopify_attributes }} style="--fp-m:{{ block.settings.focal_m }};--fp-d:{{ block.settings.focal_d }}">
+      <picture class="yn-hero__slide yn-hero__slide--ov-{{ block.settings.overlay_style }}{% if forloop.first %} is-on{% endif %}" {{ block.shopify_attributes }}
+        data-feats="{{ block.settings.feat_style }}" style="--fp-m:{{ block.settings.focal_m }};--fp-d:{{ block.settings.focal_d }};--zoom-m:{{ block.settings.zoom_m | divided_by: 100.0 }}">
         {%- if block.settings.image_m != blank -%}
           <source media="(max-width: 900px)" srcset="{{ block.settings.image_m | image_url: width: 800 }} 800w, {{ block.settings.image_m | image_url: width: 1200 }} 1200w, {{ block.settings.image_m | image_url: width: 1600 }} 1600w" sizes="100vw">
         {%- elsif block.settings.fallback_m != blank -%}
@@ -27,7 +73,7 @@
   </div>
   {%- if slides.size > 1 and section.settings.show_dots -%}
     <div class="yn-hero__dots" role="tablist" aria-label="Hero slides">
-      {%- for block in slides -%}<button type="button" role="tab" class="{% if forloop.first %}is-on{% endif %}" aria-label="{{ block.settings.alt | default: 'Slide' | escape }} ({{ forloop.index }})" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-yn-dot="{{ forloop.index0 }}"></button>{%- endfor -%}
+      {%- for block in slides -%}<button type="button" role="tab" class="{% if forloop.first %}is-on{% endif %}" aria-label="{{ block.settings.name | default: block.settings.alt | default: 'Slide' | escape }} ({{ forloop.index }})" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-yn-dot="{{ forloop.index0 }}"></button>{%- endfor -%}
     </div>
   {%- endif -%}
 
@@ -35,9 +81,11 @@
     <div class="yn-hero__copy yn-rv">
       {%- if section.settings.show_award -%}
         <div class="yn-award yn-award--hero yn-hide-m">
-          <img src="{{ 'yn-laurel-l.png' | asset_url }}" alt="" width="18" height="44">
+          <img class="yn-laurel yn-laurel--d" src="{{ 'yn-laurel-l.png' | asset_url }}" alt="" width="18" height="44">
+          <img class="yn-laurel yn-laurel--l" src="{{ 'yn-laurel-l-light.png' | asset_url }}" alt="" width="18" height="44">
           <span>{{ section.settings.award_l1 }}<br>{{ section.settings.award_l2 }}</span>
-          <img src="{{ 'yn-laurel-r.png' | asset_url }}" alt="" width="18" height="44">
+          <img class="yn-laurel yn-laurel--d" src="{{ 'yn-laurel-r.png' | asset_url }}" alt="" width="18" height="44">
+          <img class="yn-laurel yn-laurel--l" src="{{ 'yn-laurel-r-light.png' | asset_url }}" alt="" width="18" height="44">
         </div>
       {%- endif -%}
       {%- if section.settings.show_rating -%}
@@ -76,15 +124,10 @@
     { "type": "header", "content": "Layout" },
     { "type": "range", "id": "height_d", "label": "Height, desktop", "min": 420, "max": 960, "step": 10, "unit": "px", "default": 700 },
     { "type": "range", "id": "height_m", "label": "Height, mobile", "min": 420, "max": 900, "step": 10, "unit": "px", "default": 680 },
-    { "type": "range", "id": "copy_width", "label": "Text column width, desktop", "min": 420, "max": 820, "step": 10, "unit": "px", "default": 700 },
+    { "type": "range", "id": "copy_width", "label": "Text column width, desktop", "min": 420, "max": 880, "step": 10, "unit": "px", "default": 760 },
     { "type": "range", "id": "interval", "label": "Seconds per slide", "min": 2, "max": 12, "step": 1, "unit": "s", "default": 4 },
     { "type": "checkbox", "id": "show_dots", "label": "Show slide dots", "default": true },
-    { "type": "header", "content": "Colours" },
-    { "type": "color", "id": "fg_d", "label": "Text, desktop", "default": "#161B30" },
-    { "type": "color", "id": "fg_m", "label": "Text, mobile", "default": "#FFFFFF" },
-    { "type": "color", "id": "overlay_color", "label": "Overlay colour", "default": "#161B30" },
-    { "type": "range", "id": "overlay_d", "label": "Overlay strength, desktop", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 0 },
-    { "type": "range", "id": "overlay_m", "label": "Overlay strength, mobile", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 45 },
+    { "type": "paragraph", "content": "Colours are set per slide: open a Slide block to change its text, button, rating, feature and overlay colours." },
     { "type": "header", "content": "Award badge" },
     { "type": "checkbox", "id": "show_award", "label": "Show award badge (desktop)", "default": true },
     { "type": "text", "id": "award_l1", "label": "Line 1", "default": "Award-winning" },
@@ -110,13 +153,69 @@
       "name": "Slide",
       "limit": 4,
       "settings": [
-        { "type": "image_picker", "id": "image_d", "label": "Desktop image", "info": "Wide image, about 2880 × 1234 px. Keep the left side calm for the text." },
+        { "type": "text", "id": "name", "label": "Slide name (for the dots)", "default": "Morning" },
+        { "type": "header", "content": "Images" },
+        { "type": "image_picker", "id": "image_d", "label": "Desktop image", "info": "Wide image, about 2880 × 1234 px. Keep the text side calm." },
         { "type": "text", "id": "fallback_d", "label": "Default desktop image file (theme asset)" },
+        { "type": "text", "id": "focal_d", "label": "Desktop focal point", "default": "center center", "info": "CSS position, e.g. 80% 50%" },
         { "type": "image_picker", "id": "image_m", "label": "Mobile image", "info": "Portrait image, about 1520 × 2688 px." },
         { "type": "text", "id": "fallback_m", "label": "Default mobile image file (theme asset)" },
+        { "type": "text", "id": "focal_m", "label": "Mobile focal point", "default": "center center" },
+        { "type": "range", "id": "zoom_m", "label": "Mobile image zoom", "min": 100, "max": 160, "step": 5, "unit": "%", "default": 100 },
         { "type": "text", "id": "alt", "label": "Image description (alt text)" },
-        { "type": "text", "id": "focal_d", "label": "Desktop focal point", "default": "center center", "info": "CSS position, e.g. 70% center" },
-        { "type": "text", "id": "focal_m", "label": "Mobile focal point", "default": "center center" }
+
+        { "type": "header", "content": "Overlay" },
+        { "type": "select", "id": "overlay_style", "label": "Desktop overlay", "options": [
+          { "value": "none", "label": "None" }, { "value": "left", "label": "Fade from the text side" }, { "value": "full", "label": "Full" }
+        ], "default": "none" },
+        { "type": "color", "id": "overlay_color", "label": "Overlay colour", "default": "#0C1020" },
+        { "type": "range", "id": "overlay_d", "label": "Overlay strength, desktop", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 0 },
+        { "type": "range", "id": "overlay_m", "label": "Overlay strength, mobile", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 45 },
+
+        { "type": "header", "content": "Text colours (desktop)" },
+        { "type": "color", "id": "title_color", "label": "Heading line 1", "default": "#161B30" },
+        { "type": "color", "id": "accent_color", "label": "Heading line 2", "default": "#161B30" },
+        { "type": "color", "id": "lead_color", "label": "Description", "default": "#4F5263" },
+        { "type": "color", "id": "note_color", "label": "Note under button", "default": "#4F5263" },
+        { "type": "color", "id": "award_color", "label": "Award text", "default": "#161B30" },
+        { "type": "select", "id": "laurel", "label": "Award laurels", "options": [{ "value": "dark", "label": "Dark (for light photos)" }, { "value": "light", "label": "Light (for dark photos)" }], "default": "dark" },
+
+        { "type": "header", "content": "Rating pill" },
+        { "type": "color", "id": "rate_bg", "label": "Background", "default": "#FFFFFF" },
+        { "type": "range", "id": "rate_bg_opacity", "label": "Background opacity", "min": 0, "max": 100, "step": 2, "unit": "%", "default": 50 },
+        { "type": "color", "id": "rate_border", "label": "Border", "default": "#FFFFFF" },
+        { "type": "range", "id": "rate_border_opacity", "label": "Border opacity", "min": 0, "max": 100, "step": 2, "unit": "%", "default": 56 },
+        { "type": "color", "id": "rate_text", "label": "Text", "default": "#161B30" },
+        { "type": "color", "id": "star_color", "label": "Stars", "default": "#F2B33D" },
+
+        { "type": "header", "content": "Button" },
+        { "type": "color", "id": "btn_bg", "label": "Background", "default": "#161B30" },
+        { "type": "color", "id": "btn_text", "label": "Text", "default": "#FFFDFB" },
+        { "type": "color", "id": "btn_border", "label": "Border", "default": "#161B30" },
+        { "type": "color", "id": "btn_hover_bg", "label": "Hover background", "default": "#0D1020" },
+        { "type": "color", "id": "btn_hover_text", "label": "Hover text", "default": "#FFFFFF" },
+
+        { "type": "header", "content": "Feature items" },
+        { "type": "select", "id": "feat_style", "label": "Style", "options": [{ "value": "card", "label": "Frosted card" }, { "value": "line", "label": "Open, with a divider line" }], "default": "card" },
+        { "type": "color", "id": "feat_title", "label": "Title", "default": "#161B30" },
+        { "type": "color", "id": "feat_text", "label": "Text", "default": "#4F5263" },
+        { "type": "color", "id": "feat_icon", "label": "Icon", "default": "#161B30" },
+        { "type": "color", "id": "feat_icon_border", "label": "Icon circle border", "default": "#161B30" },
+        { "type": "range", "id": "feat_icon_border_opacity", "label": "Icon circle border opacity", "min": 0, "max": 100, "step": 2, "unit": "%", "default": 22 },
+        { "type": "color", "id": "feat_icon_bg", "label": "Icon circle fill", "default": "#FFFFFF" },
+        { "type": "range", "id": "feat_icon_bg_opacity", "label": "Icon circle fill opacity", "min": 0, "max": 100, "step": 2, "unit": "%", "default": 70 },
+        { "type": "color", "id": "feat_box_bg", "label": "Card background", "default": "#FFFDFB" },
+        { "type": "range", "id": "feat_box_opacity", "label": "Card background opacity", "min": 0, "max": 100, "step": 2, "unit": "%", "default": 72 },
+        { "type": "color", "id": "feat_line", "label": "Divider line", "default": "#FFFFFF" },
+        { "type": "range", "id": "feat_line_opacity", "label": "Divider line opacity", "min": 0, "max": 100, "step": 2, "unit": "%", "default": 18 },
+        { "type": "color", "id": "dot_color", "label": "Slide dots", "default": "#161B30" },
+
+        { "type": "header", "content": "Mobile colours" },
+        { "type": "color", "id": "m_title", "label": "Heading, rating and feature text", "default": "#FFFFFF" },
+        { "type": "color", "id": "m_accent", "label": "Heading line 2", "default": "#E9DCC8" },
+        { "type": "color", "id": "m_lead", "label": "Description and note", "default": "#E8E9ED" },
+        { "type": "color", "id": "m_btn_bg", "label": "Button background", "default": "#FFFFFF" },
+        { "type": "color", "id": "m_btn_text", "label": "Button text", "default": "#161B30" }
       ]
     },
     {

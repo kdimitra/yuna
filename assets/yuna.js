@@ -43,6 +43,9 @@
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 }) : null;
   function initReveal(root) {
     $$('.yn-rv', root).forEach(function (el) {
+      // stagger cards that share a parent (0, 90, 180, 270ms...)
+      var sib = el.parentElement ? $$(':scope > .yn-rv', el.parentElement) : [];
+      if (sib.length > 1) el.style.setProperty('--yn-d', (sib.indexOf(el) % 4) * 90 + 'ms');
       if (!revealIO || !html.classList.contains('yn-anim')) { el.classList.add('is-in'); return; }
       revealIO.observe(el);
     });
@@ -113,6 +116,7 @@
       function go(n) {
         i = (n + slides.length) % slides.length;
         slides.forEach(function (s, k) { s.classList.toggle('is-on', k === i); });
+        h.setAttribute('data-slide', i); h.setAttribute('data-feats', slides[i].dataset.feats || 'card');
         dots.forEach(function (d, k) { d.classList.toggle('is-on', k === i); d.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
       }
       function play() { clearInterval(t); if (!reduce && !Y.designMode) t = setInterval(function () { go(i + 1); }, ms); }

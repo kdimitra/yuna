@@ -1,3 +1,4 @@
+{%- assign badges_class = 'yn-ftr__badges' -%}{%- if section.settings.badges_light -%}{%- assign badges_class = 'yn-ftr__badges yn-ftr__badges--light' -%}{%- endif -%}
 <footer class="yn yn-ftr" style="--ftr-bg:{{ section.settings.bg }}">
   <div class="yn-wrap">
     <div class="yn-ftr__grid">
@@ -11,7 +12,7 @@
         </a>
         {%- if section.settings.mission != blank -%}<div class="yn-ftr__mission">{{ section.settings.mission }}</div>{%- endif -%}
         {%- if section.settings.badges != blank or section.settings.badges_fallback != blank -%}
-          {% render 'yn-img', image: section.settings.badges, fallback: section.settings.badges_fallback, alt: section.settings.badges_alt, class: 'yn-ftr__badges', sizes: '260px', widths: '260, 520' %}
+          {% render 'yn-img', image: section.settings.badges, fallback: section.settings.badges_fallback, alt: section.settings.badges_alt, class: badges_class, sizes: '260px', widths: '260, 520' %}
         {%- endif -%}
       </div>
 
@@ -32,11 +33,17 @@
           {%- when 'social' -%}
             <div class="yn-ftr__col" {{ block.shopify_attributes }}>
               {%- if block.settings.heading != blank -%}<h2 class="yn-ftr__h">{{ block.settings.heading }}</h2>{%- endif -%}
+              {%- liquid
+                assign ig = block.settings.instagram | default: settings.social_instagram_link
+                assign fb = block.settings.facebook | default: settings.social_facebook_link
+                assign tt = block.settings.tiktok | default: settings.social_tiktok_link
+                assign yt = block.settings.youtube | default: settings.social_youtube_link
+              -%}
               <div class="yn-ftr__social">
-                {%- if settings.social_instagram_link != blank -%}<a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener" aria-label="Instagram">{% render 'yn-icon', name: 'instagram' %}</a>{%- endif -%}
-                {%- if settings.social_facebook_link != blank -%}<a href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener" aria-label="Facebook">{% render 'yn-icon', name: 'facebook' %}</a>{%- endif -%}
-                {%- if settings.social_tiktok_link != blank -%}<a href="{{ settings.social_tiktok_link }}" target="_blank" rel="noopener" aria-label="TikTok">{% render 'yn-icon', name: 'tiktok' %}</a>{%- endif -%}
-                {%- if settings.social_youtube_link != blank -%}<a href="{{ settings.social_youtube_link }}" target="_blank" rel="noopener" aria-label="YouTube">{% render 'yn-icon', name: 'youtube' %}</a>{%- endif -%}
+                {%- if ig != blank -%}<a href="{{ ig }}" target="_blank" rel="noopener" aria-label="Instagram">{% render 'yn-icon', name: 'instagram' %}</a>{%- endif -%}
+                {%- if fb != blank -%}<a href="{{ fb }}" target="_blank" rel="noopener" aria-label="Facebook">{% render 'yn-icon', name: 'facebook' %}</a>{%- endif -%}
+                {%- if tt != blank -%}<a href="{{ tt }}" target="_blank" rel="noopener" aria-label="TikTok">{% render 'yn-icon', name: 'tiktok' %}</a>{%- endif -%}
+                {%- if yt != blank -%}<a href="{{ yt }}" target="_blank" rel="noopener" aria-label="YouTube">{% render 'yn-icon', name: 'youtube' %}</a>{%- endif -%}
               </div>
               {%- if block.settings.note != blank -%}<p class="yn-ftr__note">{{ block.settings.note }}</p>{%- endif -%}
             </div>
@@ -66,6 +73,7 @@
     { "type": "richtext", "id": "mission", "label": "Mission text", "default": "<p>We’re on a mission to help 1,000,000 women restore beauty sleep and wake up refreshed.</p>" },
     { "type": "image_picker", "id": "badges", "label": "Certification badges image", "info": "For example ISO 9001 / GMP / lab tested / vegan badges." },
     { "type": "text", "id": "badges_fallback", "label": "Default badges file (theme asset)", "default": "yn-certs-navy.png", "info": "Clear to hide the badges." },
+    { "type": "checkbox", "id": "badges_light", "label": "Show badges in a light colour", "default": true, "info": "Turns dark badge artwork light so it reads on the dark footer." },
     { "type": "text", "id": "badges_alt", "label": "Badges description", "default": "ISO 9001, GMP certified, third-party lab tested, vegan friendly" },
     { "type": "text", "id": "copyright", "label": "Copyright text", "default": "© 2026 YUNA Sleep. All rights reserved." },
     { "type": "checkbox", "id": "show_payment", "label": "Show payment icons", "default": false }
@@ -81,7 +89,11 @@
     ] },
     { "type": "social", "name": "Social icons", "limit": 1, "settings": [
       { "type": "text", "id": "heading", "label": "Heading", "default": "Follow us" },
-      { "type": "paragraph", "content": "Links come from Theme settings > Social media." },
+      { "type": "url", "id": "instagram", "label": "Instagram link" },
+      { "type": "url", "id": "facebook", "label": "Facebook link" },
+      { "type": "url", "id": "tiktok", "label": "TikTok link" },
+      { "type": "url", "id": "youtube", "label": "YouTube link" },
+      { "type": "paragraph", "content": "Empty links fall back to Theme settings > Social media. Icons without a link are hidden." },
       { "type": "text", "id": "note", "label": "Note" }
     ] }
   ],

@@ -43,6 +43,30 @@
     --yn-atc-case:{% if settings.yn_atc_uppercase %}uppercase{% else %}none{% endif %};
   }
 </style>
+{%- comment -%}
+  Local development only (shopify theme dev on 127.0.0.1 / localhost):
+  Shopify's cookie banner checks consent against the store's real domain, which never receives
+  the localhost cookie, so the banner reappears on every reload even after Accept/Decline.
+  On localhost we remember that a choice was made and hide the banner afterwards.
+  This code does nothing on the real storefront domain.
+{%- endcomment -%}
+<script>
+  (function () {
+    if (!/^(127\.0\.0\.1|localhost)$/.test(location.hostname)) return;
+    var KEY = 'yn_dev_cookie_choice';
+    try {
+      if (localStorage.getItem(KEY)) {
+        var s = document.createElement('style');
+        s.textContent = '#shopify-pc__banner{display:none!important}';
+        document.head.appendChild(s);
+      }
+    } catch (e) {}
+    document.addEventListener('click', function (e) {
+      var t = e.target.closest && e.target.closest('#shopify-pc__banner__btn-accept,#shopify-pc__banner__btn-decline,[id^="shopify-pc__prefs__header-accept"],[id^="shopify-pc__prefs__header-decline"],[id^="shopify-pc__prefs__header-save"]');
+      if (t) { try { localStorage.setItem(KEY, t.id); } catch (err) {} }
+    }, true);
+  })();
+</script>
 {{ 'yuna.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'yuna.js' | asset_url }}" defer="defer"></script>
 <script>

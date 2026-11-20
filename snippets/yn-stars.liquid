@@ -3,9 +3,9 @@
 <span class="yn-stars {{ class }}" role="img" aria-label="{{ _r | round: 1 }} out of 5 stars">
   {%- for i in (1..5) -%}
     {%- assign _half = i | minus: 0.5 -%}
-    {%- if _r >= i -%}<i class="yn-star">{% render 'yn-icon', name: 'star' %}</i>
-    {%- elsif _r >= _half -%}<i class="yn-star yn-star--half">{% render 'yn-icon', name: 'star' %}</i>
-    {%- else -%}<i class="yn-star yn-star--off">{% render 'yn-icon', name: 'star' %}</i>
+    {%- if _r >= i -%}<span class="yn-star">{% render 'yn-icon', name: 'star' %}</span>
+    {%- elsif _r >= _half -%}<span class="yn-star yn-star--half">{% render 'yn-icon', name: 'star' %}</span>
+    {%- else -%}<span class="yn-star yn-star--off">{% render 'yn-icon', name: 'star' %}</span>
     {%- endif -%}
   {%- endfor -%}
 </span>
