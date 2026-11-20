@@ -89,7 +89,8 @@ body.yn-body .main-page-title,body.yn-body .title--primary{font-weight:var(--yn-
 .yn-btn--solid,.yn-btn--solid:visited{background:var(--yn-navy);color:#FFFDFB}
 .yn-btn--solid:hover{background:#0d1020;border-color:#0d1020;color:#fff}
 .yn-btn--outline{background:transparent;color:var(--yn-navy)}
-.yn-btn--outline:hover,.yn-btn--light:hover{background:var(--yn-navy);color:#fff;border-color:var(--yn-navy)}
+.yn-btn--outline:hover{background:var(--yn-navy);color:#fff;border-color:var(--yn-navy)}
+.yn-btn--light:hover{background:transparent;color:#FFFDFB;border-color:#FFFDFB}
 .yn-btn--light{background:#FFFDFB;color:var(--yn-navy);border-color:#FFFDFB}
 .yn-btn--sm{font-size:15px;padding:9px 18px}
 .yn-btn--block{width:100%}
@@ -100,11 +101,12 @@ body.yn-body .main-page-title,body.yn-body .title--primary{font-weight:var(--yn-
 @keyframes yn-spin{to{transform:rotate(360deg)}}
 /* <button class="yn-btn">: the legacy button-overrides.css styles buttons with !important,
    so new-theme buttons restate their look with !important, driven by per-variant variables. */
-.yn-btn--solid{--b-bg:var(--yn-navy);--b-fg:#FFFDFB;--b-bd:var(--yn-navy);--b-hbg:#0d1020;--b-hfg:#fff}
-.yn-btn--light{--b-bg:#FFFDFB;--b-fg:var(--yn-navy);--b-bd:#FFFDFB;--b-hbg:var(--yn-navy);--b-hfg:#fff}
-.yn-btn--outline{--b-bg:transparent;--b-fg:var(--yn-navy);--b-bd:var(--yn-navy);--b-hbg:var(--yn-navy);--b-hfg:#fff}
+.yn-btn--solid{--b-bg:var(--yn-navy);--b-fg:#FFFDFB;--b-bd:var(--yn-navy);--b-hbg:#0d1020;--b-hfg:#fff;--b-hbd:#0d1020}
+.yn-btn--light{--b-bg:#FFFDFB;--b-fg:var(--yn-navy);--b-bd:#FFFDFB;--b-hbg:transparent;--b-hfg:#FFFDFB;--b-hbd:#FFFDFB}
+.yn-btn--outline{--b-bg:transparent;--b-fg:var(--yn-navy);--b-bd:var(--yn-navy);--b-hbg:var(--yn-navy);--b-hfg:#fff;--b-hbd:var(--yn-navy)}
 .yn button.yn-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;background:var(--b-bg)!important;color:var(--b-fg)!important;border:1px solid var(--b-bd)!important;border-radius:var(--yn-r-btn)!important;padding:var(--b-pad,12px 26px)!important;font-family:var(--yn-font-b)!important;font-size:var(--b-fs,18px)!important;font-weight:600!important;line-height:1.25!important;letter-spacing:-.005em!important;text-transform:var(--b-case,none)!important;min-height:0;box-shadow:none!important}
-.yn button.yn-btn:hover{background:var(--b-hbg)!important;color:var(--b-hfg)!important;border-color:var(--b-hbg)!important}
+.yn button.yn-btn{transition:background-color .3s ease,color .3s ease,border-color .3s ease,translate .3s ease!important}
+.yn button.yn-btn:hover{background:var(--b-hbg)!important;color:var(--b-hfg)!important;border-color:var(--b-hbd,var(--b-hbg))!important}
 .yn button.yn-btn[disabled]{opacity:.45!important;cursor:not-allowed!important}
 .yn button.yn-btn--atc{--b-pad:14px 20px;--b-case:var(--yn-atc-case);min-height:53px}
 .yn button.yn-btn.is-loading{color:transparent!important}
