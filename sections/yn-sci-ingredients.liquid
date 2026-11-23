@@ -1,0 +1,124 @@
+{{ 'yn-science.css' | asset_url | stylesheet_tag }}
+{%- assign s = section.settings -%}
+<section class="yn yn-sci yn-sci-i yn-sci-i--{{ s.mobile_layout }}" id="yn-{{ section.id }}"
+  style="{% render 'yn-sci-vars', s: s %}--vis:{{ s.visible }};--rad:{{ s.radius }}px;--i-frame:{{ s.frame_color }};--i-card:{{ s.card_bg }};--i-img:{{ s.image_bg }};--i-line:{{ s.line_color }};--i-dose:{{ s.dose_color }};--i-arrow:{{ s.arrow_border }};--pill-bg:{{ s.pill_bg }};--pill-fg:{{ s.pill_fg }}">
+  <div class="yn-wrap">
+    <div class="yn-sci-i__head yn-rv">
+      <div>
+        {%- if s.heading != blank or s.accent != blank -%}
+          <h2 class="yn-sci__h">{{ s.heading }}{% if s.accent != blank %} <em>{{ s.accent }}</em>{% endif %}</h2>
+        {%- endif -%}
+        {%- if s.text != blank -%}<div class="yn-sci__sub">{{ s.text }}</div>{%- endif -%}
+      </div>
+      {%- if s.show_arrows -%}
+        <div class="yn-sci-i__arrows">
+          <button type="button" class="yn-arrow" aria-label="Previous ingredients" data-yn-prev>{% render 'yn-icon', name: 'arrow-left' %}</button>
+          <button type="button" class="yn-arrow" aria-label="Next ingredients" data-yn-next>{% render 'yn-icon', name: 'arrow-right' %}</button>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="yn-sci-i__frame yn-sci-i__frame--rail yn-rv">
+      <div class="yn-sci-i__rail" data-yn-scroller tabindex="0" aria-label="Ingredients">
+        {%- for block in section.blocks -%}
+          <article class="yn-sci-i__card" {{ block.shopify_attributes }}>
+            <div class="yn-sci-i__im">{% render 'yn-img', image: block.settings.image, fallback: block.settings.fallback, alt: block.settings.name, sizes: '320px', widths: '320, 480, 640' %}</div>
+            <div class="yn-sci-i__bd">
+              {%- if block.settings.name != blank -%}<h3>{{ block.settings.name }}</h3>{%- endif -%}
+              {%- if block.settings.text != blank -%}<p>{{ block.settings.text }}</p>{%- endif -%}
+              {%- if block.settings.pill != blank or block.settings.dose != blank -%}
+                <div class="yn-sci-i__ft">{%- if block.settings.pill != blank -%}<span class="yn-sci-pill">{{ block.settings.pill }}</span>{%- endif -%}<b>{{ block.settings.dose }}</b></div>
+              {%- endif -%}
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <div class="yn-sci-i__frame yn-sci-i__acc">
+      {%- for block in section.blocks -%}
+        <details class="yn-sci-acc">
+          <summary>
+            <span class="yn-sci-acc__th">{% render 'yn-img', image: block.settings.image, fallback: block.settings.fallback, alt: '', sizes: '72px', widths: '72, 144, 216' %}</span>
+            <span class="yn-sci-acc__t"><b>{{ block.settings.name }}</b><small>{% if block.settings.dose != blank %}<strong>{{ block.settings.dose }}</strong>{% endif %}{% if block.settings.dose != blank and block.settings.pill != blank %} · {% endif %}{{ block.settings.pill }}</small></span>
+            <i class="yn-sci-acc__pm" aria-hidden="true"></i>
+          </summary>
+          {%- if block.settings.text != blank -%}<p>{{ block.settings.text }}</p>{%- endif -%}
+        </details>
+      {%- endfor -%}
+    </div>
+
+    {%- if s.button_label != blank -%}
+      <p class="yn-sci-i__cta">{% render 'yn-button', label: s.button_label, link: s.button_link, style: s.button_style %}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Science · Ingredients",
+  "class": "yn-sci-section",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "8 premium ingredients." },
+    { "type": "text", "id": "accent", "label": "Heading accent (second part)", "default": "One nightly ritual." },
+    { "type": "richtext", "id": "text", "label": "Subheading", "default": "<p>From lingzhi and jujube seed to L-theanine and ashwagandha: eight natural ingredients in one herbal sleep aid.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop Daily Beauty Sleep™" },
+    { "type": "url", "id": "button_link", "label": "Button link", "info": "Empty links to the product." },
+    { "type": "select", "id": "button_style", "label": "Button style", "options": [{ "value": "solid", "label": "Solid" }, { "value": "outline", "label": "Outline" }], "default": "solid" },
+    { "type": "header", "content": "Layout" },
+    { "type": "select", "id": "visible", "label": "Cards visible, desktop", "options": [
+      { "value": "4.17", "label": "4 + a peek of the next" },
+      { "value": "4", "label": "4" },
+      { "value": "3.15", "label": "3 + a peek of the next" },
+      { "value": "3", "label": "3" },
+      { "value": "5", "label": "5" }
+    ], "default": "4.17" },
+    { "type": "checkbox", "id": "show_arrows", "label": "Show arrows", "default": true },
+    { "type": "select", "id": "mobile_layout", "label": "Mobile layout", "options": [{ "value": "acc", "label": "Accordion list" }, { "value": "rail", "label": "Swipe slider" }], "default": "acc" },
+    { "type": "range", "id": "radius", "label": "Frame corner radius", "min": 0, "max": 32, "step": 2, "unit": "px", "default": 18 },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" },
+    { "type": "color", "id": "heading_color", "label": "Heading and names", "default": "#161B30" },
+    { "type": "color", "id": "accent_color", "label": "Heading accent", "default": "#161B30" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#575B6A" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#FFFFFF" },
+    { "type": "color", "id": "image_bg", "label": "Image background", "default": "#FFFFFF" },
+    { "type": "color", "id": "frame_color", "label": "Frame and divider lines", "default": "#E8E8EA" },
+    { "type": "color", "id": "line_color", "label": "Line above pill and dose", "default": "#ECE6DD" },
+    { "type": "color", "id": "pill_bg", "label": "Pill background", "default": "#FEF8F1" },
+    { "type": "color", "id": "pill_fg", "label": "Pill text", "default": "#161B30" },
+    { "type": "color", "id": "dose_color", "label": "Dose", "default": "#161B30" },
+    { "type": "color", "id": "arrow_border", "label": "Arrow and plus-button border", "default": "#E6DED3" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "pt", "label": "Space above, desktop", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 36 },
+    { "type": "range", "id": "pb", "label": "Space below, desktop", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 36 },
+    { "type": "range", "id": "pt_m", "label": "Space above, mobile", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 22 },
+    { "type": "range", "id": "pb_m", "label": "Space below, mobile", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 22 }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Cut-out photo on a white or transparent background works best." },
+        { "type": "text", "id": "fallback", "label": "Default image file (theme asset)" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Imperial Lingzhi™" },
+        { "type": "textarea", "id": "text", "label": "Description" },
+        { "type": "text", "id": "pill", "label": "Benefit pill", "default": "Rest & repair" },
+        { "type": "text", "id": "dose", "label": "Dose", "default": "400 mg" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Science · Ingredients",
+    "blocks": [
+      { "type": "ingredient", "settings": { "fallback": "yn-ingt-lingzhi.webp", "name": "Imperial Lingzhi™", "pill": "Rest & repair", "dose": "400 mg" } },
+      { "type": "ingredient", "settings": { "fallback": "yn-ingt-jujube.webp", "name": "Jujube Seed", "pill": "Sleep deeper", "dose": "90 mg" } },
+      { "type": "ingredient", "settings": { "fallback": "yn-ingt-poria.webp", "name": "Fu Ling", "pill": "Calm & de-stress", "dose": "60 mg" } },
+      { "type": "ingredient", "settings": { "fallback": "yn-ingt-ashwagandha.webp", "name": "Ashwagandha", "pill": "Adaptogenic herb", "dose": "70 mg" } },
+      { "type": "ingredient", "settings": { "fallback": "yn-ingt-lily.webp", "name": "Lily Bulb", "pill": "Nourish & rejuvenate", "dose": "50 mg" } }
+    ]
+  }]
+}
+{% endschema %}

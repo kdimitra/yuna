@@ -63,8 +63,8 @@
             "text": "<p>Start your beauty sleep ritual tonight.</p>",
             "button_label": "Shop now",
             "button_link": "",
-            "button_style": "light",
-            "dark": true
+            "button_style": "card",
+            "dark": false
           }
         }
       },

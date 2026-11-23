@@ -44,7 +44,30 @@
 
     <div class="yn-ct__info">
       {%- for block in section.blocks -%}
-        <div class="yn-ct__card yn-rv{% if block.settings.dark %} is-dark{% endif %}" {{ block.shopify_attributes }}>
+        {%- liquid
+          assign cs = block.settings
+          capture cvars
+            if cs.card_bg != blank
+              echo '--c-bg:' | append: cs.card_bg | append: ';--c-bd:' | append: cs.card_bg | append: ';'
+            endif
+            if cs.title_color != blank
+              echo '--c-h:' | append: cs.title_color | append: ';'
+            endif
+            if cs.text_color != blank
+              echo '--c-tx:' | append: cs.text_color | append: ';'
+            endif
+            if cs.btn_bg != blank
+              echo '--cb-bg:' | append: cs.btn_bg | append: ';'
+            endif
+            if cs.btn_fg != blank
+              echo '--cb-fg:' | append: cs.btn_fg | append: ';'
+            endif
+            if cs.btn_hover != blank
+              echo '--cb-hbg:' | append: cs.btn_hover | append: ';'
+            endif
+          endcapture
+        -%}
+        <div class="yn-ct__card yn-rv{% if cs.dark %} is-dark{% endif %}"{% if cvars != blank %} style="{{ cvars | strip }}"{% endif %} {{ block.shopify_attributes }}>
           {%- if block.settings.title != blank -%}<h3>{{ block.settings.title }}</h3>{%- endif -%}
           <div class="yn-rte">{{ block.settings.text }}</div>
           {%- if block.settings.button_label != blank -%}{% render 'yn-button', label: block.settings.button_label, link: block.settings.button_link, style: block.settings.button_style %}{%- endif -%}
@@ -82,8 +105,15 @@
       { "type": "richtext", "id": "text", "label": "Text", "default": "<p><a href=\"mailto:hello@yunasleep.com\">hello@yunasleep.com</a></p>" },
       { "type": "text", "id": "button_label", "label": "Button label" },
       { "type": "url", "id": "button_link", "label": "Button link" },
-      { "type": "select", "id": "button_style", "label": "Button style", "options": [{ "value": "solid", "label": "Solid" }, { "value": "outline", "label": "Outline" }, { "value": "light", "label": "Light" }], "default": "light" },
-      { "type": "checkbox", "id": "dark", "label": "Navy card", "default": false }
+      { "type": "select", "id": "button_style", "label": "Button style", "options": [{ "value": "card", "label": "Navy, rounded corners (design)" }, { "value": "solid", "label": "Solid pill" }, { "value": "outline", "label": "Outline pill" }, { "value": "light", "label": "Light pill (for a navy card)" }], "default": "card" },
+      { "type": "checkbox", "id": "dark", "label": "Navy card", "default": false },
+      { "type": "header", "content": "Card colours", "info": "Leave empty to use the design colours." },
+      { "type": "color", "id": "card_bg", "label": "Card background" },
+      { "type": "color", "id": "title_color", "label": "Title and links" },
+      { "type": "color", "id": "text_color", "label": "Text" },
+      { "type": "color", "id": "btn_bg", "label": "Button background (navy style)" },
+      { "type": "color", "id": "btn_fg", "label": "Button text (navy style)" },
+      { "type": "color", "id": "btn_hover", "label": "Button hover background (navy style)" }
     ] }
   ],
   "presets": [{ "name": "YUNA contact form", "blocks": [{ "type": "card" }] }]

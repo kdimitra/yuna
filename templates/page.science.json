@@ -1,100 +1,76 @@
 /*
  * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
-/*
- * ------------------------------------------------------------
- * YUNA redesign template. Edit content in the theme editor.
+ * YUNA Science page (replicates science.html). Sections: yn-sci-*.
+ * Edit content in the theme editor.
  * ------------------------------------------------------------
  */
 {
   "sections": {
     "hero": {
-      "type": "yn-page-hero",
+      "type": "yn-sci-hero",
       "settings": {
-        "style": "photo",
         "heading": "The science of",
         "accent": "beauty sleep.",
-        "use_page_title": false,
         "text": "<p>Eight natural ingredients in one herbal sleep aid, each with a clear role, working together through the night so you rest deeper and wake up glowing.</p>",
-        "align": "left",
-        "valign": "center",
-        "size": "l",
         "fallback": "yn-sci-hero-desk.webp",
         "fallback_m": "yn-sci-hero-mob.webp",
-        "alt": "",
-        "height_d": 560,
-        "height_m": 560,
-        "fg": "#FFFFFF",
-        "overlay_color": "#161B30",
-        "overlay": 55
+        "alt": ""
       }
     },
     "why": {
-      "type": "yn-rich-text",
+      "type": "yn-sci-intro",
       "settings": {
         "heading": "Why sleep shows",
         "accent": "on your skin.",
         "text": "<p>While you sleep, your body slows down and turns to repair. That is beauty sleep. Skin is one of the first places a short or restless night shows: in a dull complexion, a tired look and less of that rested glow. Daily Beauty Sleep™ supports the rest your skin depends on. A consistent nightly ritual is one of the simplest answers to how to sleep better at night.</p>",
-        "align": "center",
-        "max_width": 760,
-        "bg": "white",
-        "pt": "full",
-        "pb": "half"
+        "bg": "#FFFFFF",
+        "pt": 72,
+        "pb": 36,
+        "pt_m": 42,
+        "pb_m": 22
       }
     },
     "quality": {
-      "type": "yn-card-grid",
+      "type": "yn-sci-quality",
       "settings": {
         "heading": "Quality you",
         "accent": "can trust.",
-        "text": "Every batch of Daily Beauty Sleep™ is made to recognised standards and checked by an independent lab.",
-        "style": "badge",
-        "columns": 4,
-        "columns_m": "2",
-        "ratio": "1/1",
-        "bg": "cream",
-        "pt": "half",
-        "pb": "half"
+        "text": "<p>Every batch of Daily Beauty Sleep™ is made to recognised standards and checked by an independent lab.</p>",
+        "bg": "#FFFDFB",
+        "pt": 36,
+        "pb": 36,
+        "pt_m": 22,
+        "pb_m": 22
       },
       "blocks": {
         "b1": {
-          "type": "card",
+          "type": "badge",
           "settings": {
             "fallback": "yn-cert-iso.png",
-            "alt": "ISO 9001 certified",
             "title": "ISO 9001 certified",
             "text": "Quality management systems that keep every batch consistent."
           }
         },
         "b2": {
-          "type": "card",
+          "type": "badge",
           "settings": {
             "fallback": "yn-cert-gmp.png",
-            "alt": "GMP certified",
             "title": "GMP certified",
             "text": "Made under Good Manufacturing Practice, in GMP and HACCP certified facilities."
           }
         },
         "b3": {
-          "type": "card",
+          "type": "badge",
           "settings": {
             "fallback": "yn-cert-lab.png",
-            "alt": "Third-party lab tested",
             "title": "Third-party lab tested",
             "text": "Independently tested, so what’s on the label is what’s in the jar."
           }
         },
         "b4": {
-          "type": "card",
+          "type": "badge",
           "settings": {
             "fallback": "yn-cert-vegan.png",
-            "alt": "Vegan friendly",
             "title": "Vegan friendly",
             "text": "Plant-based herbs, mushrooms and probiotics. Melatonin-free."
           }
@@ -108,22 +84,19 @@
       ]
     },
     "journey": {
-      "type": "yn-card-grid",
+      "type": "yn-sci-journey",
       "settings": {
         "heading": "From nature,",
         "accent": "to lab, to your night.",
-        "text": "",
-        "style": "open",
-        "columns": 3,
-        "columns_m": "1",
-        "ratio": "4/3",
-        "bg": "white",
-        "pt": "half",
-        "pb": "half"
+        "bg": "#FFFFFF",
+        "pt": 36,
+        "pb": 36,
+        "pt_m": 22,
+        "pb_m": 22
       },
       "blocks": {
         "b1": {
-          "type": "card",
+          "type": "step",
           "settings": {
             "fallback": "yn-lingzhi-mountain.webp",
             "alt": "Lingzhi growing in the Wuyi Mountains",
@@ -133,7 +106,7 @@
           }
         },
         "b2": {
-          "type": "card",
+          "type": "step",
           "settings": {
             "fallback": "yn-lab-lingzhi.webp",
             "alt": "A scientist testing lingzhi in the lab",
@@ -143,7 +116,7 @@
           }
         },
         "b3": {
-          "type": "card",
+          "type": "step",
           "settings": {
             "fallback": "yn-life-unwind.webp",
             "alt": "A woman unwinding with herbal tea in the evening",
@@ -160,17 +133,18 @@
       ]
     },
     "ingredients": {
-      "type": "yn-ingredients",
+      "type": "yn-sci-ingredients",
       "settings": {
         "heading": "8 premium ingredients.",
         "accent": "One nightly ritual.",
-        "text": "From lingzhi and jujube seed to L-theanine and ashwagandha: eight natural ingredients in one herbal sleep aid.",
-        "style": "light",
+        "text": "<p>From lingzhi and jujube seed to L-theanine and ashwagandha: eight natural ingredients in one herbal sleep aid.</p>",
         "button_label": "Shop Daily Beauty Sleep™",
         "button_link": "",
-        "bg": "white",
-        "pt": "half",
-        "pb": "half"
+        "bg": "#FFFFFF",
+        "pt": 36,
+        "pb": 36,
+        "pt_m": 22,
+        "pb_m": 22
       },
       "blocks": {
         "b1": {
@@ -266,18 +240,16 @@
       ]
     },
     "origins": {
-      "type": "yn-card-grid",
+      "type": "yn-sci-origins",
       "settings": {
         "heading": "Where our ingredients",
         "accent": "come from.",
-        "text": "Eight wellness ingredients, each chosen for a role in your night. Here is where they grow and what they bring to every serving of 2 capsules.",
-        "style": "detail",
-        "columns": 4,
-        "columns_m": "1",
-        "ratio": "4/3",
-        "bg": "white",
-        "pt": "half",
-        "pb": "full"
+        "text": "<p>Eight wellness ingredients, each chosen for a role in your night. Here is where they grow and what they bring to every serving of 2 capsules.</p>",
+        "bg": "#FFFDFB",
+        "pt": 36,
+        "pb": 72,
+        "pt_m": 22,
+        "pb_m": 42
       },
       "blocks": {
         "b1": {
@@ -285,12 +257,12 @@
           "settings": {
             "fallback": "yn-lingzhi-mountain.webp",
             "alt": "Imperial Lingzhi: Wuyi Mountains, China",
-            "badge": "400 mg",
             "eyebrow": "Ganoderma lingzhi · Reishi",
             "title": "Imperial Lingzhi™",
             "location": "Wuyi Mountains, China",
             "text": "A premium lingzhi reishi mushroom, harvested naturally in the Wuyi Mountains. Rich in antioxidants, it supports daily skin and body renewal overnight.",
-            "pill": "Rest & repair"
+            "pill": "Rest & repair",
+            "dose": "400 mg"
           }
         },
         "b2": {
@@ -298,12 +270,12 @@
           "settings": {
             "fallback": "yn-org-jujube.webp",
             "alt": "Jujube Seed: Sunny orchards and hillsides",
-            "badge": "90 mg",
             "eyebrow": "Ziziphus jujuba · Suan Zao Ren",
             "title": "Jujube Seed",
             "location": "Sunny orchards and hillsides",
             "text": "The seed of the sour jujube fruit, a time-honoured herb for sleep in traditional Chinese practice. Helps you relax into sleep more easily.",
-            "pill": "Sleep deeper"
+            "pill": "Sleep deeper",
+            "dose": "90 mg"
           }
         },
         "b3": {
@@ -311,12 +283,12 @@
           "settings": {
             "fallback": "yn-org-poria.webp",
             "alt": "Fu Ling: Roots of mountain pine trees",
-            "badge": "60 mg",
             "eyebrow": "Poria cocos · Poria",
             "title": "Fu Ling",
             "location": "Roots of mountain pine trees",
             "text": "A fungus that grows on the roots of pine trees. Works with Imperial Lingzhi™ to support calm, restorative rest.",
-            "pill": "Calm & de-stress"
+            "pill": "Calm & de-stress",
+            "dose": "60 mg"
           }
         },
         "b4": {
@@ -324,12 +296,12 @@
           "settings": {
             "fallback": "yn-org-ashwagandha.webp",
             "alt": "Ashwagandha: Warm, sunny fields",
-            "badge": "70 mg",
             "eyebrow": "Withania somnifera",
             "title": "Ashwagandha",
             "location": "Warm, sunny fields",
             "text": "An adaptogenic root with a long history in Ayurvedic tradition. Helps quiet a busy mind, so you can let go of the day.",
-            "pill": "Adaptogenic herb"
+            "pill": "Adaptogenic herb",
+            "dose": "70 mg"
           }
         },
         "b5": {
@@ -337,12 +309,12 @@
           "settings": {
             "fallback": "yn-org-lily.webp",
             "alt": "Lily Bulb: Lily fields",
-            "badge": "50 mg",
             "eyebrow": "Lilium · Bai He",
             "title": "Lily Bulb",
             "location": "Lily fields",
             "text": "The layered bulb of the lily plant, a time-honoured herb for sleep traditionally used to nourish and rejuvenate.",
-            "pill": "Nourish & rejuvenate"
+            "pill": "Nourish & rejuvenate",
+            "dose": "50 mg"
           }
         },
         "b6": {
@@ -350,12 +322,12 @@
           "settings": {
             "fallback": "yn-org-silktree.webp",
             "alt": "Silk Tree Bark: The flowering silk tree",
-            "badge": "50 mg",
             "eyebrow": "Albizia julibrissin · He Huan Pi",
             "title": "Silk Tree Bark",
             "location": "The flowering silk tree",
             "text": "From the silk tree, known for its soft pink blossoms. A time-honoured herb that helps you relax and unwind at night.",
-            "pill": "Relax & unwind"
+            "pill": "Relax & unwind",
+            "dose": "50 mg"
           }
         },
         "b7": {
@@ -363,12 +335,12 @@
           "settings": {
             "fallback": "yn-org-tea.webp",
             "alt": "L-Theanine: Green tea terraces",
-            "badge": "60 mg",
             "eyebrow": "Amino acid from tea leaves",
             "title": "L-Theanine",
             "location": "Green tea terraces",
             "text": "An amino acid found naturally in tea leaves. Helps quiet a busy mind before bed, without the caffeine.",
-            "pill": "Quiet mind"
+            "pill": "Quiet mind",
+            "dose": "60 mg"
           }
         },
         "b8": {
@@ -376,12 +348,12 @@
           "settings": {
             "fallback": "yn-org-probiotics.webp",
             "alt": "Biome Probiotics: Cultured for gut-skin balance",
-            "badge": "10 bn CFU",
             "eyebrow": "Friendly bacteria",
             "title": "Biome Probiotics™",
             "location": "Cultured for gut-skin balance",
             "text": "Probiotics that support your skin from within, so you wake up refreshed.",
-            "pill": "Gut-skin"
+            "pill": "Gut-skin rebalance",
+            "dose": "10 bn CFU"
           }
         }
       },

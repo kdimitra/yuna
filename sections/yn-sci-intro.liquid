@@ -1,0 +1,47 @@
+{{ 'yn-science.css' | asset_url | stylesheet_tag }}
+{%- assign s = section.settings -%}
+<section class="yn yn-sci yn-sci-intro yn-sci-intro--{{ s.align }}" id="yn-{{ section.id }}"
+  style="{% render 'yn-sci-vars', s: s %}--intro-w:{{ s.max_width }}px;--intro-lead-w:{{ s.lead_width }}px">
+  <div class="yn-wrap">
+    <div class="yn-sci-intro__in yn-rv">
+      {%- if s.heading != blank or s.accent != blank -%}
+        <h2 class="yn-sci__h">{{ s.heading }}{% if s.accent != blank %} <em>{{ s.accent }}</em>{% endif %}</h2>
+      {%- endif -%}
+      {%- if s.text != blank -%}<div class="yn-sci-intro__lead">{{ s.text }}</div>{%- endif -%}
+      {%- if s.show_page_content and page.content != blank -%}<div class="yn-sci-intro__lead yn-rte">{{ page.content }}</div>{%- endif -%}
+      {%- if s.button_label != blank -%}<div class="yn-sci-intro__btn">{% render 'yn-button', label: s.button_label, link: s.button_link, style: s.button_style %}</div>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Science · Intro text",
+  "class": "yn-sci-section",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Why sleep shows" },
+    { "type": "text", "id": "accent", "label": "Heading accent (second part)", "default": "on your skin." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>While you sleep, your body slows down and turns to repair. That is beauty sleep. Skin is one of the first places a short or restless night shows: in a dull complexion, a tired look and less of that rested glow. Daily Beauty Sleep™ supports the rest your skin depends on. A consistent nightly ritual is one of the simplest answers to how to sleep better at night.</p>" },
+    { "type": "checkbox", "id": "show_page_content", "label": "Also show the page’s own content", "default": false },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "select", "id": "button_style", "label": "Button style", "options": [{ "value": "solid", "label": "Solid" }, { "value": "outline", "label": "Outline" }], "default": "solid" },
+    { "type": "header", "content": "Layout" },
+    { "type": "select", "id": "align", "label": "Alignment", "options": [{ "value": "center", "label": "Centre" }, { "value": "left", "label": "Left" }], "default": "center" },
+    { "type": "range", "id": "max_width", "label": "Heading width", "min": 480, "max": 1200, "step": 20, "unit": "px", "default": 760 },
+    { "type": "range", "id": "lead_width", "label": "Text width", "min": 400, "max": 1200, "step": 20, "unit": "px", "default": 680 },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#161B30" },
+    { "type": "color", "id": "accent_color", "label": "Heading accent", "default": "#161B30" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#575B6A" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "pt", "label": "Space above, desktop", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "pb", "label": "Space below, desktop", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 36 },
+    { "type": "range", "id": "pt_m", "label": "Space above, mobile", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 42 },
+    { "type": "range", "id": "pb_m", "label": "Space below, mobile", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 22 }
+  ],
+  "presets": [{ "name": "Science · Intro text" }]
+}
+{% endschema %}

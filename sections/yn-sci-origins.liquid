@@ -1,0 +1,99 @@
+{{ 'yn-science.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign s = section.settings
+  assign dose_bg = s.dose_bg | color_modify: 'alpha', 0.92
+-%}
+<section class="yn yn-sci yn-sci-o yn-sci-o--dose-{{ s.dose_position }}" id="yn-{{ section.id }}"
+  style="{% render 'yn-sci-vars', s: s %}--cols:{{ s.columns }};--cols-m:{{ s.columns_m }};--ratio:{{ s.ratio }};--rad:{{ s.radius }}px;--o-card:{{ s.card_bg }};--o-border:{{ s.border_color }};--o-eb:{{ s.eyebrow_color }};--o-loc:{{ s.location_color }};--o-dose-bg:{{ dose_bg }};--o-dose-fg:{{ s.dose_fg }};--pill-bg:{{ s.pill_bg }};--pill-fg:{{ s.pill_fg }}">
+  <div class="yn-wrap">
+    {%- if s.heading != blank or s.accent != blank or s.text != blank -%}
+      <div class="yn-sci__head yn-rv">
+        {%- if s.heading != blank or s.accent != blank -%}
+          <h2 class="yn-sci__h">{{ s.heading }}{% if s.accent != blank %} <em>{{ s.accent }}</em>{% endif %}</h2>
+        {%- endif -%}
+        {%- if s.text != blank -%}<div class="yn-sci__sub">{{ s.text }}</div>{%- endif -%}
+      </div>
+    {%- endif -%}
+    <div class="yn-sci-o__grid">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        <article class="yn-sci-o__card yn-rv" {{ block.shopify_attributes }}>
+          <div class="yn-sci-o__ph">
+            {% render 'yn-img', image: b.image, fallback: b.fallback, alt: b.alt, sizes: '(max-width: 900px) 100vw, 25vw', widths: '360, 540, 720, 900' %}
+            {%- if b.dose != blank -%}<span class="yn-sci-o__dose">{{ b.dose }}</span>{%- endif -%}
+          </div>
+          <div class="yn-sci-o__bd">
+            {%- if b.eyebrow != blank -%}<span class="yn-sci-o__lt">{{ b.eyebrow }}</span>{%- endif -%}
+            {%- if b.title != blank -%}<h3>{{ b.title }}</h3>{%- endif -%}
+            {%- if b.location != blank -%}<p class="yn-sci-o__wh">{% render 'yn-icon', name: 'pin' %}{{ b.location }}</p>{%- endif -%}
+            {%- if b.text != blank -%}<p class="yn-sci-o__tx">{{ b.text }}</p>{%- endif -%}
+            {%- if b.pill != blank -%}<span class="yn-sci-pill">{{ b.pill }}</span>{%- endif -%}
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Science · Origins",
+  "class": "yn-sci-section",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Where our ingredients" },
+    { "type": "text", "id": "accent", "label": "Heading accent (second part)", "default": "come from." },
+    { "type": "richtext", "id": "text", "label": "Subheading", "default": "<p>Eight wellness ingredients, each chosen for a role in your night. Here is where they grow and what they bring to every serving of 2 capsules.</p>" },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "columns", "label": "Columns, desktop", "min": 2, "max": 4, "step": 1, "default": 4 },
+    { "type": "select", "id": "columns_m", "label": "Columns, mobile", "options": [{ "value": "1", "label": "1" }, { "value": "2", "label": "2" }], "default": "1" },
+    { "type": "select", "id": "ratio", "label": "Image shape", "options": [{ "value": "4/3", "label": "Landscape 4:3" }, { "value": "1/1", "label": "Square" }, { "value": "4/5", "label": "Portrait 4:5" }], "default": "4/3" },
+    { "type": "range", "id": "radius", "label": "Card corner radius", "min": 0, "max": 32, "step": 2, "unit": "px", "default": 18 },
+    { "type": "select", "id": "dose_position", "label": "Dose badge position", "options": [{ "value": "bl", "label": "Bottom left of the photo" }, { "value": "tr", "label": "Top right of the photo" }], "default": "bl" },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFDFB" },
+    { "type": "color", "id": "heading_color", "label": "Heading and card titles", "default": "#161B30" },
+    { "type": "color", "id": "accent_color", "label": "Heading accent", "default": "#161B30" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#575B6A" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#FFFFFF" },
+    { "type": "color", "id": "border_color", "label": "Card border", "default": "#ECEDEE" },
+    { "type": "color", "id": "eyebrow_color", "label": "Latin name (small label)", "default": "#575B6A" },
+    { "type": "color", "id": "location_color", "label": "Location line", "default": "#575B6A" },
+    { "type": "color", "id": "dose_bg", "label": "Dose badge background", "default": "#FFFDFB" },
+    { "type": "color", "id": "dose_fg", "label": "Dose badge text", "default": "#575B6A" },
+    { "type": "color", "id": "pill_bg", "label": "Pill background", "default": "#FEF8F1" },
+    { "type": "color", "id": "pill_fg", "label": "Pill text", "default": "#161B30" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "pt", "label": "Space above, desktop", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 36 },
+    { "type": "range", "id": "pb", "label": "Space below, desktop", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "pt_m", "label": "Space above, mobile", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 22 },
+    { "type": "range", "id": "pb_m", "label": "Space below, mobile", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 42 }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Ingredient",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "fallback", "label": "Default image file (theme asset)" },
+        { "type": "text", "id": "alt", "label": "Image description" },
+        { "type": "text", "id": "dose", "label": "Dose badge", "default": "400 mg" },
+        { "type": "text", "id": "eyebrow", "label": "Latin name (small label)", "default": "Ganoderma lingzhi · Reishi" },
+        { "type": "text", "id": "title", "label": "Name", "default": "Imperial Lingzhi™" },
+        { "type": "text", "id": "location", "label": "Where it grows", "default": "Wuyi Mountains, China" },
+        { "type": "textarea", "id": "text", "label": "Description" },
+        { "type": "text", "id": "pill", "label": "Benefit pill", "default": "Rest & repair" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Science · Origins",
+    "blocks": [
+      { "type": "card", "settings": { "fallback": "yn-lingzhi-mountain.webp" } },
+      { "type": "card", "settings": { "fallback": "yn-org-jujube.webp", "dose": "90 mg", "eyebrow": "Ziziphus jujuba · Suan Zao Ren", "title": "Jujube Seed", "location": "Sunny orchards and hillsides", "pill": "Sleep deeper" } },
+      { "type": "card", "settings": { "fallback": "yn-org-poria.webp", "dose": "60 mg", "eyebrow": "Poria cocos · Poria", "title": "Fu Ling", "location": "Roots of mountain pine trees", "pill": "Calm & de-stress" } },
+      { "type": "card", "settings": { "fallback": "yn-org-ashwagandha.webp", "dose": "70 mg", "eyebrow": "Withania somnifera", "title": "Ashwagandha", "location": "Warm, sunny fields", "pill": "Adaptogenic herb" } }
+    ]
+  }]
+}
+{% endschema %}
