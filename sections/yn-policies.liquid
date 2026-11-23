@@ -1,16 +1,26 @@
 {%- liquid
   assign title = section.settings.heading | default: page.title
+  assign s = section.settings
+  assign tabs = false
+  if s.layout == 'tabs'
+    assign tabs = true
+  endif
 -%}
-<section class="{% render 'yn-section-class', s: section %} yn-pol" id="yn-{{ section.id }}" data-yn-tabs>
+<section class="yn yn-pol yn-pol--{{ s.layout }} yn-pol--w-{{ s.width }}" id="yn-{{ section.id }}"{% if tabs %} data-yn-tabs{% endif %}
+  style="--pol-bg:{{ s.bg_color }};--pol-h:{{ s.heading_color }};--pol-tx:{{ s.text_color }};--pol-link:{{ s.link_color }};--pol-line:{{ s.line_color }};--pol-pt:{{ s.pt_d }}px;--pol-pb:{{ s.pb_d }}px;--pol-pt-m:{{ s.pt_m }}px;--pol-pb-m:{{ s.pb_m }}px">
   <div class="yn-wrap yn-pol__in">
-    <h1 class="yn-ph__title">{{ title }}</h1>
-    {%- if section.blocks.size > 1 -%}
-      <div class="yn-pol__tabs" role="tablist" aria-label="{{ title | escape }}">
+    {%- if title != blank -%}<h1 class="yn-pol__title">{{ title }}</h1>{%- endif -%}
+    {%- if section.blocks.size > 1 and s.show_nav -%}
+      <nav class="yn-pol__tabs"{% if tabs %} role="tablist"{% endif %} aria-label="{{ title | escape }}">
         {%- for block in section.blocks -%}
           {%- assign aid = block.settings.anchor | default: block.settings.title | handleize -%}
-          <a class="yn-pol__tab{% if forloop.first %} is-on{% endif %}" role="tab" id="tab-{{ aid }}" href="#{{ aid }}" aria-controls="{{ aid }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-yn-tab>{{ block.settings.title }}</a>
+          {%- if tabs -%}
+            <a class="yn-pol__tab{% if forloop.first %} is-on{% endif %}" role="tab" id="tab-{{ aid }}" href="#{{ aid }}" aria-controls="{{ aid }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-yn-tab>{{ block.settings.title }}</a>
+          {%- else -%}
+            <a class="yn-pol__link" href="#{{ aid }}">{{ block.settings.title }}</a>
+          {%- endif -%}
         {%- endfor -%}
-      </div>
+      </nav>
     {%- endif -%}
     {%- for block in section.blocks -%}
       {%- liquid
@@ -40,7 +50,7 @@
             assign body = shop.contact_information.body
         endcase
       -%}
-      <article class="yn-pol__panel yn-rte" id="{{ aid }}" role="tabpanel" aria-labelledby="tab-{{ aid }}" data-yn-panel {{ block.shopify_attributes }}{% unless forloop.first %} data-hidden{% endunless %}>
+      <article class="yn-pol__panel yn-rte" id="{{ aid }}"{% if tabs %} role="tabpanel" aria-labelledby="tab-{{ aid }}" data-yn-panel{% unless forloop.first %} data-hidden{% endunless %}{% endif %} {{ block.shopify_attributes }}>
         <h2>{{ block.settings.title }}</h2>
         {%- if block.settings.content != blank -%}
           {%- if block.settings.always_show_text or body == blank and body2 == blank -%}{{ block.settings.content }}{%- endif -%}
@@ -58,10 +68,21 @@
   "name": "YUNA policies",
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "Policies", "info": "Leave empty to use the page title." },
-    { "type": "header", "content": "Section style" },
-    { "type": "select", "id": "bg", "label": "Background", "options": [{ "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "beige", "label": "Beige" }], "default": "white" },
-    { "type": "select", "id": "pt", "label": "Space above", "options": [{ "value": "none", "label": "None" }, { "value": "half", "label": "Half" }, { "value": "full", "label": "Full" }], "default": "full" },
-    { "type": "select", "id": "pb", "label": "Space below", "options": [{ "value": "none", "label": "None" }, { "value": "half", "label": "Half" }, { "value": "full", "label": "Full" }], "default": "full" }
+    { "type": "header", "content": "Layout" },
+    { "type": "select", "id": "layout", "label": "Layout", "options": [{ "value": "stacked", "label": "All policies on one page (design)" }, { "value": "tabs", "label": "Tabs, one policy at a time" }], "default": "stacked" },
+    { "type": "checkbox", "id": "show_nav", "label": "Show links to each policy", "default": true },
+    { "type": "select", "id": "width", "label": "Content width", "options": [{ "value": "full", "label": "Full page width (design)" }, { "value": "narrow", "label": "Narrow, centred" }], "default": "full" },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#FFFFFF" },
+    { "type": "color", "id": "heading_color", "label": "Headings", "default": "#161B30" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#575B6A" },
+    { "type": "color", "id": "link_color", "label": "Policy links", "default": "#161B30" },
+    { "type": "color", "id": "line_color", "label": "Line under the links", "default": "#E8E8EA" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "pt_d", "label": "Space above, desktop", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 66 },
+    { "type": "range", "id": "pb_d", "label": "Space below, desktop", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 48 },
+    { "type": "range", "id": "pt_m", "label": "Space above, mobile", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 44 },
+    { "type": "range", "id": "pb_m", "label": "Space below, mobile", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 20 }
   ],
   "blocks": [
     { "type": "policy", "name": "Policy", "settings": [
@@ -74,7 +95,7 @@
         { "value": "privacy", "label": "Privacy policy" },
         { "value": "terms", "label": "Terms of service" },
         { "value": "contact", "label": "Contact information" }
-      ], "default": "none", "info": "Texts from Settings > Policies stay the single source of truth." },
+      ], "default": "none", "info": "Adds the text from Settings > Policies below the text above. Choose None to show only your own text, as in the design." },
       { "type": "select", "id": "source_2", "label": "Also include", "options": [
         { "value": "none", "label": "Nothing else" },
         { "value": "shipping", "label": "Shipping policy" },
@@ -82,8 +103,8 @@
         { "value": "privacy", "label": "Privacy policy" },
         { "value": "terms", "label": "Terms of service" }
       ], "default": "none" },
-      { "type": "richtext", "id": "content", "label": "Fallback text", "info": "Shown when the Shopify policies above are empty." },
-      { "type": "checkbox", "id": "always_show_text", "label": "Always show this text (above the policies)", "default": false }
+      { "type": "richtext", "id": "content", "label": "Text" },
+      { "type": "checkbox", "id": "always_show_text", "label": "Show this text even when a Shopify policy is included", "default": true }
     ] }
   ],
   "presets": [{ "name": "YUNA policies", "blocks": [{ "type": "policy" }] }]

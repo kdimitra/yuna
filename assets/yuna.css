@@ -755,16 +755,24 @@ details[open]>summary .yn-pm::after{transform:translate(-50%,-50%) rotate(0)}
 /* =====================================================================
    Policies
    ===================================================================== */
-.yn-pol__in{max-width:900px}
-.yn-pol .yn-ph__title{margin-bottom:24px}
-.yn-pol__tabs{display:flex;gap:24px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--yn-hair);margin:0 0 12px}
-.yn-pol__tab{flex:none;font-size:15px;font-weight:500;color:var(--yn-muted);text-decoration:none;padding:0 0 16px;border-bottom:2px solid transparent;margin-bottom:-1px}
+/* Policies (policies.html): stacked articles, underlined jump links, full width */
+.yn-pol{letter-spacing:normal;background:var(--pol-bg,#fff);padding:var(--pol-pt,66px) 0 var(--pol-pb,48px)}
+.yn-pol--w-narrow .yn-pol__in{max-width:900px}
+.yn-pol .yn-pol__title{font-size:clamp(38px,4.4vw,63.36px);font-weight:var(--yn-h-weight);line-height:1.2;letter-spacing:-.04em;color:var(--pol-h,var(--yn-navy));margin:0 0 24px}
+.yn-pol__tabs{display:flex;flex-wrap:wrap;gap:24px;border-bottom:1px solid var(--pol-line,rgba(22,27,48,.1));padding:0 0 18px;margin:0 0 12px}
+.yn .yn-pol__link{font-size:14px;line-height:1.6;color:var(--pol-link,var(--yn-navy));text-decoration:underline;text-underline-offset:auto}
+.yn .yn-pol__link:hover{text-decoration-thickness:2px}
+.yn-pol--tabs .yn-pol__tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:0}
+.yn-pol__tab{flex:none;font-size:15px;font-weight:500;color:var(--pol-tx,var(--yn-muted));text-decoration:none;padding:0 0 16px;border-bottom:2px solid transparent;margin-bottom:-1px}
 .yn .yn-pol__tab{text-decoration:none}
-.yn-pol__tab.is-on,.yn-pol__tab:hover{color:var(--yn-navy);border-bottom-color:var(--yn-navy)}
-.yn-pol__panel{padding:36px 0 8px;scroll-margin-top:120px;color:var(--yn-muted)}
-.yn-pol__panel h2{font-size:clamp(30px,3.2vw,46px);font-weight:var(--yn-h-weight);letter-spacing:var(--yn-h-track);line-height:1.08;margin:0 0 14px}
-.yn-pol__panel h3,.yn-pol__panel h4{font-size:19px;font-weight:600;margin:1.4em 0 .5em;color:var(--yn-navy)}
+.yn-pol__tab.is-on,.yn-pol__tab:hover{color:var(--pol-link,var(--yn-navy));border-bottom-color:var(--pol-link,var(--yn-navy))}
+.yn-pol__panel{padding:36px 0 8px;scroll-margin-top:90px;font-size:16px;line-height:1.6;color:var(--pol-tx,var(--yn-muted))}
+.yn-pol .yn-pol__panel p,.yn-pol .yn-pol__panel p:last-child{margin:0 0 16px}
+.yn-pol__panel a{color:inherit;text-decoration:underline}
+.yn-pol .yn-pol__panel h2{font-size:clamp(30px,3.2vw,46px);font-weight:var(--yn-h-weight);letter-spacing:-.04em;line-height:1.08;color:var(--pol-h,var(--yn-navy));margin:0 0 14px}
+.yn-pol__panel h3,.yn-pol__panel h4{font-size:19px;font-weight:600;margin:1.4em 0 .5em;color:var(--pol-h,var(--yn-navy))}
 .yn-js .yn-pol__panel[data-hidden]{display:none}
+@media (max-width:900px){.yn-pol{padding:var(--pol-pt-m,44px) 0 var(--pol-pb-m,20px)}}
 
 /* =====================================================================
    Newsletter band / footer / popup
