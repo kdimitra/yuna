@@ -56,8 +56,8 @@
   style="--hero-h:{{ section.settings.height_d }}px;--hero-h-m:{{ section.settings.height_m }}px;--hero-copy-w:{{ section.settings.copy_width }}px">
   <div class="yn-hero__media">
     {%- for block in slides -%}
-      <picture class="yn-hero__slide yn-hero__slide--ov-{{ block.settings.overlay_style }}{% if forloop.first %} is-on{% endif %}" {{ block.shopify_attributes }}
-        data-feats="{{ block.settings.feat_style }}" style="--fp-m:{{ block.settings.focal_m }};--fp-d:{{ block.settings.focal_d }};--zoom-m:{{ block.settings.zoom_m | divided_by: 100.0 }}">
+      <picture class="yn-hero__slide yn-hero__slide--ov-{{ block.settings.overlay_style }} yn-hero__slide--m-{{ block.settings.overlay_m_style | default: 'classic' }}{% if forloop.first %} is-on{% endif %}" {{ block.shopify_attributes }}
+        data-feats="{{ block.settings.feat_style }}" style="--fp-m:{{ block.settings.focal_m }};--fp-d:{{ block.settings.focal_d }};--zoom-m:{{ block.settings.zoom_m | divided_by: 100.0 }};--zo-m:{{ block.settings.zoom_origin_m | default: block.settings.focal_m }};--glow:{{ block.settings.glow_color | default: '#FFF9F2' }};--glow-k:{{ block.settings.glow_strength | default: 100 | divided_by: 100.0 }};--glow-w:{{ block.settings.glow_width | default: 38 }}%">
         {%- if block.settings.image_m != blank -%}
           <source media="(max-width: 900px)" srcset="{{ block.settings.image_m | image_url: width: 800 }} 800w, {{ block.settings.image_m | image_url: width: 1200 }} 1200w, {{ block.settings.image_m | image_url: width: 1600 }} 1600w" sizes="100vw">
         {%- elsif block.settings.fallback_m != blank -%}
@@ -99,7 +99,7 @@
         {%- if section.settings.title != blank -%}<span class="yn-hero__l1">{{ section.settings.title }}</span>{%- endif -%}
         {%- if section.settings.title_accent != blank %} <em>{{ section.settings.title_accent }}</em>{%- endif -%}
       </h1>
-      {%- if section.settings.lead != blank -%}<p class="yn-hero__lead">{{ section.settings.lead }}</p>{%- endif -%}
+      {%- if section.settings.lead != blank -%}<p class="yn-hero__lead">{% render 'yn-nowrap', text: section.settings.lead %}</p>{%- endif -%}
       {%- render 'yn-button', label: section.settings.button_label, link: section.settings.button_link, class: 'yn-hero__btn' -%}
       {%- if section.settings.note != blank -%}<p class="yn-hero__note">{{ section.settings.note }}</p>{%- endif -%}
       {%- if feats.size > 0 -%}
@@ -107,7 +107,7 @@
           {%- for block in feats -%}
             <div class="yn-hero__feat" {{ block.shopify_attributes }}>
               <span class="yn-hero__ic">{% render 'yn-icon', name: block.settings.icon %}</span>
-              <p><b>{{ block.settings.title }}</b>{{ block.settings.text }}</p>
+              <p><b>{% render 'yn-nowrap', text: block.settings.title %}</b>{% render 'yn-nowrap', text: block.settings.text %}</p>
             </div>
           {%- endfor -%}
         </div>
@@ -161,16 +161,28 @@
         { "type": "image_picker", "id": "image_m", "label": "Mobile image", "info": "Portrait image, about 1520 × 2688 px." },
         { "type": "text", "id": "fallback_m", "label": "Default mobile image file (theme asset)" },
         { "type": "text", "id": "focal_m", "label": "Mobile focal point", "default": "center center" },
-        { "type": "range", "id": "zoom_m", "label": "Mobile image zoom", "min": 100, "max": 160, "step": 5, "unit": "%", "default": 100 },
+        { "type": "range", "id": "zoom_m", "label": "Mobile image zoom", "min": 100, "max": 160, "step": 1, "unit": "%", "default": 100 },
+        { "type": "text", "id": "zoom_origin_m", "label": "Mobile zoom anchor point", "info": "CSS position the zoom grows from, e.g. 56% 74%. Empty uses the mobile focal point." },
         { "type": "text", "id": "alt", "label": "Image description (alt text)" },
 
         { "type": "header", "content": "Overlay" },
         { "type": "select", "id": "overlay_style", "label": "Desktop overlay", "options": [
-          { "value": "none", "label": "None" }, { "value": "left", "label": "Fade from the text side" }, { "value": "full", "label": "Full" }
+          { "value": "none", "label": "None" },
+          { "value": "glow", "label": "Soft light glow behind the text (light photos)" },
+          { "value": "left", "label": "Dark fade from the text side" },
+          { "value": "full", "label": "Dark, full" }
         ], "default": "none" },
-        { "type": "color", "id": "overlay_color", "label": "Overlay colour", "default": "#0C1020" },
-        { "type": "range", "id": "overlay_d", "label": "Overlay strength, desktop", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 0 },
-        { "type": "range", "id": "overlay_m", "label": "Overlay strength, mobile", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 45 },
+        { "type": "color", "id": "glow_color", "label": "Glow colour", "default": "#FFF9F2", "info": "Used by the soft light glow." },
+        { "type": "range", "id": "glow_strength", "label": "Glow strength", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 100 },
+        { "type": "range", "id": "glow_width", "label": "Glow width", "min": 20, "max": 70, "step": 1, "unit": "%", "default": 38 },
+        { "type": "color", "id": "overlay_color", "label": "Dark overlay colour", "default": "#0C1020", "info": "Used by the dark desktop overlays and the mobile overlay." },
+        { "type": "range", "id": "overlay_d", "label": "Dark overlay strength, desktop", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 0 },
+        { "type": "select", "id": "overlay_m_style", "label": "Mobile overlay shape", "options": [
+          { "value": "classic", "label": "Dark top and bottom" },
+          { "value": "even", "label": "Even, darker at the bottom (morning design)" },
+          { "value": "soft", "label": "Clear middle, dark bottom (night design)" }
+        ], "default": "classic" },
+        { "type": "range", "id": "overlay_m", "label": "Overlay strength, mobile", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 45 },
 
         { "type": "header", "content": "Text colours (desktop)" },
         { "type": "color", "id": "title_color", "label": "Heading line 1", "default": "#161B30" },

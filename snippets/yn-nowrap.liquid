@@ -1,0 +1,18 @@
+{%- comment -%}
+  Keeps hyphenated words (e.g. melatonin-free, lab-checked) and "Imperial Lingzhi™" on one line,
+  like the design's <span class="nw"> wrappers. Plain text only: text containing HTML tags is output as is.
+  Param: text
+{%- endcomment -%}
+{%- if text contains '<' -%}
+  {{- text -}}
+{%- else -%}
+  {%- assign nw_text = text | replace: 'Imperial Lingzhi', 'Imperial&nbsp;Lingzhi' -%}
+  {%- assign nw_words = nw_text | split: ' ' -%}
+  {%- capture nw_out -%}
+    {%- for w in nw_words -%}
+      {%- unless forloop.first -%}{{ ' ' }}{%- endunless -%}
+      {%- if w contains '-' -%}<span class="yn-nw">{{ w }}</span>{%- else -%}{{ w }}{%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  {{- nw_out -}}
+{%- endif -%}

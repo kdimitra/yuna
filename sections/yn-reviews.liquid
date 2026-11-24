@@ -1,35 +1,296 @@
-<section class="{% render 'yn-section-class', s: section %} yn-reviews" id="{{ section.settings.anchor | default: 'reviews' }}">
+{%- comment -%}
+  Happy Customers (daily-beauty-sleep.html #reviews).
+  The design layout (score, star breakdown, photo grid, tabs, review list) is filled from the
+  Judge.me metafield product.metafields.judgeme.review_widget_data, so numbers and reviews stay real.
+  The Judge.me app block stays in the section for writing reviews and for the full, paginated list.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign rp = product
+  if s.product != blank
+    assign rp = s.product
+  endif
+  assign jd = rp.metafields.judgeme.review_widget_data.value
+  assign count = jd.number_of_reviews | default: 0 | plus: 0
+  assign avg = jd.average_rating | default: 0 | plus: 0
+  assign has_data = false
+  if count > 0
+    assign has_data = true
+  endif
+  assign shown = jd.reviews | size
+  assign app_mode = s.app_mode
+  if has_data == false
+    assign app_mode = 'always'
+  endif
+
+  comment
+    Customer photos for the grid: photos you add as blocks first, then photos from the reviews.
+  endcomment
+  assign photo_blocks = section.blocks | where: 'type', 'photo'
+-%}
+{%- capture star_path -%}M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.3l-5.8 3.1 1.2-6.5L2.6 9.4l6.5-.8z{%- endcapture -%}
+
+<section class="{% render 'yn-section-class', s: section %} yn-reviews yn-rvs" id="{{ s.anchor | default: 'reviews' }}"
+  style="--rv-max:{{ s.max_width }}px;--rv-star:{{ s.star_color }};--rv-bar:{{ s.bar_color }};--rv-track:{{ s.track_color }};--rv-av:{{ s.avatar_bg }};--rv-line:{{ s.line_color }}"
+  data-yn-reviews>
   <div class="yn-wrap">
-    {%- if section.settings.heading != blank -%}
-      <div class="yn-head yn-head--center yn-rv">
-        {%- render 'yn-heading', heading: section.settings.heading, accent: section.settings.accent, size: 'm' -%}
-        {%- if section.settings.text != blank -%}<p class="yn-head__sub">{{ section.settings.text }}</p>{%- endif -%}
+    {%- if s.heading != blank or s.accent != blank -%}
+      <div class="yn-head yn-head--center yn-rvs__head yn-rv">
+        {%- render 'yn-heading', heading: s.heading, accent: s.accent, size: 'm' -%}
+        {%- if s.text != blank -%}<p class="yn-head__sub">{{ s.text }}</p>{%- endif -%}
       </div>
     {%- endif -%}
-    <div class="yn-reviews__box" style="--rv-max:{{ section.settings.max_width }}px">
-      {%- for block in section.blocks -%}
-        {%- case block.type -%}
-          {%- when '@app' -%}
-            {% render block %}
-          {%- when 'liquid' -%}
-            <div {{ block.shopify_attributes }}>{{ block.settings.liquid }}</div>
-        {%- endcase -%}
-      {%- else -%}
-        <p class="yn-center yn-muted">Add the Judge.me “Review widget” app block to this section in the theme editor to show your reviews.</p>
-      {%- endfor -%}
+
+    <div class="yn-rvs__box yn-rv">
+      {%- if has_data -%}
+        {%- comment -%} ---------- Summary: score, star breakdown, customer photos ---------- {%- endcomment -%}
+        {%- capture gallery -%}
+          {%- assign g = 0 -%}
+          {%- for b in photo_blocks -%}
+            {%- if b.settings.image != blank and g < 8 -%}
+              {{ b.settings.image | image_url: width: 240 | image_tag: alt: b.settings.alt, loading: 'lazy', widths: '120, 240', sizes: '84px' }}
+              {%- assign g = g | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+          {%- for r in jd.reviews -%}
+            {%- for pic in r.pictures_urls -%}
+              {%- if g < 8 -%}
+                {%- assign src = pic.compact | default: pic.small | default: pic.huge | default: pic.original | default: pic -%}
+                {%- if src != blank -%}<img src="{{ src }}" alt="{{ 'Photo from ' | append: r.reviewer_name | escape }}" loading="lazy" width="84" height="84">{%- assign g = g | plus: 1 -%}{%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endfor -%}
+        {%- endcapture -%}
+        {%- assign gallery = gallery | strip -%}
+        <div class="yn-rvs__sum{% if gallery == blank or s.show_gallery == false %} yn-rvs__sum--nogal{% endif %}">
+          <div class="yn-rvs__score">
+            <b>{{ avg | round: 1 }}</b>
+            <span class="yn-rvs__stars" role="img" aria-label="{{ avg | round: 1 }} out of 5 stars">
+              {%- assign full = avg | round -%}
+              {%- for i in (1..5) -%}<svg viewBox="0 0 24 24" class="{% if i <= full %}is-on{% endif %}" aria-hidden="true"><path d="{{ star_path }}"/></svg>{%- endfor -%}
+            </span>
+            <span>{% if count == 1 %}{{ s.summary_text_one | replace: '[count]', count }}{% else %}{{ s.summary_text | replace: '[count]', count }}{% endif %}</span>
+          </div>
+          <div class="yn-rvs__bars">
+            {%- for h in jd.histogram -%}
+              {%- assign pct = h.frequency | times: 100.0 | divided_by: count -%}
+              <div class="yn-rvs__bar">
+                <span class="yn-rvs__stars yn-rvs__stars--sm" role="img" aria-label="{{ h.rating }} stars">
+                  {%- for i in (1..5) -%}<svg viewBox="0 0 24 24" class="{% if i <= h.rating %}is-on{% endif %}" aria-hidden="true"><path d="{{ star_path }}"/></svg>{%- endfor -%}
+                </span>
+                <span class="yn-rvs__n">({{ h.frequency }})</span>
+                <span class="yn-rvs__trk"><i style="width:{{ pct | round: 1 }}%"></i></span>
+              </div>
+            {%- endfor -%}
+          </div>
+          {%- if gallery != blank and s.show_gallery -%}<div class="yn-rvs__gal">{{ gallery }}</div>{%- endif -%}
+        </div>
+
+        {%- comment -%} ---------- Tabs + sort ---------- {%- endcomment -%}
+        <div class="yn-rvs__tabs">
+          <span class="is-on">{{ s.tab_label }} <b>{{ count }}</b></span>
+          <label class="yn-rvs__sort">
+            <span class="visually-hidden">{{ s.sort_label }}</span>
+            <select data-yn-rv-sort>
+              <option value="recent">{{ s.sort_recent }}</option>
+              <option value="photos">{{ s.sort_photos }}</option>
+              <option value="high">{{ s.sort_high }}</option>
+              <option value="low">{{ s.sort_low }}</option>
+            </select>
+            {% render 'yn-icon', name: 'chevron-down' %}
+          </label>
+        </div>
+
+        {%- comment -%} ---------- Review list ---------- {%- endcomment -%}
+        <div class="yn-rvs__list" data-yn-rv-list>
+          {%- for r in jd.reviews limit: s.max_reviews -%}
+            {%- liquid
+              assign words = r.reviewer_name | strip | split: ' '
+              assign first = words | first
+              assign last = words | last
+              assign f1 = first | slice: 0 | upcase
+              assign l1 = last | slice: 0 | upcase
+              assign initials = f1
+              if words.size > 1
+                assign initials = f1 | append: l1
+              endif
+              if s.name_format == 'initial' and words.size > 1
+                assign shown_name = first | append: ' ' | append: l1 | append: '.'
+              else
+                assign shown_name = r.reviewer_name
+              endif
+              if r.is_anonymous_reviewer
+                assign shown_name = 'Anonymous'
+                assign initials = 'A'
+              endif
+              assign body = r.body | strip_html | strip
+              assign pics = r.pictures_urls | size
+            -%}
+            <article class="yn-rvs__rv" data-rating="{{ r.rating }}" data-photos="{{ pics }}" data-time="{{ r.created_at | date: '%s' }}" data-i="{{ forloop.index0 }}">
+              <div class="yn-rvs__top">
+                <span class="yn-rvs__av" aria-hidden="true">{{ initials }}</span>
+                <div>
+                  <b>{{ shown_name }}{% if r.verified_buyer and s.show_verified %} <span class="yn-rvs__ver">{{ s.verified_label }}</span>{% endif %}</b>
+                  {%- if r.location_country != blank -%}
+                    <span class="yn-rvs__c">
+                      {%- if r.location_country_code == 'SG' -%}
+                        <svg viewBox="0 0 16 11" aria-hidden="true"><rect width="16" height="5.5" fill="#EF3340"/><rect y="5.5" width="16" height="5.5" fill="#fff"/></svg>
+                      {%- endif -%}
+                      {{ r.location_country }}
+                    </span>
+                  {%- endif -%}
+                </div>
+                <time class="yn-rvs__when" datetime="{{ r.created_at }}" data-yn-ago>{{ r.created_at | date: '%-d %b %Y' }}</time>
+              </div>
+              <div class="yn-rvs__st">
+                <span class="yn-rvs__stars yn-rvs__stars--md" role="img" aria-label="{{ r.rating }} out of 5 stars">
+                  {%- for i in (1..5) -%}<svg viewBox="0 0 24 24" class="{% if i <= r.rating %}is-on{% endif %}" aria-hidden="true"><path d="{{ star_path }}"/></svg>{%- endfor -%}
+                </span>
+                {%- if r.title != blank -%}<b>{{ r.title }}</b>{%- endif -%}
+              </div>
+              {%- if body != blank -%}
+                {%- if body.size > s.excerpt -%}
+                  <p class="yn-rvs__tx" data-full="{{ body | escape }}">{{ body | truncate: s.excerpt, '…' }} <button type="button" class="yn-rvs__more" data-yn-rv-more>{{ s.more_label }}</button></p>
+                {%- else -%}
+                  <p class="yn-rvs__tx">{{ body }}</p>
+                {%- endif -%}
+              {%- endif -%}
+              {%- if pics > 0 -%}
+                <div class="yn-rvs__pics">
+                  {%- for pic in r.pictures_urls -%}
+                    {%- assign src = pic.compact | default: pic.small | default: pic.huge | default: pic.original | default: pic -%}
+                    {%- assign big = pic.huge | default: pic.original | default: src -%}
+                    {%- if src != blank -%}<a href="{{ big }}" target="_blank" rel="noopener"><img src="{{ src }}" alt="{{ 'Photo from ' | append: shown_name | escape }}" loading="lazy" width="88" height="88"></a>{%- endif -%}
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+              {%- if r.reply_content != blank -%}<div class="yn-rvs__reply"><b>{{ r.shop_reply_name | default: shop.name }}</b> {{ r.reply_content }}</div>{%- endif -%}
+            </article>
+          {%- endfor -%}
+          <p class="yn-rvs__empty" data-yn-rv-empty hidden>{{ s.empty_photos }}</p>
+        </div>
+
+        {%- comment -%} ---------- Footer: write a review / see all (opens the Judge.me widget) ---------- {%- endcomment -%}
+        {%- if app_mode == 'button' -%}
+          <div class="yn-rvs__foot">
+            {%- if s.write_label != blank -%}<button type="button" class="yn-btn yn-btn--solid" data-yn-rv-write>{{ s.write_label }}</button>{%- endif -%}
+            {%- if count > shown and s.all_label != blank -%}<button type="button" class="yn-btn yn-btn--outline" data-yn-rv-all>{{ s.all_label | replace: '[count]', count }}</button>{%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- if app_mode != 'never' -%}
+        <div class="yn-rvs__app" data-yn-rv-app{% if app_mode == 'button' %} hidden{% endif %}>
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when '@app' -%}
+                {% render block %}
+              {%- when 'liquid' -%}
+                <div {{ block.shopify_attributes }}>{{ block.settings.liquid }}</div>
+            {%- endcase -%}
+          {%- endfor -%}
+          {%- assign app_blocks = section.blocks | where: 'type', '@app' -%}
+          {%- if app_blocks.size == 0 and has_data == false -%}
+            <p class="yn-center yn-muted">Add the Judge.me “Review widget” app block to this section in the theme editor to show your reviews.</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
     </div>
   </div>
 </section>
 
+<script>
+  (function () {
+    var root = document.getElementById({{ s.anchor | default: 'reviews' | json }});
+    if (!root || root._ynRv) return; root._ynRv = 1;
+    var list = root.querySelector('[data-yn-rv-list]');
+    // "2 weeks ago" from the review date
+    var rtf = window.Intl && Intl.RelativeTimeFormat ? new Intl.RelativeTimeFormat(document.documentElement.lang || 'en', { numeric: 'auto' }) : null;
+    root.querySelectorAll('[data-yn-ago]').forEach(function (t) {
+      if (!rtf) return; var d = new Date(t.getAttribute('datetime')); if (isNaN(d)) return;
+      var s = (d - Date.now()) / 1000, a = Math.abs(s), u = [['year', 31536000], ['month', 2592000], ['week', 604800], ['day', 86400], ['hour', 3600], ['minute', 60]];
+      for (var i = 0; i < u.length; i++) { if (a >= u[i][1] || i === u.length - 1) { t.textContent = rtf.format(Math.round(s / u[i][1]), u[i][0]); break; } }
+    });
+    // Read more
+    root.addEventListener('click', function (e) {
+      var m = e.target.closest('[data-yn-rv-more]'); if (!m) return;
+      var p = m.closest('[data-full]'); p.textContent = p.getAttribute('data-full');
+    });
+    // Sort / filter
+    var sel = root.querySelector('[data-yn-rv-sort]'), empty = root.querySelector('[data-yn-rv-empty]');
+    if (sel && list) sel.addEventListener('change', function () {
+      var items = [].slice.call(list.querySelectorAll('.yn-rvs__rv')), v = sel.value, n = 0;
+      items.sort(function (a, b) {
+        if (v === 'high') return b.dataset.rating - a.dataset.rating || a.dataset.i - b.dataset.i;
+        if (v === 'low') return a.dataset.rating - b.dataset.rating || a.dataset.i - b.dataset.i;
+        return a.dataset.i - b.dataset.i;
+      }).forEach(function (it) {
+        var show = v !== 'photos' || +it.dataset.photos > 0; it.hidden = !show; if (show) n++;
+        list.insertBefore(it, empty);
+      });
+      if (empty) empty.hidden = n > 0;
+    });
+    // Open the Judge.me widget (full list / review form)
+    var app = root.querySelector('[data-yn-rv-app]');
+    // "Write a review" only opens Judge.me's review form (it opens as a pop-up), the widget itself stays hidden.
+    // "See all reviews" shows the full Judge.me widget below.
+    function openApp(write) {
+      if (!app) return;
+      if (!write) { app.hidden = false; app.classList.remove('is-form-only'); app.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+      if (app.hidden) { app.classList.add('is-form-only'); app.hidden = false; }
+      var tries = 0, t = setInterval(function () {
+        var b = app.querySelector('[data-testid="write-review-button"], .jdgm-write-rev-link, .jdgm-write-review-btn');
+        if (b || ++tries > 40) { clearInterval(t); if (b) b.click(); }
+      }, 150);
+    }
+    var w = root.querySelector('[data-yn-rv-write]'), al = root.querySelector('[data-yn-rv-all]');
+    if (w) w.addEventListener('click', function () { openApp(true); });
+    if (al) al.addEventListener('click', function () { openApp(false); al.remove(); });
+  })();
+</script>
+
 {% schema %}
 {
-  "name": "YUNA reviews (app)",
+  "name": "YUNA reviews",
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "Happy" },
     { "type": "text", "id": "accent", "label": "Heading accent", "default": "Customers." },
     { "type": "textarea", "id": "text", "label": "Subheading" },
     { "type": "text", "id": "anchor", "label": "Anchor ID", "default": "reviews", "info": "Links like #reviews scroll here." },
-    { "type": "range", "id": "max_width", "label": "Content max width", "min": 700, "max": 1400, "step": 20, "unit": "px", "default": 1000 },
+    { "type": "product", "id": "product", "label": "Product", "info": "Leave empty on the product page. On other pages, pick the product whose Judge.me reviews to show." },
+    { "type": "range", "id": "max_width", "label": "Content max width", "min": 700, "max": 1400, "step": 20, "unit": "px", "default": 980 },
+    { "type": "header", "content": "Reviews (from Judge.me)" },
+    { "type": "paragraph", "content": "Rating, star breakdown and reviews come from Judge.me automatically. How many reviews Judge.me shares with the theme is set in Judge.me (reviews per page)." },
+    { "type": "range", "id": "max_reviews", "label": "Reviews to show", "min": 1, "max": 20, "step": 1, "default": 6 },
+    { "type": "range", "id": "excerpt", "label": "Characters before “Read more”", "min": 80, "max": 400, "step": 10, "default": 150 },
+    { "type": "select", "id": "name_format", "label": "Reviewer name", "options": [{ "value": "initial", "label": "First name and initial (Chloe T.)" }, { "value": "full", "label": "Full name" }], "default": "initial" },
+    { "type": "checkbox", "id": "show_verified", "label": "Show “Verified buyer” label", "default": false },
+    { "type": "text", "id": "verified_label", "label": "Verified buyer label", "default": "Verified buyer" },
+    { "type": "checkbox", "id": "show_gallery", "label": "Show customer photo grid", "default": true, "info": "Uses photos you add as blocks, then photos from reviews. Hidden when there are none." },
+    { "type": "select", "id": "app_mode", "label": "Judge.me widget", "options": [
+      { "value": "button", "label": "Behind “Write a review” / “See all” buttons" },
+      { "value": "always", "label": "Always shown below the reviews" },
+      { "value": "never", "label": "Never shown" }
+    ], "default": "button", "info": "Without reviews yet, the Judge.me widget is always shown so customers can write the first one." },
+    { "type": "header", "content": "Text" },
+    { "type": "text", "id": "summary_text", "label": "Summary", "default": "Based on [count] reviews", "info": "[count] is replaced by the number of reviews." },
+    { "type": "text", "id": "summary_text_one", "label": "Summary, one review", "default": "Based on [count] review" },
+    { "type": "text", "id": "tab_label", "label": "Tab label", "default": "Reviews" },
+    { "type": "text", "id": "sort_label", "label": "Sort label (screen readers)", "default": "Sort reviews" },
+    { "type": "text", "id": "sort_recent", "label": "Sort: most recent", "default": "Most recent" },
+    { "type": "text", "id": "sort_photos", "label": "Sort: with photos", "default": "With photos" },
+    { "type": "text", "id": "sort_high", "label": "Sort: highest rating", "default": "Highest rating" },
+    { "type": "text", "id": "sort_low", "label": "Sort: lowest rating", "default": "Lowest rating" },
+    { "type": "text", "id": "empty_photos", "label": "No reviews with photos", "default": "No reviews with photos yet." },
+    { "type": "text", "id": "more_label", "label": "Read more", "default": "Read more" },
+    { "type": "text", "id": "write_label", "label": "Write a review button", "default": "Write a review" },
+    { "type": "text", "id": "all_label", "label": "See all button", "default": "See all [count] reviews" },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "star_color", "label": "Stars", "default": "#575B6A" },
+    { "type": "color", "id": "bar_color", "label": "Rating bar", "default": "#161B30" },
+    { "type": "color", "id": "track_color", "label": "Rating bar track", "default": "#EDE5D9" },
+    { "type": "color", "id": "avatar_bg", "label": "Initials circle", "default": "#EADFD2" },
+    { "type": "color", "id": "line_color", "label": "Divider lines", "default": "#E8E9EC" },
     { "type": "header", "content": "Section style" },
     { "type": "select", "id": "bg", "label": "Background", "options": [{ "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "beige", "label": "Beige" }, { "value": "navy", "label": "Navy" }], "default": "white" },
     { "type": "select", "id": "pt", "label": "Space above", "options": [{ "value": "none", "label": "None" }, { "value": "half", "label": "Half" }, { "value": "full", "label": "Full" }], "default": "half" },
@@ -37,8 +298,12 @@
   ],
   "blocks": [
     { "type": "@app" },
+    { "type": "photo", "name": "Customer photo", "limit": 8, "settings": [
+      { "type": "image_picker", "id": "image", "label": "Photo", "info": "A real customer photo, shown in the photo grid." },
+      { "type": "text", "id": "alt", "label": "Description", "default": "Customer photo" }
+    ] },
     { "type": "liquid", "name": "Custom Liquid", "settings": [{ "type": "liquid", "id": "liquid", "label": "Liquid" }] }
   ],
-  "presets": [{ "name": "YUNA reviews (app)" }]
+  "presets": [{ "name": "YUNA reviews" }]
 }
 {% endschema %}

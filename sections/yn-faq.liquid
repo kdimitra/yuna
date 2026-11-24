@@ -1,4 +1,5 @@
-<section class="{% render 'yn-section-class', s: section %} yn-faq" id="{{ section.settings.anchor | default: 'faq' }}">
+<section class="{% render 'yn-section-class', s: section %} yn-faq yn-faq--icon-{{ section.settings.icon_style | default: 'plain' }}{% if section.settings.sticky_heading %} yn-faq--sticky{% endif %}" id="{{ section.settings.anchor | default: 'faq' }}"
+  style="--fq-line:{{ section.settings.line_color | default: '#161B30' }};--fq-q:{{ section.settings.question_color | default: '#575B6A' }};--fq-icon:{{ section.settings.icon_color | default: '#161B30' }};--fq-a:{{ section.settings.answer_color | default: '#575B6A' }}">
   <div class="yn-wrap yn-faq__grid">
     <div class="yn-faq__h yn-rv">
       {%- render 'yn-heading', heading: section.settings.heading, accent: section.settings.accent, size: 'm' -%}
@@ -31,6 +32,13 @@
     { "type": "richtext", "id": "text", "label": "Intro", "default": "<p>Can’t find your answer? <a href=\"/pages/contact\">Contact us</a>.</p>" },
     { "type": "text", "id": "anchor", "label": "Anchor ID", "default": "faq" },
     { "type": "checkbox", "id": "schema_markup", "label": "Add FAQ structured data for search engines", "default": true },
+    { "type": "checkbox", "id": "sticky_heading", "label": "Keep the heading in view while scrolling (desktop)", "default": false },
+    { "type": "header", "content": "Questions" },
+    { "type": "select", "id": "icon_style", "label": "Open / close icon", "options": [{ "value": "plain", "label": "Plain + and − (design)" }, { "value": "boxed", "label": "+ and − in a small box" }], "default": "plain" },
+    { "type": "color", "id": "question_color", "label": "Question text", "default": "#575B6A" },
+    { "type": "color", "id": "answer_color", "label": "Answer text", "default": "#575B6A" },
+    { "type": "color", "id": "icon_color", "label": "Icon", "default": "#161B30" },
+    { "type": "color", "id": "line_color", "label": "Divider lines", "default": "#161B30" },
     { "type": "header", "content": "Section style" },
     { "type": "select", "id": "bg", "label": "Background", "options": [{ "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "beige", "label": "Beige" }, { "value": "navy", "label": "Navy" }], "default": "white" },
     { "type": "select", "id": "pt", "label": "Space above", "options": [{ "value": "none", "label": "None" }, { "value": "half", "label": "Half" }, { "value": "full", "label": "Full" }], "default": "half" },

@@ -19,7 +19,7 @@
   endif
 -%}
 
-<section class="yn yn-pdp" id="yn-pdp-{{ section.id }}" data-yn-product data-section="{{ section.id }}" data-form="{{ form_id }}" data-nights-unit="{{ nights_per_unit }}" data-unit="{{ unit_label | escape }}">
+<section class="yn yn-pdp{% if section.settings.sticky_media %} yn-pdp--sticky-media{% endif %} yn-pdp--acc-{{ section.settings.acc_icon | default: 'plain' }}" id="yn-pdp-{{ section.id }}" style="--acc-line:{{ section.settings.acc_line | default: '#161B30' }};--acc-title:{{ section.settings.acc_title | default: '#161B30' }};--acc-icon:{{ section.settings.acc_icon_color | default: '#161B30' }};--acc-text:{{ section.settings.acc_text | default: '#3F4455' }}" data-yn-product data-section="{{ section.id }}" data-form="{{ form_id }}" data-nights-unit="{{ nights_per_unit }}" data-unit="{{ unit_label | escape }}">
   <div class="yn-pdp__grid yn-wrap">
     {%- comment -%} ============ Gallery ============ {%- endcomment -%}
     <div class="yn-pdp__media">
@@ -88,7 +88,7 @@
               <div class="yn-pdp__rate" {{ block.shopify_attributes }}>
                 {%- render 'yn-stars', rating: r_val -%}
                 {%- if r_val != blank -%}<b>{{ r_val }}</b>{%- endif -%}
-                {%- if r_cnt != blank -%}<a href="#{{ block.settings.anchor | default: 'reviews' }}" class="yn-pdp__rlink">{{ block.settings.count_text | replace: '[count]', r_cnt }}</a>{%- endif -%}
+                {%- if r_cnt != blank -%}<a href="#{{ block.settings.anchor | default: 'reviews' }}" class="yn-pdp__rlink">{%- assign r_txt = block.settings.count_text | replace: '[count]', r_cnt -%}{%- assign r_n = r_cnt | plus: 0 -%}{%- if r_n == 1 -%}{%- assign r_txt = r_txt | replace: 'reviews', 'review' -%}{%- endif -%}{{ r_txt }}</a>{%- endif -%}
                 {%- if block.settings.extra != blank -%}<i aria-hidden="true"></i><span>{{ block.settings.extra }}</span>{%- endif -%}
               </div>
             {%- endif -%}
@@ -128,7 +128,7 @@
             </ul>
 
           {%- when 'variant_picker' -%}
-            {%- unless product.has_only_default_variant or use_tiers -%}
+            {%- unless product.has_only_default_variant or use_tiers or bundles_block.settings.mode == 'app' -%}
               <div class="yn-vpick" {{ block.shopify_attributes }}>
                 {%- for option in product.options_with_values -%}
                   <fieldset class="yn-vpick__opt">
@@ -208,7 +208,9 @@
                 {%- if block.settings.note != blank -%}<p class="yn-bundles__note">{{ block.settings.note }}</p>{%- endif -%}
               </div>
             {%- elsif block.settings.mode == 'app' -%}
-              <span id="{{ block.settings.anchor | default: 'offer' }}" class="yn-anchor" {{ block.shopify_attributes }}></span>
+              <div class="yn-bundles yn-bundles--app" id="{{ block.settings.anchor | default: 'offer' }}" {{ block.shopify_attributes }}>
+                {%- if block.settings.heading != blank -%}<div class="yn-bundles__h"><span>{{ block.settings.heading }}</span></div>{%- endif -%}
+              </div>
             {%- endif -%}
 
           {%- when 'buy_buttons' -%}
@@ -282,7 +284,7 @@
             <details class="yn-acc" {{ block.shopify_attributes }}{% if block.settings.open %} open{% endif %}>
               <summary><span>{{ block.settings.title }}</span><i class="yn-pm" aria-hidden="true"></i></summary>
               <div class="yn-acc__a yn-rte">
-                {%- if block.settings.source == 'description' -%}{{ product.description }}{%- else -%}{{ block.settings.content }}{%- endif -%}
+                {%- if block.settings.source == 'description' and product.description != blank -%}{{ product.description }}{%- else -%}{{ block.settings.content }}{%- endif -%}
                 {%- if block.settings.table != blank -%}
                   {%- assign rows = block.settings.table | newline_to_br | split: '<br />' -%}
                   <table class="yn-facts"><tbody>
@@ -357,7 +359,14 @@
     { "type": "range", "id": "nights_per_unit", "label": "Nights per bottle", "min": 5, "max": 100, "step": 1, "default": 30, "info": "Used for the per-night price (60 capsules = 30 nights)." },
     { "type": "text", "id": "unit_label", "label": "Unit name", "default": "bottle" },
     { "type": "checkbox", "id": "sticky_atc", "label": "Sticky Add to cart bar on mobile", "default": true },
-    { "type": "text", "id": "sticky_label", "label": "Sticky bar button label", "default": "Add to cart" }
+    { "type": "text", "id": "sticky_label", "label": "Sticky bar button label", "default": "Add to cart" },
+    { "type": "checkbox", "id": "sticky_media", "label": "Keep the images in view while scrolling (desktop)", "default": false, "info": "Off matches the design: the images stay put when a tab below opens." },
+    { "type": "header", "content": "Info tabs (Description, How to use…)" },
+    { "type": "select", "id": "acc_icon", "label": "Open / close icon", "options": [{ "value": "plain", "label": "Plain + and − (design)" }, { "value": "boxed", "label": "+ and − in a small box" }], "default": "plain" },
+    { "type": "color", "id": "acc_title", "label": "Tab title", "default": "#161B30" },
+    { "type": "color", "id": "acc_icon_color", "label": "Icon", "default": "#161B30" },
+    { "type": "color", "id": "acc_line", "label": "Divider lines", "default": "#161B30" },
+    { "type": "color", "id": "acc_text", "label": "Tab text", "default": "#3F4455" }
   ],
   "blocks": [
     { "type": "@app" },
@@ -387,7 +396,7 @@
       { "type": "textarea", "id": "lines", "label": "Lines (one per line)", "default": "Fall asleep more easily and rest deeper\nWake up refreshed, with a natural glow\n400 mg Imperial Lingzhi™ + 7 botanicals and probiotics" }
     ] },
     { "type": "variant_picker", "name": "Variant picker", "limit": 1, "settings": [
-      { "type": "paragraph", "content": "Shows the product options as buttons. Hidden when the product has a single variant or when theme bundle cards are used." }
+      { "type": "paragraph", "content": "Shows the product options as buttons. Hidden when the product has a single variant or when the Bundle picker is used (theme cards or app)." }
     ] },
     { "type": "bundles", "name": "Bundle picker", "limit": 1, "settings": [
       { "type": "select", "id": "mode", "label": "Bundle source", "options": [
@@ -448,7 +457,7 @@
     ] },
     { "type": "accordion", "name": "Accordion", "settings": [
       { "type": "text", "id": "title", "label": "Title", "default": "Description" },
-      { "type": "select", "id": "source", "label": "Content", "options": [{ "value": "description", "label": "Product description" }, { "value": "custom", "label": "Custom text below" }], "default": "custom" },
+      { "type": "select", "id": "source", "label": "Content", "info": "Product description falls back to the text below when the product has none.", "options": [{ "value": "description", "label": "Product description" }, { "value": "custom", "label": "Custom text below" }], "default": "custom" },
       { "type": "richtext", "id": "content", "label": "Text", "info": "Tip: connect a product metafield with the dynamic source button." },
       { "type": "textarea", "id": "table", "label": "Table rows (optional)", "info": "One row per line: Name | Amount. E.g. Imperial Lingzhi™ | 400 mg" },
       { "type": "page", "id": "page", "label": "Or show a page's content" },

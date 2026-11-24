@@ -20,7 +20,13 @@
         "nights_per_unit": 30,
         "unit_label": "bottle",
         "sticky_atc": true,
-        "sticky_label": "Add to cart"
+        "sticky_label": "Add to cart",
+        "sticky_media": false,
+        "acc_icon": "plain",
+        "acc_title": "#161B30",
+        "acc_icon_color": "#161B30",
+        "acc_line": "#161B30",
+        "acc_text": "#3F4455"
       },
       "blocks": {
         "rating": {
@@ -70,7 +76,7 @@
         "bundles": {
           "type": "bundles",
           "settings": {
-            "mode": "theme",
+            "mode": "app",
             "heading": "Bundle & Save",
             "anchor": "offer",
             "note": ""
@@ -172,7 +178,7 @@
           "settings": {
             "title": "Description",
             "source": "description",
-            "content": "",
+            "content": "<p>Daily Beauty Sleep™ is a deep sleep supplement and beauty supplement in one, made for women who only get 5–6 hours of sleep. Each plant-based lingzhi capsule combines Imperial Lingzhi™, our hero herb from the Wuyi Mountains, with L-theanine, ashwagandha, five more botanicals and probiotics. Together they support restorative sleep, so you wake up refreshed, with a natural glow.</p>",
             "open": false
           }
         },
@@ -308,7 +314,8 @@
         "button_link": "#offer",
         "bg": "white",
         "pt": "half",
-        "pb": "half"
+        "pb": "half",
+        "mobile_after_next": true
       },
       "blocks": {
         "b1": {
@@ -796,7 +803,7 @@
         "accent": "Customers.",
         "text": "",
         "anchor": "reviews",
-        "max_width": 1000,
+        "max_width": 980,
         "bg": "white",
         "pt": "half",
         "pb": "half"
@@ -899,8 +906,8 @@
   },
   "order": [
     "main",
-    "results",
     "timeline",
+    "results",
     "ingredients",
     "comparison",
     "loved",
