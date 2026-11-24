@@ -1172,3 +1172,9 @@ html.yn-anim .yn-rv.is-in :is(.yn-story__ph,.yn-row__img,.yn-card__ph,.yn-ing__i
   .yn-tier__t{font-size:16px}
   .yn-i3>div{font-size:12px}
 }
+
+/* Kaching bundle bars: corner tags (3 bottles = Most popular, 6 bottles = Best value) */
+.kaching-bundles__bars>.kaching-bundles__bar{position:relative;overflow:visible}
+.kaching-bundles__bars>.kaching-bundles__bar:nth-child(2)::after,.kaching-bundles__bars>.kaching-bundles__bar:nth-child(3)::after{position:absolute;top:-10px;right:18px;z-index:3;padding:3px 9px;border-radius:5px;background:rgb(22,27,48);color:#fff;font-family:"DM Sans",sans-serif;font-size:10.5px;font-weight:700;line-height:1.4;letter-spacing:.08em;text-transform:uppercase;pointer-events:none}
+.kaching-bundles__bars>.kaching-bundles__bar:nth-child(2)::after{content:"Most popular"}
+.kaching-bundles__bars>.kaching-bundles__bar:nth-child(3)::after{content:"Best value"}
