@@ -328,7 +328,7 @@
       var key = p.dataset.key || 'yn_pop';
       function seen() { try { return localStorage.getItem(key); } catch (e) { return null; } }
       function mark() { try { localStorage.setItem(key, '1'); } catch (e) {} }
-      function show() { p.hidden = false; requestAnimationFrame(function () { p.classList.add('is-on'); }); var x = $('[data-yn-pop-close]', p); if (x) x.focus(); }
+      function show() { p.hidden = false; requestAnimationFrame(function () { p.classList.add('is-on'); }); var x = $('[data-yn-pop-close]', p); if (x) { try { x.focus({ preventScroll: true, focusVisible: false }); } catch (e) { x.focus(); } } }
       function hide() { p.classList.remove('is-on'); setTimeout(function () { p.hidden = true; }, 300); mark(); }
       on(p, 'click', function (e) { if (e.target === p || e.target.closest('[data-yn-pop-close]')) hide(); });
       on(doc, 'keydown', function (e) { if (e.key === 'Escape' && !p.hidden) hide(); });

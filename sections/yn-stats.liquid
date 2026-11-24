@@ -1,4 +1,4 @@
-<section class="{% render 'yn-section-class', s: section %} yn-stats" id="yn-{{ section.id }}">
+<section class="{% render 'yn-section-class', s: section %} yn-stats" id="yn-{{ section.id }}" style="--ring:{{ section.settings.ring_color }};--ring-track:{{ section.settings.track_color }};--ring-w:{{ section.settings.ring_width }};--ring-num:{{ section.settings.number_color }}">
   <div class="yn-wrap">
     <div class="yn-stats__head yn-rv">
       <div>
@@ -47,6 +47,11 @@
     { "type": "text", "id": "note", "label": "Footnote", "default": "*Self-reported results from YUNA customers. Individual results may vary." },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop Daily Beauty Sleep™" },
     { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "header", "content": "Rings" },
+    { "type": "color", "id": "ring_color", "label": "Filled ring", "default": "#3A5BA0" },
+    { "type": "color", "id": "track_color", "label": "Empty ring track", "default": "#EAE9E9" },
+    { "type": "range", "id": "ring_width", "label": "Ring thickness", "min": 2, "max": 12, "step": 1, "default": 7 },
+    { "type": "color", "id": "number_color", "label": "Number", "default": "#161B30" },
     { "type": "header", "content": "Section style" },
     { "type": "select", "id": "bg", "label": "Background", "options": [{ "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "beige", "label": "Beige" }, { "value": "navy", "label": "Navy" }], "default": "cream" },
     { "type": "select", "id": "pt", "label": "Space above", "options": [{ "value": "none", "label": "None" }, { "value": "half", "label": "Half" }, { "value": "full", "label": "Full" }], "default": "half" },

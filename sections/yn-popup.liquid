@@ -1,26 +1,37 @@
-{%- if section.settings.enable -%}
-<div class="yn yn-pop" id="YnPopup-{{ section.id }}" role="dialog" aria-modal="true" aria-labelledby="YnPopTitle-{{ section.id }}" hidden data-yn-popup data-delay="{{ section.settings.delay }}" data-key="yn_pop_{{ section.settings.version }}"{% if request.design_mode and section.settings.preview %} data-preview{% endif %}>
+{%- liquid
+  assign s = section.settings
+  assign show_here = true
+  if s.pages == 'home' and request.page_type != 'index'
+    assign show_here = false
+  endif
+  assign ov_a = s.overlay_opacity | divided_by: 100.0
+  assign ov_bg = s.overlay_color | color_modify: 'alpha', ov_a
+  assign form_id = 'YnPopForm-' | append: section.id
+-%}
+{%- if s.enable and show_here -%}
+<div class="yn yn-pop" id="YnPopup-{{ section.id }}" role="dialog" aria-modal="true" aria-labelledby="YnPopTitle-{{ section.id }}" hidden data-yn-popup data-delay="{{ s.delay }}" data-key="yn_pop_{{ s.version }}"{% if request.design_mode and s.preview %} data-preview{% endif %}
+  style="--pop-ov:{{ ov_bg }};--pop-bg:{{ s.box_bg }};--pop-im:{{ s.image_bg }};--pop-h:{{ s.title_color }};--pop-sub:{{ s.subtitle_color }};--pop-in-bd:{{ s.input_border }};--pop-btn:{{ s.btn_bg }};--pop-btn-fg:{{ s.btn_fg }};--pop-btn-h:{{ s.btn_hover }};--pop-note:{{ s.consent_color }};--pop-lb-bg:{{ s.label_bg }};--pop-lb-fg:{{ s.label_fg }};--pop-fp:{{ s.focal }};--pop-fp-m:{{ s.focal_m }};--pop-im-h:{{ s.image_height }}px;--pop-im-h-m:{{ s.image_height_m }}px">
   <div class="yn-pop__box">
-    <button class="yn-iconbtn yn-pop__x" type="button" aria-label="Close" data-yn-pop-close>{% render 'yn-icon', name: 'close' %}</button>
+    <button class="yn-pop__x" type="button" aria-label="Close" data-yn-pop-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     <div class="yn-pop__im">
-      {% render 'yn-img', image: section.settings.image, fallback: section.settings.image_fallback, alt: '', sizes: '360px', widths: '360, 720' %}
-      {%- if section.settings.image_label != blank -%}<span>{{ section.settings.image_label }}</span>{%- endif -%}
+      {% render 'yn-img', image: s.image, fallback: s.image_fallback, alt: '', sizes: '(max-width: 700px) 100vw, 470px', widths: '470, 700, 940' %}
+      {%- if s.image_label != blank -%}<span class="yn-pop__lb">{{ s.image_label }}</span>{%- endif -%}
     </div>
     <div class="yn-pop__bd">
-      <p class="yn-pop__a">{{ section.settings.kicker }}</p>
-      <p class="yn-pop__b" id="YnPopTitle-{{ section.id }}">{{ section.settings.title }}</p>
-      <p class="yn-pop__c">{{ section.settings.subtitle }}</p>
-      {%- form 'customer', class: 'yn-pop__form' -%}
+      {%- if s.kicker != blank -%}<p class="yn-pop__a">{{ s.kicker }}</p>{%- endif -%}
+      {%- if s.title != blank -%}<p class="yn-pop__b" id="YnPopTitle-{{ section.id }}">{{ s.title }}</p>{%- endif -%}
+      {%- if s.subtitle != blank -%}<p class="yn-pop__c">{{ s.subtitle }}</p>{%- endif -%}
+      {%- form 'customer', class: 'yn-pop__form', id: form_id -%}
         <input type="hidden" name="contact[tags]" value="newsletter,popup">
         {%- if form.posted_successfully? -%}
-          <p class="yn-form-ok" role="status">{{ section.settings.success }}</p>
+          <p class="yn-pop__ok" role="status">{{ s.success }}</p>
         {%- else -%}
-          <input class="yn-input" type="email" name="contact[email]" required autocomplete="email" placeholder="{{ section.settings.placeholder }}" aria-label="{{ section.settings.placeholder }}">
-          <button class="yn-btn yn-btn--solid" type="submit">{{ section.settings.button }}</button>
-          {%- if form.errors -%}<p class="yn-form-err" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>{%- endif -%}
+          <input class="yn-pop__in" type="email" name="contact[email]" required autocomplete="email" placeholder="{{ s.placeholder }}" aria-label="{{ s.placeholder }}">
+          <button class="yn-pop__btn" type="submit">{{ s.button }}</button>
+          {%- if form.errors -%}<p class="yn-pop__err" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>{%- endif -%}
         {%- endif -%}
       {%- endform -%}
-      {%- if section.settings.consent != blank -%}<p class="yn-pop__d">{{ section.settings.consent }}</p>{%- endif -%}
+      {%- if s.consent != blank -%}<p class="yn-pop__d">{{ s.consent }}</p>{%- endif -%}
     </div>
   </div>
 </div>
@@ -30,20 +41,41 @@
 {
   "name": "YUNA sign-up pop-up",
   "settings": [
-    { "type": "checkbox", "id": "enable", "label": "Show pop-up", "default": false, "info": "Make sure the offer (e.g. a 10% welcome discount) exists in Shopify before switching this on." },
+    { "type": "checkbox", "id": "enable", "label": "Show pop-up", "default": true, "info": "Signed-up emails are saved as newsletter subscribers (tagged \"popup\"). Send the discount code with a Shopify Email or Flow welcome automation." },
+    { "type": "select", "id": "pages", "label": "Show on", "options": [{ "value": "home", "label": "Home page only" }, { "value": "all", "label": "All pages" }], "default": "home" },
     { "type": "checkbox", "id": "preview", "label": "Always show in the theme editor", "default": true },
-    { "type": "range", "id": "delay", "label": "Delay", "min": 0, "max": 30, "step": 1, "unit": "s", "default": 10 },
-    { "type": "text", "id": "version", "label": "Campaign ID", "default": "1", "info": "Change it to show the pop-up again to visitors who already closed it." },
+    { "type": "range", "id": "delay", "label": "Delay after page load", "min": 0, "max": 30, "step": 1, "unit": "s", "default": 10 },
+    { "type": "text", "id": "version", "label": "Campaign ID", "default": "1", "info": "The pop-up shows until a visitor closes it or signs up. Change this ID to show it again to everyone." },
+    { "type": "header", "content": "Image" },
     { "type": "image_picker", "id": "image", "label": "Image" },
     { "type": "text", "id": "image_fallback", "label": "Default image file (theme asset)", "default": "yn-pdp-lux-ritual.webp" },
+    { "type": "text", "id": "focal", "label": "Image focus point, desktop", "default": "50% 50%", "info": "e.g. 50% 30% (left, top)" },
+    { "type": "text", "id": "focal_m", "label": "Image focus point, mobile", "default": "50% 30%" },
+    { "type": "range", "id": "image_height", "label": "Pop-up height, desktop", "min": 360, "max": 640, "step": 10, "unit": "px", "default": 520 },
+    { "type": "range", "id": "image_height_m", "label": "Image height, mobile", "min": 140, "max": 360, "step": 10, "unit": "px", "default": 240 },
     { "type": "text", "id": "image_label", "label": "Image label", "default": "10% off" },
+    { "type": "header", "content": "Content" },
     { "type": "text", "id": "kicker", "label": "Small title", "default": "You’ve got" },
     { "type": "text", "id": "title", "label": "Large title", "default": "10% off" },
     { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Your first order offer" },
     { "type": "text", "id": "placeholder", "label": "Email placeholder", "default": "Email address" },
     { "type": "text", "id": "button", "label": "Button label", "default": "Continue" },
     { "type": "text", "id": "success", "label": "Success message", "default": "Thank you! Your 10% off code is on its way to your inbox." },
-    { "type": "text", "id": "consent", "label": "Consent text", "default": "By submitting my email, I consent to receive marketing emails from YUNA." }
+    { "type": "text", "id": "consent", "label": "Consent text", "default": "By submitting my email, I consent to receive marketing emails from YUNA." },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "overlay_color", "label": "Page overlay", "default": "#161B30" },
+    { "type": "range", "id": "overlay_opacity", "label": "Page overlay opacity", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 45 },
+    { "type": "color", "id": "box_bg", "label": "Pop-up background", "default": "#FFFDFB" },
+    { "type": "color", "id": "image_bg", "label": "Image background", "default": "#F4EEE6" },
+    { "type": "color", "id": "label_bg", "label": "Image label background", "default": "#FFFFFF" },
+    { "type": "color", "id": "label_fg", "label": "Image label text", "default": "#161B30" },
+    { "type": "color", "id": "title_color", "label": "Titles", "default": "#161B30" },
+    { "type": "color", "id": "subtitle_color", "label": "Subtitle", "default": "#9A7B5C" },
+    { "type": "color", "id": "input_border", "label": "Email field border", "default": "#C9B89A" },
+    { "type": "color", "id": "btn_bg", "label": "Button background", "default": "#161B30" },
+    { "type": "color", "id": "btn_fg", "label": "Button text", "default": "#FFFFFF" },
+    { "type": "color", "id": "btn_hover", "label": "Button hover background", "default": "#2A3150" },
+    { "type": "color", "id": "consent_color", "label": "Consent text", "default": "#6B6E7A" }
   ],
   "presets": [{ "name": "YUNA sign-up pop-up" }]
 }
