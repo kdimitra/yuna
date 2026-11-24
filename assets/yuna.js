@@ -424,6 +424,23 @@
         if (v) mediaTo(v.media);
       }
       tierInputs.forEach(function (r) { on(r, 'change', applyTier); });
+      /* kaching bundles: sync headline price, compare, save badge and per-night with the selected bar */
+      var kLast = '';
+      function kCents(el) { if (!el) return 0; var c = el.cloneNode(true); $$('.kaching-bundles__bar-price__unit-label', c).forEach(function (u) { u.remove(); }); var n = parseFloat(c.textContent.replace(/[^0-9.]/g, '')); return isNaN(n) ? 0 : Math.round(n * 100); }
+      function syncKaching() {
+        var block = doc.querySelector('kaching-bundles-block'); if (!block) return;
+        var sel = $('.kaching-bundles__bar--selected', block); if (!sel) return;
+        var cfg = {}; try { cfg = JSON.parse($('script.kaching-bundles-deal-block-settings').textContent); } catch (e) {}
+        var deal = (cfg.dealBars || [])[$$('.kaching-bundles__bar', block).indexOf(sel)] || {};
+        var qty = +deal.quantity || 1, total = kCents($('.kaching-bundles__bar-price', sel)); if (!total) return;
+        var full = kCents($('.kaching-bundles__bar-full-price', sel)) || total, save = full > total ? Math.round((full - total) * 100 / full) : 0;
+        var titleEl = $('.kaching-bundles__bar-title', sel), label = titleEl ? titleEl.textContent.trim() : '';
+        var key = [total, full, save, qty, label].join('|'); if (key === kLast) return; kLast = key;
+      setPrice(total, full, save, qty * nightsUnit, label);
+        }
+      var syncKachingRaf = raf(syncKaching);
+      if (window.MutationObserver) new MutationObserver(syncKachingRaf).observe(doc.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['class'] });
+      syncKachingRaf();
 
       /* option pills */
       var optInputs = $$('[data-yn-option]', sec);
