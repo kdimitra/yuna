@@ -30,7 +30,7 @@
           "type": "menu",
           "settings": {
             "heading": "Shop",
-            "menu": "main-menu"
+            "menu": "main-menu-1"
           }
         },
         "b2": {
@@ -73,9 +73,10 @@
       "type": "yn-popup",
       "settings": {
         "enable": true,
+        "pages": "all",
         "preview": false,
         "delay": 10,
-        "version": "1",
+        "version": "2",
         "image_fallback": "yn-pdp-lux-ritual.webp",
         "image_label": "10% off",
         "kicker": "You’ve got",
