@@ -273,6 +273,7 @@
       "settings": {
         "heading": "Real results in weeks.",
         "accent": "Refreshed mornings.",
+        "accent_newline": true,
         "text": "",
         "layout": "carousel",
         "verified_label": "Verified customer",
@@ -687,6 +688,7 @@
     },
     "cta": {
       "type": "yn-rich-text",
+      "disabled": true,
       "settings": {
         "heading": "",
         "accent": "",
