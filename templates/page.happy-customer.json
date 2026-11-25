@@ -39,7 +39,7 @@
         "verified_label": "Verified customer",
         "speed": 28,
         "bg": "white",
-        "pt": "none",
+        "pt": "half",
         "pb": "half"
       },
       "blocks": {
@@ -279,7 +279,7 @@
         "verified_label": "Verified customer",
         "note": "",
         "bg": "cream",
-        "pt": "full",
+        "pt": "half",
         "pb": "half"
       },
       "blocks": {
