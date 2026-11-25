@@ -1254,3 +1254,4 @@ html.yn-anim .yn-rv.is-in :is(.yn-story__ph,.yn-row__img,.yn-card__ph,.yn-ing__i
 .yn-kc-empty__t{font-family:var(--yn-font-b);font-size:15px;line-height:1.5;color:var(--yn-muted);margin:8px 0 22px}
 .yn-kc-empty__btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 30px;border-radius:999px;background:var(--yn-navy);color:#fff!important;font-family:var(--yn-font-b);font-size:16px;font-weight:600;text-decoration:none!important;transition:background .25s}
 .yn-kc-empty__btn:hover{background:#2A3150}
+#kaching-cart .yn-kc-empty__t{margin:8px 0 22px}
