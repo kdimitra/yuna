@@ -245,7 +245,7 @@
         "mobile_image_first": true,
         "heading": "Make YUNA your nightly ritual.",
         "heading_size": "s",
-        "heading_weight": "yn-h--bold",
+        "heading_weight": "yn-h--light",
         "text_size": "base",
         "bg": "white",
         "pt": "half",

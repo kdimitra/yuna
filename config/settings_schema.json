@@ -172,17 +172,18 @@
         "type": "text",
         "id": "yn_font_url",
         "label": "Font stylesheet URL",
-        "default": "https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap",
+        "default": "https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap",
         "info": "Google Fonts CSS link for the families above. Leave blank to use system fonts."
       },
       {
         "type": "range",
         "id": "yn_heading_weight",
         "label": "Heading weight",
-        "min": 200,
+        "min": 400,
         "max": 700,
         "step": 100,
-        "default": 300
+        "default": 400,
+        "info": "Design uses 400 (Regular). Figtree is loaded at 400, 500, 600 and 700."
       },
       {
         "type": "range",

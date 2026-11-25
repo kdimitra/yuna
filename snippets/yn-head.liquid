@@ -29,7 +29,11 @@
     --yn-save-fg:{{ settings.yn_save_text | default: '#FFFFFF' }};
     --yn-font-h:{{ settings.yn_font_heading | default: 'Figtree' }},"Helvetica Neue",Arial,sans-serif;
     --yn-font-b:{{ settings.yn_font_body | default: 'Figtree' }},"Helvetica Neue",Arial,sans-serif;
-    --yn-h-weight:{{ settings.yn_heading_weight | default: 300 }};
+    /* Legacy theme parts (prices, cart, apps, cookie banner) use these: point them at the YUNA fonts too */
+    --font-body-family:var(--yn-font-b);
+    --font-heading-family:var(--yn-font-h);
+    --highlighted-text-font-family:var(--yn-font-h);
+    --yn-h-weight:{{ settings.yn_heading_weight | default: 400 }};
     --yn-h-track:{{ settings.yn_heading_tracking | default: -40 | divided_by: 1000.0 }}em;
     --yn-body-size:{{ settings.yn_body_size | default: 16 }}px;
     --yn-page:{{ settings.yn_page_width | default: 1440 }}px;
