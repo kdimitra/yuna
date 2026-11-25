@@ -253,7 +253,7 @@
         "verified_label": "Verified customer",
         "note": "Individual results may vary.",
         "bg": "white",
-        "pt": "full",
+        "pt": "half",
         "pb": "half"
       },
       "blocks": {
@@ -479,8 +479,8 @@
         "them_label": "Typical sleep aids",
         "them_fallback": "yn-cmp-other-bottle.webp",
         "bg": "white",
-        "pt": "full",
-        "pb": "full"
+        "pt": "half",
+        "pb": "half"
       },
       "blocks": {
         "b1": {
