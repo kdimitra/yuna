@@ -149,3 +149,6 @@
 @media (prefers-reduced-motion:reduce){
   .yn-sci img{transition:none!important}
 }
+
+/* parallax: the photo is 20% taller and moves slower than the page (yuna.js sets the transform) */
+.yn-sci-hero.is-parallax .yn-sci-hero__media{top:-20%;will-change:transform}
