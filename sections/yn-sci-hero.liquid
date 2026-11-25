@@ -12,10 +12,10 @@
     assign has_img = true
   endif
 -%}
-<section class="yn yn-sci-hero yn-sci-hero--{{ s.align }}{% if s.m_position == 'bottom' %} yn-sci-hero--m-bottom{% endif %}" id="yn-{{ section.id }}"
+<section class="yn yn-sci-hero yn-sci-hero--{{ s.align }}{% if s.m_position == 'bottom' %} yn-sci-hero--m-bottom{% endif %}" id="yn-{{ section.id }}" data-yn-parallax="0.2"
   style="--s-bg:{{ s.bg }};--s-h:{{ s.heading_color }};--s-acc:{{ s.accent_color }};--s-tx:{{ lead_color }};--ov:{{ ov_r }} {{ ov_g }} {{ ov_b }};--ov-k:{{ s.overlay | divided_by: 100.0 }};--hero-h:clamp(420px,38vw,{{ s.height_d }}px);--hero-h-m:min(184vw,{{ s.height_m }}px);--hero-w:{{ s.text_width }}px;--hero-fs:{{ s.heading_size }}px;--hero-pos:{{ s.focus_x }}% 50%;--hero-pos-m:{{ s.focus_x_m }}% {{ s.focus_y_m }}%;--hero-pt-m:{{ s.pt_m }}px;--hero-bg-m:{{ s.bg_m }}">
   {%- if has_img -%}
-    <picture class="yn-sci-hero__media">
+    <picture class="yn-sci-hero__media" data-yn-parallax-media>
       {%- if s.image_m != blank -%}
         <source media="(max-width: 900px)" srcset="{{ s.image_m | image_url: width: 750 }} 750w, {{ s.image_m | image_url: width: 1100 }} 1100w, {{ s.image_m | image_url: width: 1500 }} 1500w" sizes="100vw">
       {%- elsif s.fallback_m != blank -%}
