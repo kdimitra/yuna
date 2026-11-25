@@ -99,8 +99,8 @@
           {%- when 'price' -%}
             <div class="yn-pdp__price" {{ block.shopify_attributes }}>
               <div class="yn-price" data-yn-price-row>
-                <span class="yn-price__now" data-yn-price>{{ current_variant.price | money_without_trailing_zeros }}</span>
-                <s class="yn-price__was" data-yn-compare{% unless current_variant.compare_at_price > current_variant.price %} hidden{% endunless %}>{{ current_variant.compare_at_price | money_without_trailing_zeros }}</s>
+                <span class="yn-price__now" data-yn-price>{{ current_variant.price | money_without_trailing_zeros | replace: 'S$', '$' | replace: '$', 'S$' }}</span>
+                <s class="yn-price__was" data-yn-compare{% unless current_variant.compare_at_price > current_variant.price %} hidden{% endunless %}>{{ current_variant.compare_at_price | money_without_trailing_zeros | replace: 'S$', '$' | replace: '$', 'S$' }}</s>
                 {%- liquid
                   assign save_pct = 0
                   if current_variant.compare_at_price > current_variant.price
@@ -111,7 +111,7 @@
                 <span class="yn-price__soldout" data-yn-soldout-badge{% if current_variant.available %} hidden{% endif %}>{{ 'products.product.sold_out' | t }}</span>
               </div>
               {%- if block.settings.show_per_night -%}
-                <p class="yn-price__per" data-yn-per data-template="{{ block.settings.per_night_text | escape }}">{{ current_variant.price | divided_by: nights_per_unit | money }} {{ block.settings.per_night_text | remove: '[price]' | strip }}</p>
+                <p class="yn-price__per" data-yn-per data-template="{{ block.settings.per_night_text | escape }}">{{ current_variant.price | divided_by: nights_per_unit | money | replace: 'S$', '$' | replace: '$', 'S$' }} {{ block.settings.per_night_text | remove: '[price]' | strip }}</p>
               {%- endif -%}
               {%- if block.settings.show_tax_note -%}<p class="yn-price__tax">{{ 'products.product.include_taxes' | t }}</p>{%- endif -%}
             </div>
@@ -199,9 +199,9 @@
                       <span class="yn-tier__bl">
                         <span class="yn-tier__t">{{ t.settings.label }}</span>
                         {%- if t_save > 0 and t.settings.show_save -%}<span class="yn-save yn-save--sm">{{ t.settings.save_text | replace: '[percent]', t_save }}</span>{%- endif -%}
-                        <span class="yn-tier__s">{{ t.settings.subtitle }}{% if t.settings.show_per_unit and t_units > 1 %} · {{ t_per_unit | money_without_trailing_zeros }} /{{ unit_label }}{% endif %}{% unless tv.available %} · {{ 'products.product.sold_out' | t }}{% endunless %}</span>
+                        <span class="yn-tier__s">{{ t.settings.subtitle }}{% if t.settings.show_per_unit and t_units > 1 %} · {{ t_per_unit | money_without_trailing_zeros | replace: 'S$', '$' | replace: '$', 'S$' }} /{{ unit_label }}{% endif %}{% unless tv.available %} · {{ 'products.product.sold_out' | t }}{% endunless %}</span>
                       </span>
-                      <span class="yn-tier__p"><b>{{ t_total | money_without_trailing_zeros }}</b>{%- if t_full > t_total -%}<s>{{ t_full | money_without_trailing_zeros }}</s>{%- endif -%}</span>
+                      <span class="yn-tier__p"><b>{{ t_total | money_without_trailing_zeros | replace: 'S$', '$' | replace: '$', 'S$' }}</b>{%- if t_full > t_total -%}<s>{{ t_full | money_without_trailing_zeros | replace: 'S$', '$' | replace: '$', 'S$' }}</s>{%- endif -%}</span>
                     </label>
                   {%- endfor -%}
                 </div>
@@ -312,7 +312,7 @@
   {%- if section.settings.sticky_atc -%}
     <div class="yn-sticky" data-yn-sticky aria-hidden="true">
       {%- if product.featured_image -%}{{ product.featured_image | image_url: width: 120 | image_tag: alt: '', loading: 'lazy' }}{%- endif -%}
-      <div class="yn-sticky__t"><b>{{ product.title }}</b><span data-yn-sticky-label>{{ current_variant.price | money_without_trailing_zeros }}</span></div>
+      <div class="yn-sticky__t"><b>{{ product.title }}</b><span data-yn-sticky-label>{{ current_variant.price | money_without_trailing_zeros | replace: 'S$', '$' | replace: '$', 'S$' }}</span></div>
       <button type="button" class="yn-btn yn-btn--solid yn-btn--atc yn-btn--sm" data-yn-sticky-buy{% unless current_variant.available %} disabled{% endunless %}>{{ section.settings.sticky_label }}</button>
     </div>
   {%- endif -%}
