@@ -187,7 +187,7 @@
         "ratio": "1/1",
         "bg": "white",
         "pt": "half",
-        "pb": "none"
+        "pb": "half"
       },
       "blocks": {
         "b1": {
@@ -241,7 +241,7 @@
         "alt": "A woman sleeping peacefully with her YUNA jar on the bedside table",
         "ratio": "4/3",
         "image_side": "left",
-        "width": "narrow",
+        "width": "wide",
         "mobile_image_first": true,
         "heading": "Make YUNA your nightly ritual.",
         "heading_size": "s",
