@@ -52,6 +52,13 @@
               {%- assign g = g | plus: 1 -%}
             {%- endif -%}
           {%- endfor -%}
+          {%- if g == 0 and s.gallery_assets != blank -%}
+            {%- assign ga = s.gallery_assets | newline_to_br | replace: '<br />', ',' | split: ',' -%}
+            {%- for f in ga -%}
+              {%- assign f = f | strip -%}
+              {%- if f != blank and g < 8 -%}<img src="{{ f | asset_url }}" alt="Customer photo" loading="lazy" width="84" height="84">{%- assign g = g | plus: 1 -%}{%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
           {%- for r in jd.reviews -%}
             {%- for pic in r.pictures_urls -%}
               {%- if g < 8 -%}
@@ -267,6 +274,7 @@
     { "type": "checkbox", "id": "show_verified", "label": "Show “Verified buyer” label", "default": false },
     { "type": "text", "id": "verified_label", "label": "Verified buyer label", "default": "Verified buyer" },
     { "type": "checkbox", "id": "show_gallery", "label": "Show customer photo grid", "default": true, "info": "Uses photos you add as blocks, then photos from reviews. Hidden when there are none." },
+    { "type": "textarea", "id": "gallery_assets", "label": "Default customer photos (theme asset files)", "default": "yn-cust-chloe-product.webp\nyn-cust-kath-product.webp\nyn-cust-keisha-product.webp\nyn-cust-liza-product.webp\nyn-cust-melina-product.webp\nyn-cust-patricia-product.webp\nyn-cust-yuenyung-product.webp\nyn-ugc-carmen.webp", "info": "One file name per line. Used when no photo blocks are added; photos from reviews fill any space left." },
     { "type": "select", "id": "app_mode", "label": "Judge.me widget", "options": [
       { "value": "button", "label": "Behind “Write a review” / “See all” buttons" },
       { "value": "always", "label": "Always shown below the reviews" },
