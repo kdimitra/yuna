@@ -389,6 +389,7 @@ html.yn-lock,html.yn-lock body{overflow:hidden}
    ===================================================================== */
 .yn-it__grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 .yn-it--narrow .yn-it__grid{max-width:1120px;margin:0 auto}
+.yn-it--medium .yn-it__grid{max-width:1240px;margin:0 auto}
 .yn-it--wide .yn-it__grid{grid-template-columns:1.15fr 1fr}
 .yn-it--img-right .yn-it__img{order:2}
 .yn-it--img-right.yn-it--wide .yn-it__grid{grid-template-columns:1fr 1.15fr}
