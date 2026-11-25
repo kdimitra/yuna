@@ -73,7 +73,6 @@
       "type": "yn-popup",
       "settings": {
         "enable": true,
-        "pages": "home",
         "preview": false,
         "delay": 10,
         "version": "1",

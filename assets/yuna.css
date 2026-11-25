@@ -1193,3 +1193,64 @@ html.yn-anim .yn-rv.is-in :is(.yn-story__ph,.yn-row__img,.yn-card__ph,.yn-ing__i
 .kaching-bundles .kaching-bundles__bar-title{font-weight:600!important}
 .kaching-bundles .kaching-bundles__bar-label{font-weight:700!important}
 .kaching-cart__empty-cart-title{font-weight:600}
+
+/* =====================================================================
+   Client feedback round (Nov 2026)
+   ===================================================================== */
+/* Product page: wider layout to match the design ratio */
+@media (min-width:901px){
+  .yn-pdp__grid{padding:0 clamp(20px,4.4vw,64px)}
+  /* Night timeline: column dividers, tag as a small caps footer line */
+  .yn-tl__step{display:flex;flex-direction:column;padding:44px 28px 26px 24px}
+  .yn-tl__step+.yn-tl__step{border-left:1px solid rgba(22,27,48,.12)}
+  .yn-tl__step::before{left:24px}
+  .yn-tl__bd{display:flex;flex-direction:column;flex:1}
+  .yn-tl__bd p{margin-bottom:22px}
+  .yn-tl__ft{display:block;margin-top:auto;padding:14px 0 0;border-top:1px solid rgba(22,27,48,.12);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;background:none;border-radius:0}
+}
+/* Comparison: subheading wraps to the heading's width */
+.yn-cmp .yn-head--center{width:fit-content;max-width:880px}
+.yn-cmp .yn-head__sub{width:0;min-width:100%;max-width:none}
+/* "Real results" story cards: no drop shadow */
+.yn-story{box-shadow:none;border:1px solid var(--yn-line)}
+@media (hover:hover){.yn-story:hover{box-shadow:none}}
+/* Heading accent on its own line */
+.yn-h--stack .yn-h__accent{display:block}
+/* Tablet + mobile: floating pill header after scroll */
+@media (max-width:1100px){
+  .yn-hdr--float{background:transparent}
+  .yn-hdr--float .yn-hdr__bar{transition:margin .35s ease,border-radius .35s ease,box-shadow .35s ease,height .3s ease,background .35s ease}
+  .yn-hdr--float.is-pill .yn-hdr__bar{margin:10px 12px 0;height:52px;border-radius:999px;border:1px solid rgba(22,27,48,.06);box-shadow:0 10px 28px -14px rgba(22,27,48,.3);background:rgba(243,239,233,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:0 14px}
+}
+@media (max-width:900px){
+  /* product gallery: rounded image, bordered thumbnails, plain arrows */
+  .yn-pdp__media{margin:0}
+  .yn-gal__list{gap:12px;border-radius:20px}
+  .yn-gal__item{border-radius:20px}
+  .yn-gal__thumbs{padding:14px 0 0}
+  .yn-gal__th{width:64px;height:64px;border-radius:10px;border:1px solid var(--yn-line);box-sizing:border-box}
+  .yn-gal__th.is-on{border:2px solid var(--yn-navy)}
+  .yn-gal__tarr{width:24px;border:0;border-radius:0;background:none}
+  .yn-gal__tarr .yn-ic{width:16px;height:16px}
+  /* award card: laurel left, divider, text right */
+  .yn-pdp__award{flex-direction:row;text-align:left;gap:14px;padding:14px 16px}
+  .yn-award--box{padding-right:14px;border-right:1px solid var(--yn-hair);align-self:stretch}
+  .yn-award--box span{font-size:13.5px}
+  .yn-pdp__award .yn-rte{font-size:13.5px}
+  /* stats footnote */
+  .yn-stats__foot p{align-self:stretch;text-align:right}
+}
+
+/* Cart drawer (Kaching Cart app): YUNA design */
+#kaching-cart .kaching-cart__header{padding-top:22px;padding-bottom:22px;border-bottom:1px solid var(--yn-hair)}
+#kaching-cart .kaching-cart__heading{font-family:var(--yn-font-h);font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1.2;color:var(--yn-navy)}
+#kaching-cart .kaching-cart__close{color:var(--yn-navy)}
+#kaching-cart .kaching-cart__empty-cart-top-empty-space,#kaching-cart .kaching-cart__empty-cart-icon{display:none}
+#kaching-cart .kaching-cart__empty-cart-content{justify-content:flex-start}
+#kaching-cart .kaching-cart__empty-cart-central-content{flex:none;padding:44px 20px 24px}
+#kaching-cart .kaching-cart__empty-cart-central-content-main{display:flex;flex-direction:column;align-items:center;text-align:center}
+#kaching-cart .kaching-cart__empty-cart-title{font-family:var(--yn-font-h);font-size:24px;font-weight:600;letter-spacing:-.02em;line-height:1.25;color:var(--yn-navy);margin:0}
+.yn-kc-empty{display:flex;flex-direction:column;align-items:center}
+.yn-kc-empty__t{font-family:var(--yn-font-b);font-size:15px;line-height:1.5;color:var(--yn-muted);margin:8px 0 22px}
+.yn-kc-empty__btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 30px;border-radius:999px;background:var(--yn-navy);color:#fff!important;font-family:var(--yn-font-b);font-size:16px;font-weight:600;text-decoration:none!important;transition:background .25s}
+.yn-kc-empty__btn:hover{background:#2A3150}
