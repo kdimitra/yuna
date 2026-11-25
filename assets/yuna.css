@@ -750,7 +750,7 @@ details[open]>summary .yn-pm::after{transform:translate(-50%,-50%) rotate(0)}
 .yn-ph--photo .yn-ph__lead{color:color-mix(in srgb,var(--ph-fg) 88%,transparent)}
 .yn-ph__copy{max-width:760px}
 .yn-ph--center .yn-ph__copy{margin:0 auto;text-align:center}
-.yn-ph--plain{padding:70px 0 calc(var(--yn-space-d)/2 - 16px)}
+.yn-ph--plain{padding:70px 0 calc(var(--yn-space-d)/2)}
 .yn-ph__title{font-size:clamp(36px,4.4vw,63.4px);font-weight:var(--yn-h-weight);line-height:1.08;letter-spacing:var(--yn-h-track);margin:0 0 18px}
 .yn-ph--size-m .yn-ph__title{font-size:clamp(30px,2.95vw,42px)}
 .yn-ph__title em{color:var(--yn-accent-h)}
