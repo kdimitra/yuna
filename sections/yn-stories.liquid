@@ -1,7 +1,8 @@
 <section class="{% render 'yn-section-class', s: section %} yn-stories yn-stories--{{ section.settings.layout }}" id="yn-{{ section.id }}">
   <div class="yn-wrap">
     <div class="yn-head yn-head--center yn-rv">
-      {%- render 'yn-heading', heading: section.settings.heading, accent: section.settings.accent -%}
+      {%- if section.settings.accent_newline -%}{%- assign yn_h_cls = 'yn-h--stack' -%}{%- else -%}{%- assign yn_h_cls = '' -%}{%- endif -%}
+      {%- render 'yn-heading', heading: section.settings.heading, accent: section.settings.accent, class: yn_h_cls -%}
       {%- if section.settings.text != blank -%}<p class="yn-head__sub">{{ section.settings.text }}</p>{%- endif -%}
     </div>
 
@@ -52,6 +53,7 @@
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "Real results in weeks." },
     { "type": "text", "id": "accent", "label": "Heading accent", "default": "Refreshed mornings." },
+    { "type": "checkbox", "id": "accent_newline", "label": "Show heading accent on its own line", "default": false },
     { "type": "textarea", "id": "text", "label": "Subheading", "default": "Real stories from women who made our beauty sleep supplement part of their nightly ritual." },
     { "type": "select", "id": "layout", "label": "Layout", "options": [{ "value": "grid", "label": "Grid (3 across)" }, { "value": "carousel", "label": "Carousel with arrows" }], "default": "grid" },
     { "type": "text", "id": "verified_label", "label": "Verified label", "default": "Verified customer" },
