@@ -478,7 +478,7 @@
         "us_fallback": "yn-cmp-yuna-jar.webp",
         "them_label": "Typical sleep aids",
         "them_fallback": "yn-cmp-other-bottle.webp",
-        "bg": "beige",
+        "bg": "white",
         "pt": "full",
         "pb": "full"
       },
@@ -803,6 +803,7 @@
         "accent": "Customers.",
         "text": "",
         "anchor": "reviews",
+        "write_label": "",
         "max_width": 980,
         "bg": "white",
         "pt": "half",
