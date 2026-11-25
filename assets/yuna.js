@@ -555,3 +555,48 @@
   });
   Y.init = init;
 })();
+
+/* ---------- Client feedback round (Nov 2026): Science hero parallax + Kaching cart empty state ---------- */
+(function () {
+  'use strict';
+  var doc = document, Y = window.YUNA = window.YUNA || {};
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function initParallax(root) {
+    (root || doc).querySelectorAll('[data-yn-parallax]').forEach(function (sec) {
+      if (sec._ynPx) return; sec._ynPx = 1;
+      var media = sec.querySelector('[data-yn-parallax-media]'); if (!media || reduce) return;
+      sec.classList.add('is-parallax');
+      var speed = parseFloat(sec.getAttribute('data-yn-parallax')) || 0.2, ticking = false;
+      function upd() {
+        ticking = false;
+        var r = sec.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > window.innerHeight) return;
+        var y = Math.max(0, Math.min(-r.top * speed, r.height * speed));
+        media.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0)';
+      }
+      function req() { if (!ticking) { ticking = true; requestAnimationFrame(upd); } }
+      window.addEventListener('scroll', req, { passive: true }); window.addEventListener('resize', req); upd();
+    });
+  }
+  function tidyCart() {
+    var kc = doc.getElementById('kaching-cart'); if (!kc) return;
+    var cfg = Y.emptyCart || {};
+    var h = kc.querySelector('.kaching-cart__heading');
+    if (h && /^\s*Your Cart\b/.test(h.textContent)) h.textContent = h.textContent.replace(/^\s*Your Cart\b/, 'Cart');
+    var main = kc.querySelector('.kaching-cart__empty-cart-central-content-main');
+    if (main && !main.querySelector('.yn-kc-empty') && (cfg.text || cfg.button)) {
+      var box = doc.createElement('div'); box.className = 'yn-kc-empty';
+      if (cfg.text) { var p = doc.createElement('p'); p.className = 'yn-kc-empty__t'; p.textContent = cfg.text; box.appendChild(p); }
+      if (cfg.button) { var a = doc.createElement('a'); a.className = 'yn-kc-empty__btn'; a.href = cfg.url || '/'; a.textContent = cfg.button; box.appendChild(a); }
+      main.appendChild(box);
+    }
+  }
+  var queued = false;
+  function queue() { if (queued) return; queued = true; requestAnimationFrame(function () { queued = false; tidyCart(); }); }
+  function start() {
+    initParallax(doc); tidyCart();
+    if (window.MutationObserver) new MutationObserver(queue).observe(doc.body, { childList: true, subtree: true, characterData: true });
+  }
+  if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', start); else start();
+  doc.addEventListener('shopify:section:load', function (e) { initParallax(e.target); });
+})();
