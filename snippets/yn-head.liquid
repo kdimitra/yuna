@@ -75,9 +75,13 @@
 <script src="{{ 'yuna.js' | asset_url }}" defer="defer"></script>
 <script>
   window.YUNA = window.YUNA || {};
-  window.YUNA.moneyFormat = {{ shop.money_format | json }};
+  {%- comment -%} Prices show in Singapore dollars: a plain "$" format becomes "S$". {%- endcomment -%}
+  {%- assign yn_money_fmt = shop.money_format | replace: 'S$', '$' | replace: '$', 'S$' -%}
+  window.YUNA.moneyFormat = {{ yn_money_fmt | json }};
   window.YUNA.cartAddUrl = {{ routes.cart_add_url | json }};
   window.YUNA.cartUrl = {{ routes.cart_url | json }};
   window.YUNA.animations = {{ settings.yn_animations | json }};
   window.YUNA.designMode = {{ request.design_mode | json }};
+  {%- assign yn_shop_url = settings.continue_shopping_url | default: routes.all_products_collection_url -%}
+  window.YUNA.emptyCart = { text: "Begin your beauty sleep ritual tonight.", button: "Shop Daily Beauty Sleep™", url: {{ yn_shop_url | json }} };
 </script>
