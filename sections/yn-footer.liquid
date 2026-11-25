@@ -40,9 +40,10 @@
                 assign yt = block.settings.youtube | default: settings.social_youtube_link
               -%}
               <div class="yn-ftr__social">
-                {%- if ig != blank -%}<a href="{{ ig }}" target="_blank" rel="noopener" aria-label="Instagram">{% render 'yn-icon', name: 'instagram' %}</a>{%- endif -%}
-                {%- if fb != blank -%}<a href="{{ fb }}" target="_blank" rel="noopener" aria-label="Facebook">{% render 'yn-icon', name: 'facebook' %}</a>{%- endif -%}
-                {%- if tt != blank -%}<a href="{{ tt }}" target="_blank" rel="noopener" aria-label="TikTok">{% render 'yn-icon', name: 'tiktok' %}</a>{%- endif -%}
+                {%- comment -%} Instagram, Facebook and TikTok always show (design). Add the links in the block or in Theme settings > Social media. {%- endcomment -%}
+                <a href="{{ ig | default: '#' }}"{% if ig != blank %} target="_blank" rel="noopener"{% endif %} aria-label="Instagram">{% render 'yn-icon', name: 'instagram' %}</a>
+                <a href="{{ fb | default: '#' }}"{% if fb != blank %} target="_blank" rel="noopener"{% endif %} aria-label="Facebook">{% render 'yn-icon', name: 'facebook' %}</a>
+                <a href="{{ tt | default: '#' }}"{% if tt != blank %} target="_blank" rel="noopener"{% endif %} aria-label="TikTok">{% render 'yn-icon', name: 'tiktok' %}</a>
                 {%- if yt != blank -%}<a href="{{ yt }}" target="_blank" rel="noopener" aria-label="YouTube">{% render 'yn-icon', name: 'youtube' %}</a>{%- endif -%}
               </div>
               {%- if block.settings.note != blank -%}<p class="yn-ftr__note">{{ block.settings.note }}</p>{%- endif -%}
