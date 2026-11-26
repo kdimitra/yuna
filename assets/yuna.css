@@ -1271,3 +1271,8 @@ html.yn-anim .yn-rv.is-in :is(.yn-story__ph,.yn-row__img,.yn-card__ph,.yn-ing__i
 :is(.yn-ing,.yn-acc-ing,.yn-sci-i__card,.yn-sci-acc):nth-child(7) :is(.yn-ing__im,.yn-acc-ing__th,.yn-sci-i__im,.yn-sci-acc__th)::after{animation-delay:3s}
 :is(.yn-ing,.yn-acc-ing,.yn-sci-i__card,.yn-sci-acc):nth-child(8) :is(.yn-ing__im,.yn-acc-ing__th,.yn-sci-i__im,.yn-sci-acc__th)::after{animation-delay:3.5s}
 @media (prefers-reduced-motion:reduce){:is(.yn-ing__im,.yn-acc-ing__th,.yn-sci-i__im,.yn-sci-acc__th)::after{animation:none;display:none}}
+/* Mobile: "Individual results may vary." sits right under the last story card */
+@media (max-width:900px){
+  .yn-stories--grid .yn-stories__list{padding-bottom:24px}
+  .yn-stories .yn-note{margin-top:4px}
+}
